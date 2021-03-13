@@ -5,6 +5,7 @@ import {TextInput, ScrollView, TouchableOpacity} from 'react-native-gesture-hand
 /** Veiw Sections Explained
  *   View 1: General
  *  Veiw 2(where backgroundColor is BDD358): 
+ * hallo, testing , testing! march 13
  */
 const Home = ({navigation}) => {
     return(
