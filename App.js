@@ -5,7 +5,7 @@ import HomeStackNavigator from './src/navigations/Navigator'
 const App = () => {
   return(
     <NavigationContainer>
-      <HomeStackNavigator> </HomeStackNavigator>
+      <HomeStackNavigator> Welcome to Lazy Cook Directory!</HomeStackNavigator>
     </NavigationContainer>
   )
 }
