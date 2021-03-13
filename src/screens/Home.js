@@ -36,7 +36,7 @@ const Home = ({navigation}) => {
 
 export default Home;
 
-
+// defult code
 // import React from 'react'
 // import {View, Text} from 'react-native'
 
