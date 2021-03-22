@@ -1,15 +1,31 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import {
+  SafeAreaView,
+  StyleSheet,
+  View,
+  TextInput,
+  Text,
+  Image} from 'react-native';
+  import { Ionicons } from '@expo/vector-icons';
+
+  // import { SearchBar } from 'react-native-elements';
 
 export default function App() {
-  return (
+    return(
     <View style={styles.container}>
-      <Text style={{color: '#bdd348', fontSize: 18}}> 
-        To share a photo from your phone with a friend, just press the button below!
-      </Text>
+       <Ionicons name="ios-menu-sharp" size={24} color="black" />
+      <Text style={styles.Title}>
+      Welcome to Lazy Cook's Directory
+      {"\n"}
+      {"\n"}
+        </Text>
+        <Text style = {styles.SubText}>
+        For All of Our Lazy Cooks ~
+        </Text>
     </View>
   );
 }
+
 
 const styles = StyleSheet.create({
   container: {
@@ -18,4 +34,21 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  Title:{
+    fontSize: 35,
+    color: 'white',
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingHorizontal: 8,
+    borderColor: '#b4d12e',
+    borderWidth: 8,
+    borderRadius: 20,
+    backgroundColor: '#bfde31',
+  },
+  SubText:{
+    fontSize: 20,
+    color: '#e5e059',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 });
