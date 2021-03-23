@@ -8,12 +8,13 @@ import {
   Image} from 'react-native';
   import { Ionicons } from '@expo/vector-icons';
 
-  // import { SearchBar } from 'react-native-elements';
+  import SearchBar from "./src/components/searchBar"
 
 export default function App() {
     return(
     <View style={styles.container}>
-       <Ionicons name="ios-menu-sharp" size={24} color="black" />
+      <SearchBar/>
+      <Ionicons name="ios-menu-sharp" size={24} color="black" />
       <Text style={styles.Title}>
       Welcome to Lazy Cook's Directory
       {"\n"}
