@@ -10,6 +10,23 @@ import {
 
   import SearchBar from "./src/components/searchBar"
 
+//importing firebase
+//import * as firebase from 'firebase';
+
+//initializing firebase
+// For Firebase JS SDK v7.20.0 and later
+// when we have firebase project, put info here
+//const firebaseConfig = {
+  //apiKey: "",
+  //authDomain: "",
+  //projectId: "",
+  //storageBucket: "",
+ // messagingSenderId: "",
+ // appId: "",
+//};
+
+//firebase.initializeApp(firebaseConfig);
+
 export default function App() {
     return(
     <View style={styles.container}>
