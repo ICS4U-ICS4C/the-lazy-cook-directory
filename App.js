@@ -17,8 +17,6 @@ export default function App() {
       <Ionicons name="ios-menu-sharp" size={24} color="black" />
       <Text style={styles.Title}>
       Welcome to Lazy Cook's Directory
-      {"\n"}
-      {"\n"}
         </Text>
         <Text style = {styles.SubText}>
         For All of Our Lazy Cooks ~

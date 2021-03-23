@@ -1,9 +1,9 @@
 import React from 'react';
-import {View, TextInput, StyleSheet} from 'react-native';
+import {View, TextInput, StyleSheet, StatusBar} from 'react-native';
 
 const SearchBar = () => {
     return(
-        <View>
+        <View style={styles.container}>
             <TextInput placeholder = "Insert Ingredients here... "/>
         </View>
     )
@@ -13,16 +13,18 @@ const SearchBar = () => {
 const styles = StyleSheet.create({
     container:{
         width: '100%',
-        hieght: 45,
+        height: 45,
         backgroundColor: '#f5f5f5',
-        borderRadius: 10
+        borderRadius: 18,
+        marginTop: StatusBar.currentHeight,
+        paddingHorizontal: 20
 
     },
     searchInput:{
         width: '100%',
-        hieght: '100%',
-        paddingLeft: 8,
-        fontSize: 14
+        height: '100%',
+        padding: 2,
+        fontSize: 25
     }
 })
 
