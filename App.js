@@ -1,31 +1,16 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  View,
-  TextInput,
-  Text,
-  Image} from 'react-native';
-  import { Ionicons } from '@expo/vector-icons';
+import {StyleSheet,View,Text,Image} from 'react-native';
 
-  import SearchBar from "./src/components/searchBar"
+import Home from '../lazy-cookers-directory/src/screens/HomeComponents/Home'
 
 
 export default function App() {
     return(
-    <View style={styles.container}>
-      <SearchBar/>
-      <Ionicons name="ios-menu-sharp" size={24} color="black" />
-      <Text style={styles.Title}>
-      Welcome to Lazy Cook's Directory
-        </Text>
-        <Text style = {styles.SubText}>
-        For All of Our Lazy Cooks ~
-        </Text>
-    </View>
-  );
+      <View>
+        <Home/>;
+      </View> 
+  )
 }
-
 
 const styles = StyleSheet.create({
   container: {

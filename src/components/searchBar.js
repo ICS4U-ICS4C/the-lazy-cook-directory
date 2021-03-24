@@ -1,10 +1,11 @@
+/* creating our search bar */
 import React from 'react';
 import {View, TextInput, StyleSheet, StatusBar} from 'react-native';
-
+/** */
 const SearchBar = () => {
     return(
         <View style={styles.container}>
-            <TextInput placeholder = "Insert Ingredients here... "/>
+            <TextInput placeholder = "Insert Ingredients here... "/> 
         </View>
     )
 
