@@ -14,8 +14,8 @@ export default function Home() {
     </View>
   );
 }
-
-
+//example of a search code in html from VIZ
+//<input name="search" type="search" class="o_search-ac o_site-search-field" placeholder="Find a title or a character…" autocomplete="off"></input>
 const styles = StyleSheet.create({
   container: {
     flex: 1,
