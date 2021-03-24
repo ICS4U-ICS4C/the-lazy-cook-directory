@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet,View,Text,Image} from 'react-native';
 
-import Home from '../lazy-cookers-directory/src/screens/HomeComponents/Home'
+import Home from '../the-lazy-cook-directory/src/screens/HomeComponents/Home'
 
 
 export default function App() {
