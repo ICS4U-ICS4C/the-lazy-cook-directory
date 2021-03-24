@@ -5,7 +5,7 @@ import {View, TextInput, StyleSheet, StatusBar} from 'react-native';
 const SearchBar = () => {
     return(
         <View style={styles.container}>
-            <TextInput placeholder = "Insert Ingredients here... "/> 
+            <TextInput placeholder = "Type in your Ingredients here... "/> 
         </View>
     )
 
@@ -28,7 +28,7 @@ const SearchBar = () => {
 //   };
 //   firebase.initializeApp(firebaseConfig);
 
-
+//styling components
 const styles = StyleSheet.create({
     container:{
         width: '100%',

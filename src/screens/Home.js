@@ -8,8 +8,8 @@ export default function Home() {
   return (
     <View style={styles.container}>
       <SearchBar/>
-      <SimpleLineIcons name="menu" style = {styles.menuBotton} onPress={() => this.Menu()} />
-      <Text> Heyoooo </Text>
+      <SimpleLineIcons name="menu" style = {styles.menuBotton} onPress={() => Menu()} />
+      <Text> Welcome to Home of Lazy Cook's Direcotry </Text>
     </View>
   );
 }
@@ -24,6 +24,8 @@ const styles = StyleSheet.create({
   },
   menuBotton:{
     color:"black",
-    fontSize: 40
+    fontSize: 40,
+    backgroundColor: null
+
   }
 });
