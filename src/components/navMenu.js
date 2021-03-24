@@ -41,7 +41,7 @@ const StyledMenuItem = withStyles((theme) => ({
   }
 }))(MenuItem);
 
-export default function CustomizedMenus() {
+export default function Menu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
@@ -86,7 +86,7 @@ export default function CustomizedMenus() {
           <ListItemIcon>
             <PinDropIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary="Locate" />
+          <ListItemText primary="StoreLocator" />
         </StyledMenuItem>
       </StyledMenu>
     </div>
