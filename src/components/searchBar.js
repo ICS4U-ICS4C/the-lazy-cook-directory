@@ -10,6 +10,24 @@ const SearchBar = () => {
 
 }
 
+
+//importing firebase
+//import * as firebase from 'firebase';
+
+//initializing firebase
+// For Firebase JS SDK v7.20.0 and later
+// when we have firebase project, put info here
+//const firebaseConfig = {
+  //apiKey: "",
+  //authDomain: "",
+  //projectId: "",
+  //storageBucket: "",
+ // messagingSenderId: "",
+ // appId: "",
+//};
+
+//firebase.initializeApp(firebaseConfig);
+
 const styles = StyleSheet.create({
     container:{
         width: '100%',
