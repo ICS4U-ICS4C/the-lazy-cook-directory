@@ -1,0 +1,146 @@
+[debug] [2021-03-25T14:00:47.724Z] ----------------------------------------------------------------------
+[debug] [2021-03-25T14:00:47.727Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init
+[debug] [2021-03-25T14:00:47.728Z] CLI Version:   9.7.0
+[debug] [2021-03-25T14:00:47.728Z] Platform:      darwin
+[debug] [2021-03-25T14:00:47.728Z] Node Version:  v14.16.0
+[debug] [2021-03-25T14:00:47.731Z] Time:          Thu Mar 25 2021 10:00:47 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-03-25T14:00:47.732Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-03-25T14:00:47.740Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-25T14:00:47.740Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/jasmineguruparan/GitHub/lazy-cookers-directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2021-03-25T14:10:25.298Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2021-03-25T14:10:26.653Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2021-03-25T14:10:26.653Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project lazycookdirectory (LazyCookDirectory) 
+[info] 
+=== Database Setup
+[info] i  database: ensuring required API firebasedatabase.googleapis.com is enabled... 
+[debug] [2021-03-25T14:10:30.778Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-03-25T14:10:30.779Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-03-25T14:10:31.027Z] <<< HTTP RESPONSE 200 {"date":"Thu, 25 Mar 2021 14:10:30 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-25T14:10:31.050Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/lazycookdirectory/services/firebasedatabase.googleapis.com  
+ 
+[debug] [2021-03-25T14:10:31.443Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 25 Mar 2021 14:10:31 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  database: required API firebasedatabase.googleapis.com is enabled 
+[info] 
+[debug] [2021-03-25T14:10:31.445Z] >>> HTTP REQUEST GET https://firebasedatabase.googleapis.com/v1beta/projects/lazycookdirectory/locations/-/instances/lazycookdirectory-default-rtdb  
+ 
+[debug] [2021-03-25T14:10:32.021Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 25 Mar 2021 14:10:31 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] Firebase Realtime Database Security Rules allow you to define how your data should be
+[info] structured and when your data can be read from and written to.
+[info] 
+[debug] [2021-03-25T14:10:39.508Z] >>> HTTP REQUEST GET https://lazycookdirectory-default-rtdb.firebaseio.com/.settings/rules.json  
+ 
+[debug] [2021-03-25T14:10:39.853Z] <<< HTTP RESPONSE 200 {"server":"nginx","date":"Thu, 25 Mar 2021 14:10:39 GMT","content-type":"application/json; charset=utf-8","content-length":"60","connection":"keep-alive","access-control-allow-origin":"*","cache-control":"no-cache","strict-transport-security":"max-age=31556926; includeSubDomains; preload"}
+[info] ✔  Database Rules for lazycookdirectory-default-rtdb have been written to database.rules.json. 
+[info] Future modifications to database.rules.json will update Realtime Database Security Rules when you run
+[info] firebase deploy.
+[info] 
+=== Firestore Setup
+[debug] [2021-03-25T14:10:39.857Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/lazycookdirectory/services/firestore.googleapis.com  
+ 
+[debug] [2021-03-25T14:10:40.222Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 25 Mar 2021 14:10:40 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-25T14:10:40.223Z] >>> HTTP REQUEST GET https://appengine.googleapis.com/v1/apps/lazycookdirectory  
+ 
+[debug] [2021-03-25T14:10:40.586Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 25 Mar 2021 14:10:40 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-25T14:10:40.587Z] database_type: CLOUD_FIRESTORE
+[debug] [2021-03-25T14:10:40.588Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-25T14:10:40.589Z] > authorizing via signed-in user
+[debug] [2021-03-25T14:10:40.589Z] [iam] checking project lazycookdirectory for permissions ["firebase.projects.get"]
+[debug] [2021-03-25T14:10:40.590Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lazycookdirectory:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2021-03-25T14:10:40.900Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 25 Mar 2021 14:10:40 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=166","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] Firestore Security Rules allow you to define how and when to allow
+[info] requests. You can keep these rules in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2021-03-25T14:11:12.124Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/lazycookdirectory/releases?pageSize=10&pageToken=  
+ 
+[debug] [2021-03-25T14:11:12.706Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 25 Mar 2021 14:11:12 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-25T14:11:12.707Z] Found ruleset: projects/lazycookdirectory/rulesets/d913913f-ff44-4f50-a25c-e4a805f4b6f9
+[debug] [2021-03-25T14:11:12.708Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/lazycookdirectory/rulesets/d913913f-ff44-4f50-a25c-e4a805f4b6f9  
+ 
+[debug] [2021-03-25T14:11:12.916Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 25 Mar 2021 14:11:12 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] Firestore indexes allow you to perform complex queries while
+[info] maintaining performance that scales with the size of the result
+[info] set. You can keep index definitions in your project directory
+[info] and publish them with firebase deploy.
+[info] 
+[debug] [2021-03-25T14:11:32.616Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1/projects/lazycookdirectory/databases/(default)/collectionGroups/-/indexes  
+ 
+[debug] [2021-03-25T14:11:32.616Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1/projects/lazycookdirectory/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false  
+ 
+[debug] [2021-03-25T14:11:32.971Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 25 Mar 2021 14:11:32 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-25T14:11:32.972Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 25 Mar 2021 14:11:32 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+=== Functions Setup
+[info] 
+[info] A functions directory will be created in your project with a Node.js
+[info] package pre-configured. Functions can be deployed with firebase deploy.
+[info] 
+[debug] [2021-03-25T14:11:32.975Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-25T14:11:32.976Z] > authorizing via signed-in user
+[debug] [2021-03-25T14:11:32.976Z] [iam] checking project lazycookdirectory for permissions ["firebase.projects.get"]
+[debug] [2021-03-25T14:11:32.976Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/lazycookdirectory:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2021-03-25T14:11:33.253Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 25 Mar 2021 14:11:33 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=165","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-25T14:11:33.255Z] >>> HTTP REQUEST POST https://serviceusage.googleapis.com/v1/projects/lazycookdirectory/services/cloudfunctions.googleapis.com:enable  
+ 
+[debug] [2021-03-25T14:11:33.256Z] >>> HTTP REQUEST POST https://serviceusage.googleapis.com/v1/projects/lazycookdirectory/services/runtimeconfig.googleapis.com:enable  
+ 
+[debug] [2021-03-25T14:11:33.560Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 25 Mar 2021 14:11:33 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-25T14:11:33.867Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Thu, 25 Mar 2021 14:11:33 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] ✔  Wrote functions/package.json 
+[info] ✔  Wrote functions/.eslintrc.js 
+[info] ✔  Wrote functions/index.js 
+[info] ✔  Wrote functions/.gitignore 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2021-03-25T14:13:43.668Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2021-03-25T14:13:43.794Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2021-03-25T14:13:43.794Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"8.3.1","browserURL":"https://www.gstatic.com/firebasejs/8.3.1/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/8.3.1/firebase.tgz"},"live":{"version":"8.3","browserURL":"https://www.gstatic.com/firebasejs/live/8.3/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/8.3/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js","auth":"https://www.gstatic.com/firebasejs/8.3.1/firebase-auth.js","database":"https://www.gstatic.com/firebasejs/8.3.1/firebase-database.js","firestore":"https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js","functions":"https://www.gstatic.com/firebasejs/8.3.1/firebase-functions.js","installations":"https://www.gstatic.com/firebasejs/8.3.1/firebase-installations.js","messaging":"https://www.gstatic.com/firebasejs/8.3.1/firebase-messaging.js","storage":"https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/8.3.1/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/8.3.1/firebase-remote-config.js","firestore.memory":"https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.memory.js"}}
+[info] ✔  Wrote thelazycooksdirectory/index.html 
+[info] 
+[info] i  Detected a .git folder at /Users/jasmineguruparan/GitHub/lazy-cookers-directory 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=972060831&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2021-03-25T14:13:52.641Z] >>> HTTP REQUEST POST https://github.com/login/oauth/access_token  
+ {"client_id":"89cf50f02ac6aaed3484","client_secret":"3330d14abc895d9a74d5f17cd7a00711fa2c5bf0","code":"8284c48873a804546b40","redirect_uri":"http://localhost:9005","state":"972060831"}
+[debug] [2021-03-25T14:13:53.936Z] <<< HTTP RESPONSE 200 {"server":"GitHub.com","date":"Thu, 25 Mar 2021 14:13:53 GMT","content-type":"application/json; charset=utf-8","transfer-encoding":"chunked","vary":"X-PJAX, Accept-Encoding, Accept, X-Requested-With","etag":"W/\"9b531a15bc40304ffbbce3daf0c29b7a\"","cache-control":"max-age=0, private, must-revalidate","strict-transport-security":"max-age=31536000; includeSubdomains; preload","x-frame-options":"deny","x-content-type-options":"nosniff","x-xss-protection":"0","referrer-policy":"origin-when-cross-origin, strict-origin-when-cross-origin","expect-ct":"max-age=2592000, report-uri=\"https://api.github.com/_private/browser/errors\"","content-security-policy":"default-src 'none'; base-uri 'self'; block-all-mixed-content; connect-src 'self' uploads.github.com www.githubstatus.com collector.githubapp.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com cdn.optimizely.com logx.optimizely.com/v1/events wss://alive.github.com; font-src github.githubassets.com; form-action 'self' github.com gist.github.com; frame-ancestors 'none'; frame-src render.githubusercontent.com; img-src 'self' data: github.githubassets.com identicons.github.com collector.githubapp.com github-cloud.s3.amazonaws.com secured-user-images.githubusercontent.com/ *.githubusercontent.com; manifest-src 'self'; media-src 'none'; script-src github.githubassets.com; style-src 'unsafe-inline' github.githubassets.com; worker-src github.com/socket-worker-6832eced.js gist.github.com/socket-worker-6832eced.js","x-github-request-id":"C6F1:2B58:84E62D:C93F32:605C9AA1"}
+[debug] [2021-03-25T14:13:53.946Z] >>> [apiv2][query] GET https://api.github.com/user [none]
+[debug] [2021-03-25T14:13:55.251Z] <<< [apiv2][status] GET https://api.github.com/user 200
+[debug] [2021-03-25T14:13:55.252Z] <<< [apiv2][body] GET https://api.github.com/user {"login":"jasmineguru","id":54900323,"node_id":"MDQ6VXNlcjU0OTAwMzIz","avatar_url":"https://avatars.githubusercontent.com/u/54900323?v=4","gravatar_id":"","url":"https://api.github.com/users/jasmineguru","html_url":"https://github.com/jasmineguru","followers_url":"https://api.github.com/users/jasmineguru/followers","following_url":"https://api.github.com/users/jasmineguru/following{/other_user}","gists_url":"https://api.github.com/users/jasmineguru/gists{/gist_id}","starred_url":"https://api.github.com/users/jasmineguru/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/jasmineguru/subscriptions","organizations_url":"https://api.github.com/users/jasmineguru/orgs","repos_url":"https://api.github.com/users/jasmineguru/repos","events_url":"https://api.github.com/users/jasmineguru/events{/privacy}","received_events_url":"https://api.github.com/users/jasmineguru/received_events","type":"User","site_admin":false,"name":"genjiguru","company":null,"blog":"","location":null,"email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":11,"public_gists":0,"followers":0,"following":0,"created_at":"2019-09-04T14:21:42Z","updated_at":"2021-03-25T14:13:47Z","private_gists":0,"total_private_repos":0,"owned_private_repos":0,"disk_usage":296,"collaborators":0,"two_factor_authentication":false,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}
+[info] 
+[info] ✔  Success! Logged into GitHub as jasmineguru 
+[info] 
