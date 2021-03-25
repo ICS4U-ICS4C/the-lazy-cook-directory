@@ -1,13 +1,20 @@
 /* creating our search bar */
-import React from 'react';
-import {View, TextInput, StyleSheet, StatusBar} from 'react-native';
+import React, {Component} from 'react';
+import {View, TextInput, StyleSheet, StatusBar, Text} from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const SearchBar = () => {
     return(
         <View style={styles.container}>
-            <TextInput placeholder = "Insert Ingredients here... "/> 
+            <TextInput placeholder = "Type in your Ingredients here... "/> 
+            <TouchableOpacity style = {styles.addBtn} 
+             onPress={() => {this.addCustomField()}}>
+                <Text style = {styles.addBtnText}>Add Ingredient</Text>
+
+            </TouchableOpacity>
         </View>
-    )
+    );
+    
 
 }
 
