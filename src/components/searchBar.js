@@ -1,20 +1,40 @@
 /* creating our search bar */
-import React, {Component} from 'react';
-import {View, TextInput, StyleSheet, StatusBar, Text} from 'react-native';
+import React, {Component, useEffect, useState} from 'react';
+import {View, TextInput, StyleSheet, StatusBar, Text, Button, ScrollView} from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
 const SearchBar = () => {
     return(
         <View style={styles.container}>
             <TextInput placeholder = "Type in your Ingredients here... "/> 
-            <TouchableOpacity style = {styles.addBtn} 
-             onPress={() => {this.addCustomField()}}>
-
-            </TouchableOpacity>
         </View>
     );
-    
+}
 
+class MyClass extends Component {
+    constructor(props){
+        super(props);
+        this.state ={
+            textInput : [],
+            inputData : []
+        }
+    }
+}
+// function for adding textinput when clicking a button
+addTextInput = (index) => {
+    let textInput = this.state.textInput;
+    textInput.push(<TextInput style={styles.textInput}
+      onChangeText={(text) => this.addValues(text, index)} />);
+    this.setState({ textInput });
+  }
+
+//function for removing text input when clicking a button
+removeTextInput =() => {
+    let TextInput = this.state.textInput;
+    let inputData = this.state.inputData;
+    textInput.pop();
+    inputData.pop();
+    this.setState({textInput, inputData});
 }
 
 
@@ -50,7 +70,7 @@ const styles = StyleSheet.create({
         height: '100%',
         padding: 2,
         fontSize: 25
-    }
+    },
 })
 
 export default SearchBar;
