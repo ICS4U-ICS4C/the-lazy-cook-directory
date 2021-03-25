@@ -9,7 +9,6 @@ const SearchBar = () => {
             <TextInput placeholder = "Type in your Ingredients here... "/> 
             <TouchableOpacity style = {styles.addBtn} 
              onPress={() => {this.addCustomField()}}>
-                <Text style = {styles.addBtnText}>Add Ingredient</Text>
 
             </TouchableOpacity>
         </View>
