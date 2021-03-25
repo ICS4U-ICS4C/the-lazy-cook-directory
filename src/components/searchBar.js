@@ -71,18 +71,6 @@ const styles = StyleSheet.create({
         padding: 2,
         fontSize: 25
     },
-    addBtn:{
-        width: '100%',
-        height: 50,
-        backgroundColor: "grey",
-        justifyContent: 'center',
-        color: '#fff',
-    },
-    addBtnText: {
-        fontSize: 16,
-        color: '#fff',
-        textAlign: 'center',
-    },
 })
 
 export default SearchBar;
