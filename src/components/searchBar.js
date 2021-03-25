@@ -1,43 +1,96 @@
 /* creating our search bar */
 import React, {Component, useEffect, useState} from 'react';
+import { render } from 'react-dom';
 import {View, TextInput, StyleSheet, StatusBar, Text, Button, ScrollView} from 'react-native';
+import { fonts } from 'react-native-elements/dist/config';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const SearchBar = () => {
-    return(
-        <View style={styles.container}>
-            <TextInput placeholder = "Type in your Ingredients here... "/> 
-        </View>
-    );
-}
+//const SearchBar = () => {
+  //  return(
+    //    <View style={styles.container}>
+    //        <TextInput placeholder = "Type in your Ingredients here... "/> 
+     //   </View>
+   // );
+//}
 
 class MyClass extends Component {
-    constructor(props){
-        super(props);
-        this.state ={
-            textInput : [],
-            inputData : []
-        }
+
+  constructor(props){
+    super(props);
+    this.state = {
+      textInput : [],
+      inputData : []
     }
-}
-// function for adding textinput when clicking a button
-addTextInput = (index) => {
+  }
+
+  //function to add TextInput when clicking the add button
+  addTextInput = (index) => {
     let textInput = this.state.textInput;
     textInput.push(<TextInput style={styles.textInput}
+      placeholder = "Type in your Ingredients here... "
       onChangeText={(text) => this.addValues(text, index)} />);
     this.setState({ textInput });
   }
 
-//function for removing text input when clicking a button
-removeTextInput =() => {
-    let TextInput = this.state.textInput;
+  //function to remove TextInput when clicking the remove button
+  removeTextInput = () => {
+    let textInput = this.state.textInput;
     let inputData = this.state.inputData;
     textInput.pop();
     inputData.pop();
-    this.setState({textInput, inputData});
+    this.setState({ textInput,inputData });
+  }
+
+  //function to add text from TextInputs into single array
+  addValues = (text, index) => {
+    let dataArray = this.state.inputData;
+    let checkBool = false;
+    if (dataArray.length !== 0){
+      dataArray.forEach(element => {
+        if (element.index === index ){
+          element.text = text;
+          checkBool = true;
+        }
+      });
+    }
+    if (checkBool){
+    this.setState({
+      inputData: dataArray
+    });
+  }
+  else {
+    dataArray.push({'text':text,'index':index});
+    this.setState({
+      inputData: dataArray
+    });
+  }
+  }
+
+  //function for getting the values and doing something with it ??
+  getValues = () => {
+    
+  }
+
+ //displaying the buttons and search input
+  render(){
+    return(
+      <View style ={styles.row}>
+        <View style= {styles.row}>
+          <View style={{margin: 20}}>
+        <Button title='Add' onPress={() => this.addTextInput(this.state.textInput.length)} />
+        </View>
+        <View style={{margin: 20}}>
+        <Button title='Remove' onPress={() => this.removeTextInput()} />
+        </View>
+        </View>
+        {this.state.textInput.map((value) => {
+          return value
+        })}
+        <Button title='Get Values' onPress={() => this.getValues()} />
+      </View>
+    )
+  }
 }
-
-
 // import * as firebase from 'firebase';
 
 // //initializing firebase
@@ -56,21 +109,32 @@ removeTextInput =() => {
 
 //styling components
 const styles = StyleSheet.create({
-    container:{
-        width: '100%',
-        height: 45,
-        backgroundColor: '#f5f5f5',
-        borderRadius: 18,
-        marginTop: StatusBar.currentHeight,
-        paddingHorizontal: 20
+    //container:{
+      //  width: '100%',
+      //  height: 45,
+      //  backgroundColor: '#f5f5f5',
+      //  borderRadius: 18,
+      //  marginTop: StatusBar.currentHeight,
+      //  paddingHorizontal: 20
 
-    },
-    searchInput:{
-        width: '100%',
-        height: '100%',
-        padding: 2,
-        fontSize: 25
-    },
-})
+    //searchInput:{
+    //    width: '100%',
+    //    height: '100%',
+    //    padding: 2,
+    //    fontSize: 25
 
-export default SearchBar;
+    //basic styling, for next step
+    textInput: {
+    height: 40,
+    borderColor: 'black', 
+    borderWidth: 1,
+    margin: 20
+    },
+    row:{
+      flexDirection: 'row',
+      justifyContent: 'center'
+      },
+});
+
+//export default SearchBar; 
+export default MyClass;
