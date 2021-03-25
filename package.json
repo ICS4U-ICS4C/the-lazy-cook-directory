@@ -22,10 +22,13 @@
     "react-native-screens": "~2.15.2",
     "react-native-swiper": "^1.6.0",
     "react-native-web": "^0.15.0",
+    "@material-ui/icons": "latest",
+    "@material-ui/core": "latest",
     "react-navigation": "^4.4.4"
   },
   "devDependencies": {
-    "@babel/core": "~7.9.0"
+    "@babel/core": "~7.9.0",
+    "react-scripts": "latest"
   },
   "private": true
 }

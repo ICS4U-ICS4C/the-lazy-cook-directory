@@ -35,7 +35,7 @@ const SearchBar = () => {
 //   };
 //   firebase.initializeApp(firebaseConfig);
 
-
+//styling components
 const styles = StyleSheet.create({
     container:{
         width: '100%',
