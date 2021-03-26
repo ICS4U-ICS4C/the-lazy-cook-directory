@@ -2,8 +2,9 @@
 import React, {Component, useEffect, useState} from 'react';
 import { render } from 'react-dom';
 import {View, TextInput, StyleSheet, StatusBar, Text, Button, ScrollView} from 'react-native';
-import { fonts } from 'react-native-elements/dist/config';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { FontAwesome5 } from '@expo/vector-icons'; 
+
+// import { TouchableOpacity } from 'react-native-gesture-handler';
 
 //const SearchBar = () => {
   //  return(
@@ -13,7 +14,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
    // );
 //}
 
-class MyClass extends Component {
+class SearchBar extends Component {
 
   constructor(props){
     super(props);
@@ -86,7 +87,8 @@ class MyClass extends Component {
         {this.state.textInput.map((value) => {
           return value
         })}
-        <Button title='Get Values' onPress={() => this.getValues()} />
+        <Button title='Get Values' onPress={() => this.getValues()}/>
+        {/* <FontAwesome5 name="search" size={24} color="black" /> */}
       </View>
     )
   }
@@ -109,26 +111,12 @@ class MyClass extends Component {
 
 //styling components
 const styles = StyleSheet.create({
-    //container:{
-      //  width: '100%',
-      //  height: 45,
-      //  backgroundColor: '#f5f5f5',
-      //  borderRadius: 18,
-      //  marginTop: StatusBar.currentHeight,
-      //  paddingHorizontal: 20
 
-    //searchInput:{
-    //    width: '100%',
-    //    height: '100%',
-    //    padding: 2,
-    //    fontSize: 25
-
-    //basic styling, for next step
     textInput: {
-    height: 40,
-    borderColor: 'black', 
-    borderWidth: 1,
-    margin: 20
+      height: 40,
+      borderColor: 'black', 
+      borderWidth: 1,
+      margin: 20
     },
     row:{
       flexDirection: 'row',
@@ -137,4 +125,4 @@ const styles = StyleSheet.create({
 });
 
 //export default SearchBar; 
-export default MyClass;
+export default SearchBar;

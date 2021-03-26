@@ -144,3 +144,39 @@ You're about to initialize a Firebase project in this directory:
 [info] 
 [info] ✔  Success! Logged into GitHub as jasmineguru 
 [info] 
+[debug] [2021-03-25T14:15:55.614Z] >>> [apiv2][query] GET https://api.github.com/repos/jasmineguru/the-lazy-cook-directory/actions/secrets/public-key type=owner
+[debug] [2021-03-25T14:15:55.816Z] <<< [apiv2][status] GET https://api.github.com/repos/jasmineguru/the-lazy-cook-directory/actions/secrets/public-key 404
+[debug] [2021-03-25T14:15:55.816Z] <<< [apiv2][body] GET https://api.github.com/repos/jasmineguru/the-lazy-cook-directory/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#get-a-repository-public-key"}
+[debug] [2021-03-25T14:16:18.104Z] >>> [apiv2][query] GET https://api.github.com/repos/ICS4U-ICS4C/actions/secrets/public-key type=owner
+[debug] [2021-03-25T14:16:18.106Z] >>> [apiv2][query] GET https://api.github.com/repos///actions/secrets/public-key type=owner
+[debug] [2021-03-25T14:16:18.398Z] <<< [apiv2][status] GET https://api.github.com/repos/ICS4U-ICS4C/actions/secrets/public-key 404
+[debug] [2021-03-25T14:16:18.399Z] <<< [apiv2][body] GET https://api.github.com/repos/ICS4U-ICS4C/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2021-03-25T14:16:18.430Z] >>> [apiv2][query] GET https://api.github.com/repos/the-lazy-cook-directory/actions/secrets/public-key type=owner
+[debug] [2021-03-25T14:16:18.595Z] <<< [apiv2][status] GET https://api.github.com/repos///actions/secrets/public-key 404
+[debug] [2021-03-25T14:16:18.595Z] <<< [apiv2][body] GET https://api.github.com/repos///actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2021-03-25T14:16:18.619Z] <<< [apiv2][status] GET https://api.github.com/repos/the-lazy-cook-directory/actions/secrets/public-key 404
+[debug] [2021-03-25T14:16:18.619Z] <<< [apiv2][body] GET https://api.github.com/repos/the-lazy-cook-directory/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2021-03-25T14:16:30.412Z] >>> [apiv2][query] GET https://api.github.com/repos/the-lazy-cooks-directory/actions/secrets/public-key type=owner
+[debug] [2021-03-25T14:16:30.575Z] <<< [apiv2][status] GET https://api.github.com/repos/the-lazy-cooks-directory/actions/secrets/public-key 404
+[debug] [2021-03-25T14:16:30.575Z] <<< [apiv2][body] GET https://api.github.com/repos/the-lazy-cooks-directory/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2021-03-25T14:21:18.486Z] >>> [apiv2][query] GET https://api.github.com/repos/jasmineguru/ICS4U-ICS4C/actions/secrets/public-key type=owner
+[debug] [2021-03-25T14:21:18.489Z] >>> [apiv2][query] GET https://api.github.com/repos///actions/secrets/public-key type=owner
+[debug] [2021-03-25T14:21:20.189Z] <<< [apiv2][status] GET https://api.github.com/repos///actions/secrets/public-key 404
+[debug] [2021-03-25T14:21:20.189Z] <<< [apiv2][body] GET https://api.github.com/repos///actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2021-03-25T14:21:20.200Z] <<< [apiv2][status] GET https://api.github.com/repos/jasmineguru/ICS4U-ICS4C/actions/secrets/public-key 404
+[debug] [2021-03-25T14:21:20.200Z] <<< [apiv2][body] GET https://api.github.com/repos/jasmineguru/ICS4U-ICS4C/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#get-a-repository-public-key"}
+[debug] [2021-03-25T14:22:01.168Z] >>> [apiv2][query] GET https://api.github.com/repos/jasmineguru/ICS4U-ICS4C/the-lazy-cook-directory/actions/secrets/public-key type=owner
+[debug] [2021-03-25T14:22:01.340Z] <<< [apiv2][status] GET https://api.github.com/repos/jasmineguru/ICS4U-ICS4C/the-lazy-cook-directory/actions/secrets/public-key 404
+[debug] [2021-03-25T14:22:01.341Z] <<< [apiv2][body] GET https://api.github.com/repos/jasmineguru/ICS4U-ICS4C/the-lazy-cook-directory/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2021-03-25T14:22:11.642Z] >>> [apiv2][query] GET https://api.github.com/repos/ICS4U-ICS4C/actions/secrets/public-key type=owner
+[debug] [2021-03-25T14:22:11.644Z] >>> [apiv2][query] GET https://api.github.com/repos///actions/secrets/public-key type=owner
+[debug] [2021-03-25T14:22:11.819Z] <<< [apiv2][status] GET https://api.github.com/repos///actions/secrets/public-key 404
+[debug] [2021-03-25T14:22:11.819Z] <<< [apiv2][body] GET https://api.github.com/repos///actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2021-03-25T14:22:11.836Z] <<< [apiv2][status] GET https://api.github.com/repos/ICS4U-ICS4C/actions/secrets/public-key 404
+[debug] [2021-03-25T14:22:11.836Z] <<< [apiv2][body] GET https://api.github.com/repos/ICS4U-ICS4C/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2021-03-25T14:22:12.098Z] >>> [apiv2][query] GET https://api.github.com/repos/the-lazy-cook-directory/actions/secrets/public-key type=owner
+[debug] [2021-03-25T14:22:12.429Z] <<< [apiv2][status] GET https://api.github.com/repos/the-lazy-cook-directory/actions/secrets/public-key 404
+[debug] [2021-03-25T14:22:12.430Z] <<< [apiv2][body] GET https://api.github.com/repos/the-lazy-cook-directory/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest"}
+[debug] [2021-03-25T14:25:44.745Z] >>> [apiv2][query] GET https://api.github.com/repos/TeamLazyCooks/the-lazy-cook-directory/actions/secrets/public-key type=owner
+[debug] [2021-03-25T14:25:44.916Z] <<< [apiv2][status] GET https://api.github.com/repos/TeamLazyCooks/the-lazy-cook-directory/actions/secrets/public-key 404
+[debug] [2021-03-25T14:25:44.916Z] <<< [apiv2][body] GET https://api.github.com/repos/TeamLazyCooks/the-lazy-cook-directory/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#get-a-repository-public-key"}

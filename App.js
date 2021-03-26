@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import { StyleSheet, Text, View } from 'react-native';
 
 import Home from "./src/screens/Home"
+import storeLocator from "./src/screens/storeLocator/"
 
 export default function App() {
   return (

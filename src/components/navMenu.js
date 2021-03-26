@@ -76,6 +76,7 @@ export default function Menu() {
           </ListItemIcon>
           <ListItemText primary="Home" />
         </StyledMenuItem>
+
         <StyledMenuItem>
           <ListItemIcon>
             <RestaurantMenuIcon fontSize="small" />
@@ -83,6 +84,7 @@ export default function Menu() {
           <ListItemText primary="Recipes" />
         </StyledMenuItem>
         <StyledMenuItem>
+          
           <ListItemIcon>
             <PinDropIcon fontSize="small" />
           </ListItemIcon>
