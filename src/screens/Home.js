@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { SimpleLineIcons } from '@expo/vector-icons'; 
 import SearchBar from '../components/searchBar';
 // import {Header} from 'react-native-elements';
-// import {Menu} from '../components/navMenu'
+//import {Menu} from '../components/navMenu'
 
 export default function Home() {
   return (
