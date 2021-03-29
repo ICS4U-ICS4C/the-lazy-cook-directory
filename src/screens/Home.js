@@ -1,9 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import { AntDesign } from '@expo/vector-icons'; 
+import SearchBar from "../components/searchBar";
 import { SimpleLineIcons } from '@expo/vector-icons'; 
-import SearchBar from '../components/searchBar';
 // import {Header} from 'react-native-elements';
-//import {Menu} from '../components/navMenu'
+import {Menu} from '../components/navMenu'
 
 export default function Home() {
   return (
@@ -14,8 +15,8 @@ export default function Home() {
         centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
         rightComponent={{ icon: 'home', color: '#fff' }}
       /> */}
-      <SearchBar/>
-      <SimpleLineIcons name="menu" style = {styles.menuBotton} onPress={() => Menu()} />
+      {/* <SearchBar/> */}
+      <AntDesign name="search1" size={24} color="black" onPress = {self.SearchBar} />
       <Text> Welcome to Home of Lazy Cook's Direcotry </Text>
     </View>
   );
@@ -25,7 +26,8 @@ export default function Home() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    width: "100%",
+    backgroundColor: '#e0e0e0',
     alignItems: 'center',
     justifyContent: 'center',
   },

@@ -41,7 +41,7 @@ const StyledMenuItem = withStyles((theme) => ({
   }
 }))(MenuItem);
 
-export default function Menu() {
+export default function MenuBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
 
   const handleClick = (event) => {
