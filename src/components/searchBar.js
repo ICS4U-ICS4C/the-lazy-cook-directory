@@ -87,7 +87,7 @@ class SearchBar extends Component {
         {this.state.textInput.map((value) => {
           return value
         })}
-        <Button title='Get Values' onPress={() => this.getValues()}/>
+        <Button title='Enter' onPress={() => this.getValues()}/>
         {/* <FontAwesome5 name="search" size={24} color="black" /> */}
       </View>
     )
