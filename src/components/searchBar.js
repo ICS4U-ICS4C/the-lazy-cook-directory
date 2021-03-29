@@ -3,6 +3,7 @@ import React, {Component, useEffect, useState} from 'react';
 import { render } from 'react-dom';
 import {View, TextInput, StyleSheet, StatusBar, Text, Button, ScrollView} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons'; 
+import { color } from 'react-native-reanimated';
 
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -75,41 +76,30 @@ export default class SearchBar extends Component {
  //displaying the buttons and search input
   render(){
     return(
-      <View style ={styles.row}>
-        <View style= {styles.row}>
+      <View>
         <TextInput placeholder = "Type in your Ingredients here... "/>
-          <View style={{margin: 20}}>
-            <Button title='Add' onPress={() => this.addTextInput(this.state.textInput.length)} />
-        </View>
 
-        <View style={{margin: 20}}>
-          <Button title='Remove' onPress={() => this.removeTextInput()} />
+        <View style ={styles.row}>
+            <View style={styles.buttons}>
+              <Button title='Add' onPress={() => this.addTextInput(this.state.textInput.length)} />
+              </View>
+
+          <View style={styles.buttons}>
+            <Button title='Remove' onPress={() => this.removeTextInput()} />
+            </View>
+          
+          {this.state.textInput.map((value) => {
+            return value
+          })}
+          <View style={styles.buttons}>
+            <Button title='Enter' onPress={() => this.getValues()}/>
+            </View>
+          </View>
         </View>
-        </View>
-        {this.state.textInput.map((value) => {
-          return value
-        })}
-        <Button title='Enter' onPress={() => this.getValues()}/>
-        {/* <FontAwesome5 name="search" size={24} color="black" /> */}
-      </View>
     )
   }
 }
-// import * as firebase from 'firebase';
 
-// //initializing firebase
-// // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// const firebaseConfig = {
-//     apiKey: "AIzaSyAgtQGskekbiYPKRxrm2BMYHMZhgv96-kc",
-//     authDomain: "lazycookdirectory.firebaseapp.com",
-//     databaseURL: "https://lazycookdirectory-default-rtdb.firebaseio.com",
-//     projectId: "lazycookdirectory",
-//     storageBucket: "lazycookdirectory.appspot.com",
-//     messagingSenderId: "468616258749",
-//     appId: "1:468616258749:web:05ba278d87a9a4db9403d4",
-//     measurementId: "G-YSP97ZTR45"
-//   };
-//   firebase.initializeApp(firebaseConfig);
 
 //styling components
 const styles = StyleSheet.create({
@@ -118,11 +108,18 @@ const styles = StyleSheet.create({
       height: 40,
       borderColor: 'black', 
       borderWidth: 1,
-      margin: 20
+      padding: 10
     },
     row:{
       flexDirection: 'row',
       justifyContent: 'center'
       },
+    buttons:{
+      padding: 5,
+      margin: 5,
+      backgroundColor: "#b3e33b",
+      borderRadius: 10,
+      color: "white"
+    }
 });
 

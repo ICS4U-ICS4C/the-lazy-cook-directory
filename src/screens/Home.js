@@ -15,8 +15,8 @@ export default function Home() {
         centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
         rightComponent={{ icon: 'home', color: '#fff' }}
       /> */}
-      {/* <SearchBar/> */}
-      <AntDesign name="search1" size={24} color="black" onPress = {self.SearchBar} />
+      <SearchBar/>
+      {/* <AntDesign name="search1" size={24} color="black" onPress = {self.addTextInput} /> */}
       <Text> Welcome to Home of Lazy Cook's Direcotry </Text>
     </View>
   );
