@@ -14,7 +14,7 @@ import { FontAwesome5 } from '@expo/vector-icons';
    // );
 //}
 
-class SearchBar extends Component {
+export default class SearchBar extends Component {
 
   constructor(props){
     super(props);
@@ -77,11 +77,13 @@ class SearchBar extends Component {
     return(
       <View style ={styles.row}>
         <View style= {styles.row}>
+        <TextInput placeholder = "Type in your Ingredients here... "/>
           <View style={{margin: 20}}>
-        <Button title='Add' onPress={() => this.addTextInput(this.state.textInput.length)} />
+            <Button title='Add' onPress={() => this.addTextInput(this.state.textInput.length)} />
         </View>
+
         <View style={{margin: 20}}>
-        <Button title='Remove' onPress={() => this.removeTextInput()} />
+          <Button title='Remove' onPress={() => this.removeTextInput()} />
         </View>
         </View>
         {this.state.textInput.map((value) => {
@@ -124,5 +126,3 @@ const styles = StyleSheet.create({
       },
 });
 
-//export default SearchBar; 
-export default SearchBar;
