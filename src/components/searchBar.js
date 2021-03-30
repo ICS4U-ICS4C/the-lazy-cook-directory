@@ -77,7 +77,7 @@ export default class SearchBar extends Component {
   render(){
     return(
       <View>
-        <TextInput stlye = {} placeholder = "Type in your Ingredients here... "/>
+        <TextInput stlye = {/*styles.textInput*/} placeholder = "Type in your Ingredients here... "/>
 
         <View style ={styles.row}>
             <View style={styles.buttons}>
