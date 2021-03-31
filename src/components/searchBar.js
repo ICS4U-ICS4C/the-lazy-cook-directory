@@ -70,20 +70,18 @@ export default class SearchBar extends Component {
 
   //function for getting the values and doing something with it ??
   getValues = () => {
-    
   }
 
  //displaying the buttons and search input
   render(){
     return(
       <View>
-        <TextInput stlye = {/*styles.textInput*/} placeholder = "Type in your Ingredients here... "/>
-
+        <TextInput stlye = {styles.textInput} placeholder = "Type in your Ingredients here... "/>
         <View style ={styles.row}>
             <View style={styles.buttons}>
               <Button title='Add' onPress={() => this.addTextInput(this.state.textInput.length)} />
               </View>
-
+              
           <View style={styles.buttons}>
             <Button title='Remove' onPress={() => this.removeTextInput()} />
             </View>
