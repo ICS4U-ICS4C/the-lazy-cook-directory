@@ -17,3 +17,5 @@ import * as firebase from 'firebase';
 
 /*^^ we need that to intialize firebase
  in order to use database */
+
+ //https://www.kaggle.com/kaggle/recipe-ingredients-dataset -> our dataset
