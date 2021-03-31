@@ -15,6 +15,9 @@ import { color } from 'react-native-reanimated';
    // );
 //}
 
+// jasmine suggests to delete the following code
+// as it would be seeming disorganized for our purpose
+
 export default class SearchBar extends Component {
 
   constructor(props){
