@@ -15,6 +15,9 @@ import { color } from 'react-native-reanimated';
    // );
 //}
 
+// jasmine suggests to delete the following code
+// as it would be seeming disorganized for our purpose
+
 export default class SearchBar extends Component {
 
   constructor(props){
@@ -103,10 +106,10 @@ export default class SearchBar extends Component {
 const styles = StyleSheet.create({
 
     textInput: {
-      height: 40,
+      height: '100%',
       borderColor: '#dbdbdb',
       backgroundColor: '#f2f2f2',
-      borderWidth: 1,
+      borderWidth: 10,
       padding: 10
     },
     row:{
@@ -116,9 +119,6 @@ const styles = StyleSheet.create({
     buttons:{
       padding: 5,
       margin: 5,
-      backgroundColor: "#b3e33b",
-      borderRadius: 10,
-      color: "white",
     }
 });
 
