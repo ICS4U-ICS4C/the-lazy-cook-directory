@@ -77,7 +77,7 @@ export default class SearchBar extends Component {
   render(){
     return(
       <View>
-        <TextInput stlye = {} placeholder = "Type in your Ingredients here... "/>
+        <TextInput stlye = {styles.textInput} placeholder = "Type in your Ingredients here... "/>
 
         <View style ={styles.row}>
             <View style={styles.buttons}>
@@ -105,10 +105,10 @@ export default class SearchBar extends Component {
 const styles = StyleSheet.create({
 
     textInput: {
-      height: 40,
+      height: '100%',
       borderColor: '#dbdbdb',
       backgroundColor: '#f2f2f2',
-      borderWidth: 1,
+      borderWidth: 10,
       padding: 10
     },
     row:{
@@ -120,7 +120,6 @@ const styles = StyleSheet.create({
       margin: 5,
       backgroundColor: "#b3e33b",
       borderRadius: 10,
-      color: "white",
     }
 });
 
