@@ -17,7 +17,7 @@ export default function Home() {
       /> */}
       <SearchBar/>
       {/* <AntDesign name="search1" size={24} color="black" onPress = {self.addTextInput} /> */}
-      <Text> Welcome to Home of Lazy Cook's Direcotry </Text>
+      <Text> Welcome to Home of Lazy Cook's Directory </Text>
     </View>
   );
 }
