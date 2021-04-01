@@ -39,7 +39,7 @@ const HomeStackScreen  = ({navigation}) => (
 const RecipesStackScreen  = ({navigation}) => (
   <RecipesStack.Navigator screenOptions={{
     headerStyle: {
-      backgroundColor: '##8bc225',
+      backgroundColor: '#8bc225',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -51,7 +51,7 @@ const RecipesStackScreen  = ({navigation}) => (
       headerLeft:  () => (
         <Icon.Button name="menu" 
         size={25}
-        backgroundColor="#bd7b35"
+        backgroundColor="#8bc225"
         onPress={() => navigation.openDrawer()}/>
       )
     }}/>
