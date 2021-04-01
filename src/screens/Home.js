@@ -10,14 +10,7 @@ import MenuBar from '../components/navMenu'
 export default function Home() {
   return (
     <View style={styles.container}>
-      {/* <Header
-        placement="left"
-        leftComponent={{ icon: 'menu', color: '#fff' }}
-        centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-        rightComponent={{ icon: 'home', color: '#fff' }}
-      /> */}
       <SearchBar/>
-      {/* <AntDesign name="search1" size={24} color="black" onPress = {self.addTextInput} /> */}
       <Text> Welcome to the Home of Lazy Cook's Directory! </Text>
     </View>
   );
