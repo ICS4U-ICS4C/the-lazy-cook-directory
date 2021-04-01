@@ -4,6 +4,8 @@ import { render } from 'react-dom';
 import {View, TextInput, StyleSheet, StatusBar, Text, Button, ScrollView} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import { color } from 'react-native-reanimated';
+import * as firebase from 'firebase';
+import "firebase/firestore";
 
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
