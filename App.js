@@ -1,16 +1,17 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View } from 'react-native';
 import Home from "./src/screens/Home";
 import Recipes from "./src/screens/Recipes";
+import storeLocator from "./src/screens/storeLocator";
 import { StackRouter } from 'react-navigation';
 import { DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const HomeStack = createStackNavigator();
 const RecipesStack = createStackNavigator(); 
+const storeLocatorStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
 const HomeStackScreen  = ({navigation}) => (
@@ -58,6 +59,28 @@ const RecipesStackScreen  = ({navigation}) => (
   </RecipesStack.Navigator>
 );
 
+const storeLocatorStackScreen  = ({navigation}) => (
+  <storeLocatorStack.Navigator screenOptions={{
+    headerStyle: {
+      backgroundColor: '#bd7b35',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    }
+  }}>
+    <storeLocatorStack.Screen name='Store Locator'component={storeLocator}
+    options={{
+      headerLeft:  () => (
+        <Icon.Button name="menu" 
+        size={25}
+        backgroundColor="#bd7b35"
+        onPress={() => navigation.openDrawer()}></Icon.Button>
+      )
+    }}/>
+  </storeLocatorStack.Navigator>
+);
+
 
 
 export default function App() {
@@ -66,6 +89,7 @@ export default function App() {
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name ='Home' component={HomeStackScreen}/>
         <Drawer.Screen name ='Recipes' component={RecipesStackScreen}/>
+        <Drawer.Screen name ='Store Locator' component={storeLocatorStackScreen}/>
       </Drawer.Navigator>
     </NavigationContainer>
   )};
