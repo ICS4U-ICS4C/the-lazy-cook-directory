@@ -87,6 +87,28 @@ const storeLocatorStackScreen  = ({navigation}) => (
   </storeLocatorStack.Navigator>
 );
 
+const storeLocatorStackScreen  = ({navigation}) => (
+  <storeLocatorStack.Navigator screenOptions={{
+    headerStyle: {
+      backgroundColor: '#bd7b35',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    }
+  }}>
+    <storeLocatorStack.Screen name='Store Locator'component={storeLocator}
+    options={{
+      headerLeft:  () => (
+        <Icon.Button name="menu" 
+        size={25}
+        backgroundColor="#bd7b35"
+        onPress={() => navigation.openDrawer()}></Icon.Button>
+      )
+    }}/>
+  </storeLocatorStack.Navigator>
+);
+
 
 
 export default function App() {
