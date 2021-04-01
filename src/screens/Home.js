@@ -5,7 +5,7 @@ import { useFonts } from 'expo-font';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default class Recipes extends React.Component{
+export default class Home extends React.Component{
     render(){
         return(
             <View style={styles.container}>
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
   },
   title:{
     fontSize: 40,
-    fontFamily: 'Montserrat',
+    // fontFamily: 'Montserrat',
     textDecorationLine: 'underline'
   },
   TouchableOpacity:{

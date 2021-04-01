@@ -12,6 +12,24 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const HomeStack = createStackNavigator();
 const RecipesStack = createStackNavigator(); 
 const Drawer = createDrawerNavigator();
+// const menuButton =     options={{
+//   headerLeft:  () => (
+//     <Icon.Button name="menu" 
+//     size={25}
+//     backgroundColor="#bd7b35"
+//     onPress={() => navigation.openDrawer()}
+
+const MenuButton = () => {
+  return(
+      <View style={styles.container}>
+        <Icon.Button name="menu" 
+        size={25}
+        backgroundColor="#bd7b35"
+        onPress={() => navigation.openDrawer()}/>
+      </View>
+  )
+
+}
 
 const HomeStackScreen  = ({navigation}) => (
   <HomeStack.Navigator screenOptions={{
@@ -27,10 +45,7 @@ const HomeStackScreen  = ({navigation}) => (
     options={{
       title:'Home Of Lazy Cooks',
       headerLeft:  () => (
-        <Icon.Button name="menu" 
-        size={25}
-        backgroundColor="#bd7b35"
-        onPress={() => navigation.openDrawer()}></Icon.Button>
+        <MenuButton/>
       )
     }}/>
   </HomeStack.Navigator>
@@ -49,10 +64,7 @@ const RecipesStackScreen  = ({navigation}) => (
     <RecipesStack.Screen name='Recipes'component={Recipes}
     options={{
       headerLeft:  () => (
-        <Icon.Button name="menu" 
-        size={25}
-        backgroundColor="#bd7b35"
-        onPress={() => navigation.openDrawer()}/>
+        <MenuButton/>
       )
     }}/>
   </RecipesStack.Navigator>
