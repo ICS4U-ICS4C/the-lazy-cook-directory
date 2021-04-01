@@ -4,7 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import SearchBar from "../components/searchBar";
 import { SimpleLineIcons } from '@expo/vector-icons'; 
 // import {Header} from 'react-native-elements';
-import MenuBar from '../components/navMenu'
+//import MenuBar from '../components/navMenu'
 
 
 export default function Home() {
