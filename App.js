@@ -5,14 +5,17 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View } from 'react-native';
 import Home from './src/screens/Home';
 import Recipes from './src/screens/Recipes';
+import storeLocator from './src/screens/storeLocator';
 import { StackRouter } from 'react-navigation';
 import { DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const HomeStack = createStackNavigator();
 const RecipesStack = createStackNavigator(); 
+const LocatorStack = createStackNavigator();
 const Drawer = createDrawerNavigator();
 
+// Home screen tab, aka default tab
 const HomeStackScreen  = ({navigation}) => (
   <HomeStack.Navigator screenOptions={{
     headerStyle: {
@@ -36,6 +39,7 @@ const HomeStackScreen  = ({navigation}) => (
   </HomeStack.Navigator>
 );
 
+// Recipes Tab
 const RecipesStackScreen  = ({navigation}) => (
   <RecipesStack.Navigator screenOptions={{
     headerStyle: {
@@ -58,12 +62,36 @@ const RecipesStackScreen  = ({navigation}) => (
   </RecipesStack.Navigator>
 );
 
+// Store Locator tab
+const LocatorStackScreen  = ({navigation}) => (
+  <LocatorStack.Navigator screenOptions={{
+    headerStyle: {
+      backgroundColor: '#8bc225',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    }
+  }}>
+    <RecipesStack.Screen name='Store Locator'component={Recipes}
+    options={{
+      headerLeft:  () => (
+        <Icon.Button name="menu" 
+        size={25}
+        backgroundColor="#8bc225"
+        onPress={() => navigation.openDrawer()}/>
+      )
+    }}/>
+  </LocatorStack.Navigator>
+);
+
 export default function Menu() {
   return ( 
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name ='Home' component={HomeStackScreen}/>
         <Drawer.Screen name ='Recipes' component={RecipesStackScreen}/>
+        <Drawer.Screen name = 'Store Locator' component={LocatorStackScreen }/>
       </Drawer.Navigator>
     </NavigationContainer>
   )};
@@ -77,26 +105,3 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   }
 });
-// import React from 'react';
-// import { StyleSheet, Text, View } from 'react-native';
-// // import Home from "./src/screens/Home" 
-// import Menu from './src/components/navMenu'
-
-
-
-// export default function App() {
-//   return ( 
-//     <View style={styles.container}>
-//       <Menu/>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
