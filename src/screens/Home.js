@@ -20,8 +20,19 @@ export default function Home() {
       {/* <AntDesign name="search1" size={24} color="black" onPress = {self.addTextInput} /> */}
       <Text> Welcome to the Home of Lazy Cook's Directory! </Text>
     </View>
-  );
-}
+  )};
+
+
+
+
+// export default function Home() {
+//   return (
+//     <View style={styles.container}>
+//       <SearchBar/>
+//       <Text> Welcome to the Home of Lazy Cook's Directory! </Text>
+//     </View>
+//   );
+// }
 
 
 const styles = StyleSheet.create({
