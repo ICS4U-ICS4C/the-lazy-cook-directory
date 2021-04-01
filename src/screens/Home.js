@@ -1,6 +1,5 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { AntDesign } from '@expo/vector-icons'; 
 import SearchBar from "../components/searchBar";
 import { SimpleLineIcons } from '@expo/vector-icons'; 
 // import {Header} from 'react-native-elements';
