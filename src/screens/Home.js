@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { AntDesign } from '@expo/vector-icons'; 
@@ -21,18 +22,23 @@ export default function Home() {
       <Text> Welcome to the Home of Lazy Cook's Directory! </Text>
     </View>
   )};
+=======
+import React from 'react'
+import {StyleSheet, View, Text} from 'react-native'
+import SearchBar from '../components/searchBar'
+import { useFonts } from 'expo-font';
 
-
-
-
-// export default function Home() {
-//   return (
-//     <View style={styles.container}>
-//       <SearchBar/>
-//       <Text> Welcome to the Home of Lazy Cook's Directory! </Text>
-//     </View>
-//   );
-// }
+export default class Recipes extends React.Component{
+    render(){
+        return(
+            <View style={styles.container}>
+              <Text style = {styles.title}> Welcome to Lazy Cooks Directory! </Text>
+              <SearchBar/>
+            </View>
+        )
+    }
+}
+>>>>>>> Stashed changes
 
 
 const styles = StyleSheet.create({
@@ -47,6 +53,10 @@ const styles = StyleSheet.create({
     color:"black",
     fontSize: 40,
     backgroundColor: null
-
+  },
+  title:{
+    fontSize: 40,
+    fontFamily: 'Montserrat',
+    textDecorationLine: 'underline'
   }
 });
