@@ -1,28 +1,3 @@
-<<<<<<< Updated upstream
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { AntDesign } from '@expo/vector-icons'; 
-import SearchBar from "../components/searchBar";
-import { SimpleLineIcons } from '@expo/vector-icons'; 
-// import {Header} from 'react-native-elements';
-//import MenuBar from '../components/navMenu'
-
-
-export default function Home() {
-  return (
-    <View style={styles.container}>
-      {/* <Header
-        placement="left"
-        leftComponent={{ icon: 'menu', color: '#fff' }}
-        centerComponent={{ text: 'MY TITLE', style: { color: '#fff' } }}
-        rightComponent={{ icon: 'home', color: '#fff' }}
-      /> */}
-      <SearchBar/>
-      {/* <AntDesign name="search1" size={24} color="black" onPress = {self.addTextInput} /> */}
-      <Text> Welcome to the Home of Lazy Cook's Directory! </Text>
-    </View>
-  )};
-=======
 import React from 'react'
 import {StyleSheet, View, Text} from 'react-native'
 import SearchBar from '../components/searchBar'
@@ -38,8 +13,6 @@ export default class Recipes extends React.Component{
         )
     }
 }
->>>>>>> Stashed changes
-
 
 const styles = StyleSheet.create({
   container: {
