@@ -16,7 +16,7 @@ const Drawer = createDrawerNavigator();
 const HomeStackScreen  = ({navigation}) => (
   <HomeStack.Navigator screenOptions={{
     headerStyle: {
-      backgroundColor: '#bd7b35',
+      backgroundColor: '#8bc225',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
@@ -29,7 +29,7 @@ const HomeStackScreen  = ({navigation}) => (
       headerLeft:  () => (
         <Icon.Button name="menu" 
         size={25}
-        backgroundColor="#bd7b35"
+        backgroundColor="#8bc225"
         onPress={() => navigation.openDrawer()}></Icon.Button>
       )
     }}/>
@@ -39,7 +39,7 @@ const HomeStackScreen  = ({navigation}) => (
 const RecipesStackScreen  = ({navigation}) => (
   <RecipesStack.Navigator screenOptions={{
     headerStyle: {
-      backgroundColor: '#bd7b35',
+      backgroundColor: '##8bc225',
     },
     headerTintColor: '#fff',
     headerTitleStyle: {
