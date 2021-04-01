@@ -92,5 +92,3 @@ export default function MenuBar() {
         </StyledMenuItem>
       </StyledMenu>
     </div>
-  );
-}

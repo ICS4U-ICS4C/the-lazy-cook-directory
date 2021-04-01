@@ -4,6 +4,8 @@ import { render } from 'react-dom';
 import {View, TextInput, StyleSheet, StatusBar, Text, Button, ScrollView} from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons'; 
 import { color } from 'react-native-reanimated';
+import * as firebase from 'firebase';
+import "firebase/firestore";
 
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 
@@ -73,7 +75,6 @@ export default class SearchBar extends Component {
 
   //function for getting the values and doing something with it ??
   getValues = () => {
-    
   }
 
  //displaying the buttons and search input
@@ -81,12 +82,11 @@ export default class SearchBar extends Component {
     return(
       <View>
         <TextInput stlye = {styles.textInput} placeholder = "Type in your Ingredients here... "/>
-
         <View style ={styles.row}>
             <View style={styles.buttons}>
               <Button title='Add' onPress={() => this.addTextInput(this.state.textInput.length)} />
               </View>
-
+              
           <View style={styles.buttons}>
             <Button title='Remove' onPress={() => this.removeTextInput()} />
             </View>

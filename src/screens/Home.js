@@ -4,7 +4,8 @@ import { AntDesign } from '@expo/vector-icons';
 import SearchBar from "../components/searchBar";
 import { SimpleLineIcons } from '@expo/vector-icons'; 
 // import {Header} from 'react-native-elements';
-import {Menu} from '../components/navMenu'
+import MenuBar from '../components/navMenu'
+
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
       /> */}
       <SearchBar/>
       {/* <AntDesign name="search1" size={24} color="black" onPress = {self.addTextInput} /> */}
-      <Text> Welcome to Home of Lazy Cook's Directory </Text>
+      <Text> Welcome to the Home of Lazy Cook's Directory! </Text>
     </View>
   );
 }
