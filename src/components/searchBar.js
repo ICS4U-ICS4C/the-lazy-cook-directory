@@ -18,7 +18,7 @@ const SearchBar = () => {
 
 const styles = StyleSheet.create({
     container:{
-        width: '100%',
+        width: '80%',
         height: 45,
         backgroundColor: '#f5f5f5',
         borderRadius: 18,
@@ -27,10 +27,11 @@ const styles = StyleSheet.create({
 
     },
     searchInput:{
-        width: '100%',
-        height: '100%',
-        padding: 1,
-        fontSize: 25
+        margin: 60,
+        padding: 10,
+        borderWidth: 0.5,
+        borderRadius: 4,
+        backgroundColor: '#fff'
     }
 })
 
