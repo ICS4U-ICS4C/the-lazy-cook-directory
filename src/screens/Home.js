@@ -25,7 +25,7 @@ const FEATURED = [
    data: [
      {
        key: '1',
-       text: 'Abeers Fav:',
+       text: 'Abeers Fav',
        imageurl: 'https://assets.foodieorderwebsites.com/ParisMorning/Bingsoo-GreenTeaBingsoo.jpg',
      },
      {
@@ -49,7 +49,7 @@ export default () => {
       <Card style={styles.introCard}>
       <Card.Content>
         <Title>Welcome to the Lazy Cooks' Directory</Title>
-        <Paragraph>Input the ingredients you want to cook with and we'll give you a recipe you thought was never possible with minimal ingredients</Paragraph>
+        <Paragraph>Input the ingredients you want to cook with and we'll give you a recipe you thought was never possible.. with minimal ingredients!</Paragraph>
         <SearchBar/>
       </Card.Content>
     </Card>
