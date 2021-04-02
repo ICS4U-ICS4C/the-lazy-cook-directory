@@ -1,37 +1,33 @@
-import React from 'react'
 import {StyleSheet, View, Text} from 'react-native'
 import SearchBar from '../components/searchBar'
+import * as React from 'react';
+import { Card, Title, Paragraph } from 'react-native-paper';
 
+const MyComponent = () => (
+  <View style = {styles.container}>
+    <Card style={styles.introCard}>
+      <Card.Content>
+        <Title>Welcome to the Lazy Cooks' Directory</Title>
+        <Paragraph>Input the ingredients you want to cook with and we'll give you a recipe you thought was never possible with minimal ingredients</Paragraph>
+        <SearchBar/>
+      </Card.Content>
+  </Card>
 
-export default class Home extends React.Component{
-    render(){
-        return(
-            <View style={styles.container}>
-              <Text style = {styles.title}> Welcome to Lazy Cooks Directory! </Text>
-              <SearchBar/>
-            </View>
-        )
-    }
-}
+  </View>
+
+);
+
+export default MyComponent;
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     width: "100%",
     backgroundColor: '#e0e0e0',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: '-90%',
-    padding: '10%'
   },
-  title:{
-    fontSize: 36,
-    // fontFamily: 'Montserrat',
-    textDecorationLine: 'underline',
-    textAlign: 'center'
-  },
-  TouchableOpacity:{
-    alignItems: "flex-end",
-    margin: 15
+  introCard:{
+    borderBottomRightRadius: 35,
+    borderBottomLeftRadius: 35
   }
 });

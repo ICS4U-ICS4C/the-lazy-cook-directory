@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#f5f5f5',
         borderRadius: 18,
         marginTop: StatusBar.currentHeight,
-        paddingHorizontal: 20
+        paddingHorizontal: 20,
+        alignContent: 'center'
 
     },
     searchInput:{
