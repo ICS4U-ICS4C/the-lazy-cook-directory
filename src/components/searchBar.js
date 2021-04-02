@@ -10,7 +10,7 @@ import { color } from 'react-native-reanimated';
 const SearchBar = () => {
     return(
         <View style={styles.container}>
-            <TextInput style={styles.container} placeholder = "Insert Ingredients here... "/>
+            <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "/>
         </View>
     )
 
@@ -18,21 +18,20 @@ const SearchBar = () => {
 
 const styles = StyleSheet.create({
     container:{
-        width: '80%',
-        height: 45,
-        backgroundColor: '#f5f5f5',
-        borderRadius: 18,
         marginTop: StatusBar.currentHeight,
-        paddingHorizontal: 20,
-        alignContent: 'center'
+
 
     },
     searchInput:{
-        margin: 60,
-        padding: 10,
+        height: 45,
+        borderColor: '#e4e6e3',
         borderWidth: 0.5,
         borderRadius: 4,
-        backgroundColor: '#fff'
+        backgroundColor: '#f5f5f5',
+        paddingHorizontal: 20,
+        alignContent: 'center',
+        width: '80%',
+        color:'#e4e6e3'
     }
 })
 
