@@ -73,7 +73,7 @@ const LocatorStackScreen  = ({navigation}) => (
       fontWeight: 'bold',
     }
   }}>
-    <RecipesStack.Screen name='Store Locator'component={Recipes}
+    <LocatorStack.Screen name='Store Locator'component={storeLocator}
     options={{
       headerLeft:  () => (
         <Icon.Button name="menu" 
