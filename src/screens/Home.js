@@ -20,13 +20,13 @@ const ListItem = ({ item }) => {
 };
 const FEATURED = [
   {
-   title: 'Creators Favs',
+   title: 'Creators Picks',
    horizontal: true,
    data: [
      {
        key: '1',
        text: 'Abeers Fav',
-       imageurl: 'https://assets.foodieorderwebsites.com/ParisMorning/Bingsoo-GreenTeaBingsoo.jpg',
+       imageurl: 'https://assets.bonappetit.com/photos/5aa9665c275dc52331d9184b/5:7/w_2445,h_3423,c_limit/pantry-pasta.jpg',
      },
      {
        key: '2',
