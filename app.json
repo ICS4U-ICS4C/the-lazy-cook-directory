@@ -4,9 +4,7 @@
     "slug": "lazy-cookers-directory",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "config": {
-      "googleMaps": { "apiKey": "AIzaSyCBRI0gQ15ik-3_AWMKS0_6sQGKeaRT-Hw" }   
+    "icon": "./assets/icon.png"
     },
     "splash": {
       "image": "./assets/splash.png",
@@ -32,4 +30,3 @@
       "favicon": "./assets/favicon.png"
     }
   }
-}
