@@ -9,7 +9,7 @@ import storeLocator from './src/screens/storeLocator';
 import { StackRouter } from 'react-navigation';
 import { DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
-import firebaseConfig from './src/components/firebase/firebasesetup';
+
 
 const HomeStack = createStackNavigator();
 const RecipesStack = createStackNavigator(); 

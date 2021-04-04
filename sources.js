@@ -8,7 +8,7 @@
  * https://docs.expo.io/get-started/errors/
  * geolocation - https://medium.com/react-native-training/accessing-geo-location-and-app-permissions-in-react-native-and-expo-e7a1bd4714a2
  * geolocation - https://docs.expo.io/versions/latest/sdk/location/
- * https://reactnativeforyou.com/how-to-add-or-remove-textinput-dynamically-and-get-values-in-react-native/
+ * 
  * 
  * 
  * 
