@@ -2,7 +2,8 @@
 import React, {Component, useEffect, useState} from 'react';
 import {View, TextInput, StyleSheet, StatusBar, Text, Button, ScrollView} from 'react-native';
 
-import db from '../db/firebaseConfig'
+import theRecipes from '../db/firebaseConfig'
+
 
 
 const SearchBar = () => {

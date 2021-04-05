@@ -1,14 +1,14 @@
 import React from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 
-export default class RecipeScreen extends Component {
+export default class RecipeScreen extends React.Component {
 
-    state = {
-        Recipes:[],
-    };
+    // state = {
+    //     Recipes:[],
+    // };
           
-    componentDidMount() {
-    }
+    // componentDidMount() {
+    // }
   
     render() {
       return (
