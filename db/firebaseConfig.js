@@ -13,7 +13,10 @@ const configuration = {
     measurementId: "G-Q0BJ5NF3WX"
 }
 
-firebase.initializeApp(configuration);
+const initt = firebase.initializeApp(configuration);
 
-const db = firebase.firestore(); // database
-export default db;
+const db = firebase.firestore(initt); // database
+
+export const theRecipes = db.collection('Recipes');
+
+export {firebase};

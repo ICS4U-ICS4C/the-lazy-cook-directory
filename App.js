@@ -6,11 +6,12 @@ import { StyleSheet, Text, View } from 'react-native';
 import Home from './src/screens/Home';
 import Recipes from './src/screens/Recipes';
 import storeLocator from './src/screens/storeLocator';
-import { StackRouter } from 'react-navigation';
-import { DrawerItem } from '@react-navigation/drawer';
+// import { StackRouter } from 'react-navigation';
+// import { DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 
 
+// header + menu code
 const HomeStack = createStackNavigator();
 const RecipesStack = createStackNavigator(); 
 const LocatorStack = createStackNavigator();

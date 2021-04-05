@@ -1,14 +1,23 @@
 import React from 'react'
 import {View, Text, StyleSheet} from 'react-native'
 
-export default function Recipes(){
-        return(
-            <View>
-                <Text> Recipes </Text>
-            </View>
-        ) 
-};
+export default class RecipeScreen extends Component {
 
+    state = {
+        Recipes:[],
+    };
+          
+    componentDidMount() {
+    }
+  
+    render() {
+      return (
+        <View style={styles.container}>
+            <Text> Heyoooo </Text>
+        </View>
+      );
+    }
+}
 
 const styles = StyleSheet.create({
     container: {
@@ -19,3 +28,6 @@ const styles = StyleSheet.create({
       justifyContent: 'center',
     }
     })
+
+
+
