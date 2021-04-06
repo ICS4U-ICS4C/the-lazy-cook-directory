@@ -6,6 +6,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import Home from './src/screens/Home';
 import Recipes from './src/screens/Recipes';
 import storeLocator from './src/screens/storeLocator';
+import FbTester from './src/screens/firebaseTesting';
 // import { StackRouter } from 'react-navigation';
 // import { DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -15,7 +16,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const HomeStack = createStackNavigator();
 const RecipesStack = createStackNavigator(); 
 const LocatorStack = createStackNavigator();
+const TesterStack = createDrawerNavigator();
 const Drawer = createDrawerNavigator();
+
 
 // Home screen tab, aka default tab
 const HomeStackScreen  = ({navigation}) => (
@@ -75,7 +78,7 @@ const LocatorStackScreen  = ({navigation}) => (
       fontWeight: 'bold',
     }
   }}>
-    <LocatorStack.Screen name='Store Locator'component={storeLocator}
+  <LocatorStack.Screen name='Store Locator'component={storeLocator}
     options={{
       headerLeft:  () => (
         <Icon.Button name="menu" 
@@ -87,6 +90,28 @@ const LocatorStackScreen  = ({navigation}) => (
   </LocatorStack.Navigator>
 );
 
+const TesterStackScreen  = ({navigation}) => (
+  <TesterStack.Navigator screenOptions={{
+    headerStyle: {
+      backgroundColor: '#8bc225',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    }
+  }}>
+    <TesterStack.Screen name='Firestore Tester'component={FbTester}
+    options={{
+      headerLeft:  () => (
+        <Icon.Button name="menu" 
+        size={25}
+        backgroundColor="#8bc225"
+        onPress={() => navigation.openDrawer()}/>
+      )
+    }}/>
+  </TesterStack.Navigator>
+)
+
 export default function Menu() {
   return ( 
     <NavigationContainer>
@@ -94,6 +119,7 @@ export default function Menu() {
         <Drawer.Screen name ='Home' component={HomeStackScreen}/>
         <Drawer.Screen name ='Recipes' component={RecipesStackScreen}/>
         <Drawer.Screen name = 'Store Locator' component={LocatorStackScreen }/>
+        <Drawer.Screen name = 'Firestore Tester' component={TesterStackScreen}/>
       </Drawer.Navigator>
     </NavigationContainer>
   )};
