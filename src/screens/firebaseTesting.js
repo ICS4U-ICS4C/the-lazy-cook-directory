@@ -1,5 +1,9 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
+
+const recipeDocument = firestore().collection("Recipes").doc("1").get()
+
 export default function FbTester(){
     return (
       <View style={styles.container}>
