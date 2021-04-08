@@ -1,11 +1,13 @@
 /* creating our search bar */
 import React, {Component, useEffect, useState} from 'react';
 import {View, TextInput, StyleSheet, StatusBar, Text, Button, ScrollView} from 'react-native';
+import ingredientItem from './ingredientItems';
+import theRecipes from '../db/firebaseConfig';
 
-import theRecipes from '../db/firebaseConfig'
 
-
-
+//idea: 1. user write their ingredient, when clicking enter it stores it in a list
+//2. display this list under the search bar, style it, make it horizontal
+/*
 const SearchBar = () => {
     return(
         <View style={styles.container}>
@@ -13,6 +15,22 @@ const SearchBar = () => {
         </View>
     )
 }
+*/
+export default function SearchBar() {
+    const [ingredients,setIngredients] = useState([{ingredient: 'milk', key: '1'}]); //this should show up
+      return(
+          <View style={styles.container}>
+              <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "/>
+              <View style = {styles.list}>
+              <FlatList
+              data = {ingredients}
+              renderItem={({item})=> (
+                <ingredientItem item ={item}/> 
+              )}
+              />
+              </View>
+          </View>
+      )
 // const fbSbTesting = () => {
 
 //     useEffect(() =>{
@@ -45,7 +63,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20,
         alignContent: 'center',
         width: '80%',
-        color:'#e4e6e3'
+        color:'#2e2e2e'
     }
 })
 
