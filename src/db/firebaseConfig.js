@@ -1,4 +1,5 @@
 import * as firebase from 'firebase';
+// import firebase from '../firebase'
 import "firebase/firestore";
 
 // this file is to connect our code to the firestore database

@@ -1,4 +1,3 @@
-/* creating our search bar */
 import React, {Component, useEffect, useState} from 'react';
 import {View, TextInput, StyleSheet, StatusBar, Text, Button, ScrollView} from 'react-native';
 import ingredientItem from './ingredientItems';
@@ -31,6 +30,7 @@ export default function SearchBar() {
               </View>
           </View>
       )
+}
 // const fbSbTesting = () => {
 
 //     useEffect(() =>{
@@ -66,5 +66,3 @@ const styles = StyleSheet.create({
         color:'#2e2e2e'
     }
 })
-
-export default SearchBar;
