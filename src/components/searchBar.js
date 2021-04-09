@@ -6,7 +6,7 @@ import theRecipes from '../db/firebaseConfig';
 
 //idea: 1. user write their ingredient, when clicking enter it stores it in a list
 //2. display this list under the search bar, style it, make it horizontal
-/*
+
 const SearchBar = () => {
     return(
         <View style={styles.container}>
@@ -14,23 +14,23 @@ const SearchBar = () => {
         </View>
     )
 }
-*/
-export default function SearchBar() {
-    const [ingredients,setIngredients] = useState([{ingredient: 'milk', key: '1'}]); //this should show up
-      return(
-          <View style={styles.container}>
-              <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "/>
-              <View style = {styles.list}>
-              <FlatList
-              data = {ingredients}
-              renderItem={({item})=> (
-                <ingredientItem item ={item}/> 
-              )}
-              />
-              </View>
-          </View>
-      )
-}
+
+// export default function SearchBar() {
+//     const [ingredients,setIngredients] = useState([{ingredient: 'milk', key: '1'}]); //this should show up
+//       return(
+//           <View style={styles.container}>
+//               <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "/>
+//               <View style = {styles.list}>
+//               <FlatList
+//               data = {ingredients}
+//               renderItem={({item})=> (
+//                 <ingredientItem item ={item}/> 
+//               )}
+//               />
+//               </View>
+//           </View>
+//       )
+// }
 // const fbSbTesting = () => {
 
 //     useEffect(() =>{

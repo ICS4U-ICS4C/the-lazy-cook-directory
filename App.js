@@ -90,27 +90,27 @@ const LocatorStackScreen  = ({navigation}) => (
   </LocatorStack.Navigator>
 );
 
-const TesterStackScreen  = ({navigation}) => (
-  <TesterStack.Navigator screenOptions={{
-    headerStyle: {
-      backgroundColor: '#8bc225',
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    }
-  }}>
-    <TesterStack.Screen name='Firestore Tester'component={FbTester}
-    options={{
-      headerLeft:  () => (
-        <Icon.Button name="menu" 
-        size={25}
-        backgroundColor="#8bc225"
-        onPress={() => navigation.openDrawer()}/>
-      )
-    }}/>
-  </TesterStack.Navigator>
-)
+// const TesterStackScreen  = ({navigation}) => (
+//   <TesterStack.Navigator screenOptions={{
+//     headerStyle: {
+//       backgroundColor: '#8bc225',
+//     },
+//     headerTintColor: '#fff',
+//     headerTitleStyle: {
+//       fontWeight: 'bold',
+//     }
+//   }}>
+//     <TesterStack.Screen name='Firestore Tester'component={FbTester}
+//     options={{
+//       headerLeft:  () => (
+//         <Icon.Button name="menu" 
+//         size={25}
+//         backgroundColor="#8bc225"
+//         onPress={() => navigation.openDrawer()}/>
+//       )
+//     }}/>
+//   </TesterStack.Navigator>
+// )
 
 export default function Menu() {
   return ( 
@@ -119,7 +119,7 @@ export default function Menu() {
         <Drawer.Screen name ='Home' component={HomeStackScreen}/>
         <Drawer.Screen name ='Recipes' component={RecipesStackScreen}/>
         <Drawer.Screen name = 'Store Locator' component={LocatorStackScreen }/>
-        <Drawer.Screen name = 'Firestore Tester' component={TesterStackScreen}/>
+        {/* <Drawer.Screen name = 'Firestore Tester' component={TesterStackScreen}/> */}
       </Drawer.Navigator>
     </NavigationContainer>
   )};
