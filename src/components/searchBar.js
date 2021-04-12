@@ -1,6 +1,6 @@
 import React, {Component, useEffect, useState} from 'react';
-import {View, TextInput, StyleSheet, StatusBar, Text, Button, ScrollView} from 'react-native';
-import ingredientItem from './ingredientItems';
+import {View, TextInput, StyleSheet, StatusBar, FlatList, Text, Button, ScrollView} from 'react-native';
+import IngredientItem from './ingredientItems';
 import theRecipes from '../db/firebaseConfig';
 
 
@@ -16,15 +16,15 @@ const SearchBar = () => {
 }
 */
 export default function SearchBar() {
-    const [ingredients,setIngredients] = useState([{ingredient: 'milk', key: '1'}]); //this should show up
+    const [Ingredients,setIngredients] = useState([{ingredient: 'milk', key: '1'}]); //this should show up
       return(
           <View style={styles.container}>
               <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "/>
               <View style = {styles.list}>
               <FlatList
-              data = {ingredients}
+              data = {Ingredients}
               renderItem={({item})=> (
-                <ingredientItem item ={item}/> 
+                <IngredientItem item ={item}/> 
               )}
               />
               </View>

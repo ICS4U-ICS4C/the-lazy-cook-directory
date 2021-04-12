@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import firestore from '@react-native-firebase/firestore';
+import firestore from 'firebase/app';
 
 class FbTester extends Component{
 

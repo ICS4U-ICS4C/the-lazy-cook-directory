@@ -1,10 +1,10 @@
 import React from 'react';
 import {View, StyleSheet, TouchableOpacity,Text} from 'react-native';
 
-export default function ingredientItem ({item}){
+export default function IngredientItem ({item}){
   return(
     <TouchableOpacity>
-    <Text style={styles.item}>{item.ingredient}</Text>
+    <Text style={styles.item}>{item.Ingredient}</Text>
     </TouchableOpacity>
   )
   
