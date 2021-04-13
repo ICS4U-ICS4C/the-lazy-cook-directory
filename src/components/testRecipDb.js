@@ -1,4 +1,4 @@
-export default
+export default[
     {
         name: 'Sweet and Sour Noodles',
         ingredients:{
@@ -21,4 +21,37 @@ export default
         },
         duration: '17min',
 
+    },
+    {
+        name: 'Spicy Chicken Breasts',
+        ingredients:{
+            chicken:'noodles',
+            salt:'salt',
+            pepper:'pepper',
+            seasoning:'seasoning',
+            garlic:'garlic'
+            //for seasoning, we can make it a list like:
+            // seasoning:{
+            //     paprika: 'paprika',
+            //     thyme: 'thyme',
+            //     cajun: 'cajun',
+            //     chili_powder:'chili powder',
+            //     mustard: 'mustard'
+            // },
+        },
+        quntity:{
+            chickQuant:'250g',
+            saltQuant:'1 tbsp',
+            pepper: '1 1/2 tbsp',
+            seasonQuant: '2tbsp',
+            garQuanr:'1 Clove'
+
+        },
+        prep:{
+            stepOne: 'blah blah',
+            stepTwo:'blnfduihreiu'
+        },
+        duration: '30min',
     }
+
+]
