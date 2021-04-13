@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import firestore from 'firebase/app';
 
-class FbTester extends Component{
+export default class FbTester extends Component{
 
   state = {
     theRecipe:{
