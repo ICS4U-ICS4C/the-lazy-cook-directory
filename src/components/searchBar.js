@@ -17,7 +17,7 @@ const SearchBar = () => {
 */
 
 export default function SearchBar(){
-    //has array of items
+    //has array of items, ingredients is the array
     const [ingredients,setingredients] = useState([
         {text: 'milk', key: '1'}
     ]);
@@ -34,28 +34,26 @@ export default function SearchBar(){
     const changeHandler = (val) =>{
         setText(val);
     }
-    //takes in text to update state
-    /*
+    //takes in text to update state/ingredient and adds new ingredient to screen
     const submit = (text) =>{
         setingredients((priorIngredients) =>{
             return [
-                {text: text, key:Math.random(),toString()},
+                {text: text, key: Math.random().toString()},
                 ...priorIngredients
             ];
         })
     }
-    */
     return(
         <View style={styles.container}>
             <View>
                 
                 <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
                     onChangeText={changeHandler}/>
-                <Button /*onPress={()=> submit(text)}*/ title='add' color = 'green'/>
+                <Button onPress={()=> submit(text)} title='Add' color = 'green' onPress={console.log(ingredients)}/>
 
                 <View style = {styles.list}>
                 <FlatList
-                    horizontal = {true}
+                    //horizontal = {true}
                     data = {ingredients}
                     renderItem ={({item}) => (
                         <IngredientItem item = {item} pressDelete ={pressDelete}/>
