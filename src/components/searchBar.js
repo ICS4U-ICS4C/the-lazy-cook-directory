@@ -1,5 +1,5 @@
 import React, {Component, useEffect, useState} from 'react';
-import {View, TextInput, StyleSheet, StatusBar, FlatList, Text, Button, ScrollView} from 'react-native';
+import {View, TextInput, StyleSheet, StatusBar, FlatList, Text, Button, ScrollView,Alert} from 'react-native';
 import theRecipes from '../db/firebaseConfig';
 import IngredientItem from './ingredientItem';
 
@@ -19,7 +19,7 @@ const SearchBar = () => {
 export default function SearchBar(){
     //has array of items, ingredients is the array
     const [ingredients,setingredients] = useState([
-        {text: 'milk', key: '1'}
+        {}
     ]);
     
     //recieve key, filter item with that key out of array and return new array
@@ -36,20 +36,27 @@ export default function SearchBar(){
     }
     //takes in text to update state/ingredient and adds new ingredient to screen
     const submit = (text) =>{
+
+        if(text.length>3){
+
         setingredients((priorIngredients) =>{
             return [
                 {text: text, key: Math.random().toString()},
                 ...priorIngredients
             ];
         })
+    }else{
+        Alert.alert("Please type an ingredient")
+        {text:'ok'}
     }
+}
     return(
         <View style={styles.container}>
             <View>
                 
                 <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
                     onChangeText={changeHandler}/>
-                <Button onPress={()=> submit(text)} title='Add' color = 'green' onPress={console.log(ingredients)}/>
+                <Button onPress={()=> submit(text)} title='Add' color = 'green'/>
 
                 <View style = {styles.list}>
                 <FlatList
