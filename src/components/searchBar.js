@@ -51,7 +51,7 @@ export default function SearchBar(){
                 
                 <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
                     onChangeText={changeHandler}/>
-                <Button onPress={()=> submit(text)} title='add' color = 'green'/>
+                <Button /*onPress={()=> submit(text)}*/ title='add' color = 'green'/>
 
                 <View style = {styles.list}>
                 <FlatList
@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f5f5f5',
         paddingHorizontal: 20,
         alignContent: 'center',
-        width: '80%',
+        width: '100%',
         color:'#2e2e2e'
     },
     list:{

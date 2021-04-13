@@ -173,7 +173,7 @@ export default class App extends React.Component {
                 longitude: marker.longitude,
               }}
               title={marker.name}>
-              <Image source={require('../icons/oceanspin.png')}
+              <Image source={require('../icons/oceans.pin.png')}
               style={{width: 26, height: 35}}
               />
             </Marker>
