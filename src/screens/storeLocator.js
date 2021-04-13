@@ -6,6 +6,7 @@ import MapView, {
   Polygon,
 } from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions, Image, Platform } from 'react-native';
+
 //import {request, PERMISSIONS} from 'react-native-permissions';
 //import Geolocation from '@react-native-community/geolocation';
 
@@ -114,9 +115,10 @@ export default class App extends React.Component {
                 longitude: marker.longitude,
               }}
               title={marker.name}>
-              <Image source={require('./walmartpin.png')}
+              <Image source={require('../icons/walmartpin.png')}
               style={{width: 26, height: 35}}
               />
+              
 
             </Marker>
           ))}
@@ -129,7 +131,7 @@ export default class App extends React.Component {
                 longitude: marker.longitude,
               }}
               title={marker.name}>
-              <Image source={require('./foodbasicspin.png')}
+              <Image source={require('../icons/foodbasicspin.png')}
               style={{width: 26, height: 35}}
               />
             </Marker>
@@ -143,7 +145,7 @@ export default class App extends React.Component {
                 longitude: marker.longitude,
               }}
               title={marker.name}>
-              <Image source={require('./freshcopin.png')}
+              <Image source={require('../icons/freshcopin.png')}
               style={{width: 26, height: 35}}
               />
             </Marker>
@@ -157,7 +159,7 @@ export default class App extends React.Component {
                 longitude: marker.longitude,
               }}
               title={marker.name}>
-              <Image source={require('./nofrillspin.png')}
+              <Image source={require('../icons/nofrillspin.png')}
               style={{width: 26, height: 35}}
               />
             </Marker>
@@ -171,7 +173,7 @@ export default class App extends React.Component {
                 longitude: marker.longitude,
               }}
               title={marker.name}>
-              <Image source={require('./oceanspin.png')}
+              <Image source={require('../icons/oceanspin.png')}
               style={{width: 26, height: 35}}
               />
             </Marker>
@@ -185,7 +187,7 @@ export default class App extends React.Component {
                 longitude: marker.longitude,
               }}
               title={marker.name}>
-              <Image source={require('./adonispin.png')}
+              <Image source={require('../icons/adonispin.png')}
               style={{width: 26, height: 35}}
               />
             </Marker>
