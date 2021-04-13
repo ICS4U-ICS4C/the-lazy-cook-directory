@@ -1,7 +1,7 @@
 import React, {Component, useEffect, useState} from 'react';
 import {View, TextInput, StyleSheet, StatusBar, FlatList, Text, Button, ScrollView} from 'react-native';
-import IngredientItem from './ingredientItems';
 import theRecipes from '../db/firebaseConfig';
+import IngredientItem from './ingredientItem';
 
 
 //idea: 1. user write their ingredient, when clicking enter it stores it in a list
@@ -15,22 +15,59 @@ const SearchBar = () => {
     )
 }
 */
-export default function SearchBar() {
-    const [Ingredients,setIngredients] = useState([{ingredient: 'milk', key: '1'}]); //this should show up
-      return(
-          <View style={styles.container}>
-              <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "/>
-              <View style = {styles.list}>
-              <FlatList
-              data = {Ingredients}
-              renderItem={({item})=> (
-                <IngredientItem item ={item}/> 
-              )}
-              />
-              </View>
-          </View>
-      )
+
+export default function SearchBar(){
+    //has array of items
+    const [ingredients,setingredients] = useState([
+        {text: 'milk', key: '1'}
+    ]);
+    
+    //recieve key, filter item with that key out of array and return new array
+    const pressDelete = (key) =>{
+        setingredients((priorIngredients) =>{
+            return priorIngredients.filter(ingredient => ingredient.key != key);
+        })
+    }
+    //keeping track of what user types in a string
+    const [text,setText] = useState('');
+    //when called takes in value that user typed
+    const changeHandler = (val) =>{
+        setText(val);
+    }
+    //takes in text to update state
+    /*
+    const submit = (text) =>{
+        setingredients((priorIngredients) =>{
+            return [
+                {text: text, key:Math.random(),toString()},
+                ...priorIngredients
+            ];
+        })
+    }
+    */
+    return(
+        <View style={styles.container}>
+            <View>
+                
+                <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
+                    onChangeText={changeHandler}/>
+                <Button onPress={()=> submit(text)} title='add' color = 'green'/>
+
+                <View style = {styles.list}>
+                <FlatList
+                    horizontal = {true}
+                    data = {ingredients}
+                    renderItem ={({item}) => (
+                        <IngredientItem item = {item} pressDelete ={pressDelete}/>
+                    )}
+                />
+            </View>
+            </View>
+           
+    </View>
+    )
 }
+
 // const fbSbTesting = () => {
 
 //     useEffect(() =>{
@@ -64,5 +101,8 @@ const styles = StyleSheet.create({
         alignContent: 'center',
         width: '80%',
         color:'#2e2e2e'
+    },
+    list:{
+        marginTop: 15
     }
 })

@@ -89,7 +89,7 @@ const LocatorStackScreen  = ({navigation}) => (
     }}/>
   </LocatorStack.Navigator>
 );
-
+//Fb tester tab
 const TesterStackScreen  = ({navigation}) => (
   <TesterStack.Navigator screenOptions={{
     headerStyle: {
