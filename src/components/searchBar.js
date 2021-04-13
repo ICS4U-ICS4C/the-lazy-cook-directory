@@ -1,8 +1,8 @@
+import { Navigation } from '@material-ui/icons';
 import React, {Component, useEffect, useState} from 'react';
 import {View, TextInput, StyleSheet, StatusBar, FlatList, Text, Button, ScrollView,Alert} from 'react-native';
 import theRecipes from '../db/firebaseConfig';
 import IngredientItem from './ingredientItem';
-
 
 //idea: 1. user write their ingredient, when clicking enter it stores it in a list
 //2. display this list under the search bar, style it, make it horizontal
@@ -36,12 +36,11 @@ export default function SearchBar(){
     }
     //takes in text to update state/ingredient and adds new ingredient to screen
     const submit = (text) =>{
-
-        if(text.length>3){
-
+        //checks if something is written
+        if(text.length >1){
         setingredients((priorIngredients) =>{
             return [
-                {text: text, key: Math.random().toString()},
+                {text: text.toLowerCase(), key: Math.random().toString()},
                 ...priorIngredients
             ];
         })
@@ -57,6 +56,7 @@ export default function SearchBar(){
                 <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
                     onChangeText={changeHandler}/>
                 <Button onPress={()=> submit(text)} title='Add' color = 'green'/>
+                <Button title = 'Search' color = 'green' />
 
                 <View style = {styles.list}>
                 <FlatList
@@ -72,7 +72,6 @@ export default function SearchBar(){
     </View>
     )
 }
-
 // const fbSbTesting = () => {
 
 //     useEffect(() =>{
