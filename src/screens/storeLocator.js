@@ -5,12 +5,12 @@ import MapView, {
   Callout,
   Polygon,
 } from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions, Image, Platform } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
 
-//import {request, PERMISSIONS} from 'react-native-permissions';
-//import Geolocation from '@react-native-community/geolocation';
-
-
+//writing important coordinates to be used to locate grocery stores.
+//Stores Mississauga's, Walmart, Food Basics, FreshCo, No Frills, Oceans, and Adonis coordinates
+//to be accessed like:   
+//>> {this.places.walcoordinates}
 export default class App extends React.Component {
   places = {
     miscoordinates: [
@@ -56,38 +56,16 @@ export default class App extends React.Component {
       { name: 'Adonis', latitude: 43.6040, longitude: -79.5880 }
     ]
   };
-//componentDidMount() {
-  //this.requestPermission();
-//}
- 
-//requestPermission = async () => {
-  //if(Platform.OS === 'ios') {
-    //var input = await request(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE);
-//console.log('Iphone: '+ input);
 
-    //if(input === 'granted'){
-      //this.LocatePosition();
-    //}
-  //} else {
-    //var input_a = await request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION);
-//console.log('Android '+ input_a);
+//renders Google Map, fills the whole screen
+//region is set to downtown Mississauga on start-up 
 
-    //if(input_a === 'granted'){
-      //this.LocatePosition();  
-    //}
- // }
-//}
+//Polygon is set to show the borders of Mississauga.
 
- //LocatePosition = () => {
-    //Geolocation.getCurrentPosition(
-      //position => {
-      //console.log(JSON.stringify(position));
-    //}
-    //)
-  //};
-
-
-
+//First Marker starts with Walmart. On click, you see the store name,
+//coordinates are of all Walmarts across Mississauga.
+//Custome image for the pin, creating personally with Walmart's blue colour.
+//This Marker format goes on for all the stores.
   render() {
     return (
       <View style={styles.container}>
@@ -102,6 +80,7 @@ export default class App extends React.Component {
             latitudeDelta: 0.09,
             longitudeDelta: 0.035
           }}>
+
         <Polygon
          coordinates={this.places.miscoordinates}
          fillColor={'rgba(167, 238, 201, 0.3)'}
@@ -173,7 +152,7 @@ export default class App extends React.Component {
                 longitude: marker.longitude,
               }}
               title={marker.name}>
-              <Image source={require('../icons/oceanspin.png')}
+              <Image source={require('../icons/oceans.pin.png')}
               style={{width: 26, height: 35}}
               />
             </Marker>

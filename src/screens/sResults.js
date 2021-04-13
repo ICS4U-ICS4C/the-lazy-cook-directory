@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet,View,Text,Image} from 'react-native';
+import {StyleSheet,View,Text,Image,FlatList} from 'react-native';
   import { Ionicons } from '@expo/vector-icons';
 
 export default function sResults() {

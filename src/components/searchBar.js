@@ -1,8 +1,8 @@
+import { Navigation } from '@material-ui/icons';
 import React, {Component, useEffect, useState} from 'react';
-import {View, TextInput, StyleSheet, StatusBar, FlatList, Text, Button, ScrollView} from 'react-native';
+import {View, TextInput, StyleSheet, StatusBar, FlatList, Text, Button, ScrollView,Alert} from 'react-native';
 import theRecipes from '../db/firebaseConfig';
 import IngredientItem from './ingredientItem';
-
 
 //idea: 1. user write their ingredient, when clicking enter it stores it in a list
 //2. display this list under the search bar, style it, make it horizontal
@@ -17,9 +17,9 @@ const SearchBar = () => {
 */
 
 export default function SearchBar(){
-    //has array of items
+    //has array of items, ingredients is the array
     const [ingredients,setingredients] = useState([
-        {text: 'milk', key: '1'}
+        {}
     ]);
     
     //recieve key, filter item with that key out of array and return new array
@@ -34,28 +34,33 @@ export default function SearchBar(){
     const changeHandler = (val) =>{
         setText(val);
     }
-    //takes in text to update state
-    /*
+    //takes in text to update state/ingredient and adds new ingredient to screen
     const submit = (text) =>{
+        //checks if something is written
+        if(text.length >1){
         setingredients((priorIngredients) =>{
             return [
-                {text: text, key:Math.random(),toString()},
+                {text: text.toLowerCase(), key: Math.random().toString()},
                 ...priorIngredients
             ];
         })
+    }else{
+        Alert.alert("Please type an ingredient")
+        {text:'ok'}
     }
-    */
+}
     return(
         <View style={styles.container}>
             <View>
                 
                 <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
                     onChangeText={changeHandler}/>
-                <Button onPress={()=> submit(text)} title='add' color = 'green'/>
+                <Button onPress={()=> submit(text)} title='Add' color = 'green'/>
+                <Button title = 'Search' color = 'green' />
 
                 <View style = {styles.list}>
                 <FlatList
-                    horizontal = {true}
+                    //horizontal = {true}
                     data = {ingredients}
                     renderItem ={({item}) => (
                         <IngredientItem item = {item} pressDelete ={pressDelete}/>
@@ -67,7 +72,6 @@ export default function SearchBar(){
     </View>
     )
 }
-
 // const fbSbTesting = () => {
 
 //     useEffect(() =>{
@@ -99,7 +103,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#f5f5f5',
         paddingHorizontal: 20,
         alignContent: 'center',
-        width: '80%',
+        width: '100%',
         color:'#2e2e2e'
     },
     list:{
