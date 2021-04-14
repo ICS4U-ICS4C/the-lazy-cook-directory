@@ -3,7 +3,13 @@ import React, {Component, useEffect, useState} from 'react';
 import {View, TextInput, StyleSheet, StatusBar, FlatList, Text, Button, ScrollView,Alert} from 'react-native';
 import theRecipes from '../db/firebaseConfig';
 import IngredientItem from './ingredientItem';
-
+import {listt} from './testRecipDb';
+import 'firebase/firestore';
+import * as firebase from 'firebase';
+import { firestore } from 'firebase';
+import { LogBox } from 'react-native';
+//for ignoring warning message in console
+LogBox.ignoreLogs(['Setting a timer']);
 //idea: 1. user write their ingredient, when clicking enter it stores it in a list
 //2. display this list under the search bar, style it, make it horizontal
 /*
@@ -16,10 +22,10 @@ const SearchBar = () => {
 }
 */
 
-export default function SearchBar(){
+export default function SearchBar({navigation}){
     //has array of items, ingredients is the array
     const [ingredients,setingredients] = useState([
-        {}
+        {text: "milk", key:"1"}
     ]);
     
     //recieve key, filter item with that key out of array and return new array
@@ -41,22 +47,47 @@ export default function SearchBar(){
         setingredients((priorIngredients) =>{
             return [
                 {text: text.toLowerCase(), key: Math.random().toString()},
-                ...priorIngredients
-            ];
+                ...priorIngredients     
+            ];   
         })
     }else{
         Alert.alert("Please type an ingredient")
         {text:'ok'}
+        }
     }
-}
+    //for searching ingredients, how to access each ingredient. store this
+    //value into another array which we will use to search
+
+    const search = (ingredients) =>{
+      
+        let newArray = []
+        for (let i of ingredients){
+            newArray.push(i.text)
+        }
+        //have to fix it and make sure that it only gets recipes with ingredients we want
+        //instead of console.log, show it on recipe results page
+        //have to navigate to results page (not done)
+        const firestore = firebase.firestore();
+        const col = firestore.collection('Recipes');
+        for (let i =0; i< newArray.length; i++){
+            let col = firestore.collection('Recipes').where('ingredients','array-contains', newArray[i]).get()
+                .then(snapshot=>{
+                    snapshot.docs.forEach(doc =>{
+                        console.log(doc.id,doc.data())
+                    })
+                })
+
+        }
+
+    }
     return(
         <View style={styles.container}>
             <View>
                 
                 <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
                     onChangeText={changeHandler}/>
-                <Button onPress={()=> submit(text)} title='Add' color = 'green'/>
-                <Button title = 'Search' color = 'green' />
+                <Button onPress={()=> submit(text)} title='Add' color = 'green'/> 
+                <Button title = 'Search' color = 'green' onPress = {()=> search(ingredients)} /> 
 
                 <View style = {styles.list}>
                 <FlatList
@@ -72,6 +103,7 @@ export default function SearchBar(){
     </View>
     )
 }
+
 // const fbSbTesting = () => {
 
 //     useEffect(() =>{
