@@ -45,27 +45,27 @@ const HomeStackScreen  = ({navigation}) => (
 );
 
 // Recipes Tab
-const RecipesStackScreen  = ({navigation}) => (
-  <RecipesStack.Navigator screenOptions={{
-    headerStyle: {
-      backgroundColor: '#8bc225',
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    }
-  }}>
-    <RecipesStack.Screen name='Recipes'component={Recipes}
-    options={{
-      headerLeft:  () => (
-        <Icon.Button name="menu" 
-        size={25}
-        backgroundColor="#8bc225"
-        onPress={() => navigation.openDrawer()}/>
-      )
-    }}/>
-  </RecipesStack.Navigator>
-);
+//const RecipesStackScreen  = ({navigation}) => (
+  //<RecipesStack.Navigator screenOptions={{
+   // headerStyle: {
+     // backgroundColor: '#8bc225',
+   // },
+    //headerTintColor: '#fff',
+   // headerTitleStyle: {
+     // fontWeight: 'bold',
+   // }
+ // }}>
+   //<RecipesStack.Screen name='Recipes'component={Recipes}
+  // options={{
+    //  headerLeft:  () => (
+     //   <Icon.Button name="menu" 
+     //   size={25}
+      //  backgroundColor="#8bc225"
+      //  onPress={() => navigation.openDrawer()}/>
+    //  )
+   // }}/>
+ // </RecipesStack.Navigator>
+//);
 
 // Store Locator tab
 const LocatorStackScreen  = ({navigation}) => (
