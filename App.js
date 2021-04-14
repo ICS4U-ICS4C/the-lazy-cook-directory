@@ -4,7 +4,7 @@ import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View } from 'react-native';
 import Home from './src/screens/Home';
-import Recipes from './src/screens/Recipes';
+//import Recipes from './src/screens/Recipes';
 import storeLocator from './src/screens/storeLocator';
 import FbTester from './src/screens/firebaseTesting';
 // import { StackRouter } from 'react-navigation';
