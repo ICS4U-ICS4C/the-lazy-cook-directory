@@ -23,12 +23,12 @@ const SearchBar = () => {
 */
 
 export default function SearchBar({navigation}){
-    //has array of items, ingredients is the array
+    //has array of items, ingredients is the array and setingredients is equal to usestate in which we can change the array
     const [ingredients,setingredients] = useState([
         {text: "milk", key:"1"}
     ]);
     
-    //recieve key, filter item with that key out of array and return new array
+    //when cliking the ingredients, function recieve key, filter item with that key out of array and return new array
     const pressDelete = (key) =>{
         setingredients((priorIngredients) =>{
             return priorIngredients.filter(ingredient => ingredient.key != key);
@@ -63,11 +63,13 @@ export default function SearchBar({navigation}){
         for (let i of ingredients){
             newArray.push(i.text)
         }
+      
         //have to fix it and make sure that it only gets recipes with ingredients we want
         //instead of console.log, show it on recipe results page
         //have to navigate to results page (not done)
         const firestore = firebase.firestore();
         const col = firestore.collection('Recipes');
+        let reciplelist = []
         for (let i =0; i< newArray.length; i++){
             let col = firestore.collection('Recipes').where('ingredients','array-contains', newArray[i]).get()
                 .then(snapshot=>{
@@ -76,13 +78,18 @@ export default function SearchBar({navigation}){
                         {text: 'ok'}
                     }
                     snapshot.docs.forEach(doc =>{
-                        console.log(doc.data().name)
+                        //console.log(doc.data().name)
+                        reciplelist.push(doc.data().name)
+                        //console.log(reciplelist);
                     })
                 })
+                console.log(reciplelist)
+                /*
                 .catch(err =>{
                     console.log("error:", err);
                 });
-        }
+                */
+        } //end of foor loop
     }
     return(
         <View style={styles.container}>
