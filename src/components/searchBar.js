@@ -47,11 +47,12 @@ export default function SearchBar({navigation}){
         setingredients((priorIngredients) =>{
             return [
                 {text: text.toLowerCase(), key: Math.random().toString()},
+                /// assigned key for each new ingredient
                 ...priorIngredients     
             ];   
         })
     }else{
-        Alert.alert("Please type an ingredient")
+        Alert.alert("Type in your ingredient")
         {text:'ok'}
         }
     }
@@ -59,9 +60,9 @@ export default function SearchBar({navigation}){
     //value into another array which we will use to search
     const search = (ingredients) =>{
       
-        let newArray = []
+        let userInputArray = []
         for (let i of ingredients){
-            newArray.push(i.text)
+            userInputArray.push(i.text)
         }
       
         //have to fix it and make sure that it only gets recipes with ingredients we want
@@ -70,8 +71,8 @@ export default function SearchBar({navigation}){
         const firestore = firebase.firestore();
         const col = firestore.collection('Recipes');
         let reciplelist = []
-        for (let i =0; i< newArray.length; i++){
-            let col = firestore.collection('Recipes').where('ingredients','array-contains', newArray[i]).get()
+        for (let i =0; i< userInputArray.length; i++){
+            let col = firestore.collection('Recipes').where('ingredients','array-contains', userInputArray[i]).get()
                 .then(snapshot=>{
                     if(snapshot.empty){
                         Alert.alert("Sorry no matching recipes")
