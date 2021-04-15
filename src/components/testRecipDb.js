@@ -1,4 +1,4 @@
-const listt = [
+export const listt = [
     {
         name: 'Sweet and Sour Noodles',
         ingredients:{
@@ -56,4 +56,3 @@ const listt = [
 
 ]
 
-export default {listt}
