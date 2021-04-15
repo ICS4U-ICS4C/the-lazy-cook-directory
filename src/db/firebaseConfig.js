@@ -1,5 +1,4 @@
 import * as firebase from 'firebase';
-// import firebase from '../firebase'
 import "firebase/firestore";
 
 // this file is to connect our code to the firestore database
@@ -18,6 +17,6 @@ const initt = firebase.initializeApp(configuration);
 
 const db = firebase.firestore(initt); // database
 
-export const theRecipes = db.collection('Recipes');
+//export const theRecipes = db.collection('Recipes');
 
 export {firebase};

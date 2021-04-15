@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 // header + menu code
 const HomeStack = createStackNavigator();
-const RecipesStack = createStackNavigator(); 
+//const RecipesStack = createStackNavigator(); 
 const LocatorStack = createStackNavigator();
 const TesterStack = createDrawerNavigator();
 const Drawer = createDrawerNavigator();
@@ -117,13 +117,13 @@ export default function Menu() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name ='Home' component={HomeStackScreen}/>
-        <Drawer.Screen name ='Recipes' component={RecipesStackScreen}/>
         <Drawer.Screen name = 'Store Locator' component={LocatorStackScreen }/>
         <Drawer.Screen name = 'Firestore Tester' component={TesterStackScreen}/>
       </Drawer.Navigator>
     </NavigationContainer>
   )};
 
+//<Drawer.Screen name ='Recipes' component={RecipesStackScreen}/>
 
 const styles = StyleSheet.create({
   container: {

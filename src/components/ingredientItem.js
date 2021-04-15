@@ -19,7 +19,6 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderStyle: 'solid',
         borderRadius: 4,
-        width: '20%',
         
         
     }

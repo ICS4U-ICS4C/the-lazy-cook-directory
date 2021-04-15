@@ -1,4 +1,4 @@
-export default[
+const listt = [
     {
         name: 'Sweet and Sour Noodles',
         ingredients:{
@@ -55,3 +55,5 @@ export default[
     }
 
 ]
+
+export default {listt}
