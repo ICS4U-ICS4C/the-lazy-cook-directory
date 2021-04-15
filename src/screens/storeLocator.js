@@ -81,10 +81,10 @@ export default class App extends React.Component {
             longitudeDelta: 0.035
           }}>
 
-        <Polygon
+         <Polygon
          coordinates={this.places.miscoordinates}
          fillColor={'rgba(167, 238, 201, 0.3)'}
-        />
+         />
 
           {this.places.walcoordinates.map((marker) => (
             <Marker
@@ -173,7 +173,7 @@ export default class App extends React.Component {
           ))}
 
         </MapView>
-
+        
       </View>
     );
   
