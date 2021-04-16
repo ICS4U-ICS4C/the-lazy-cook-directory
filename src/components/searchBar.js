@@ -70,27 +70,35 @@ export default function SearchBar({navigation}){
         //have to navigate to results page (not done)
         const firestore = firebase.firestore();
         const col = firestore.collection('Recipes');
-        let reciplelist = []
+        let reciplelist = [];
+        let updatedlist = [];
+        var  count = {}; 
+        const promises = [];
         for (let i =0; i< userInputArray.length; i++){
-            let col = firestore.collection('Recipes').where('ingredients','array-contains', userInputArray[i]).get()
+            let promise = firestore.collection('Recipes').where('ingredients','array-contains', userInputArray[i]).get()
                 .then(snapshot=>{
                     if(snapshot.empty){
                         Alert.alert("Sorry no matching recipes")
                         {text: 'ok'}
                     }
                     snapshot.docs.forEach(doc =>{
-                        //console.log(doc.data().name)
                         reciplelist.push(doc.data().name)
                         //console.log(reciplelist);
-                    })
+                    });
+                    return;
                 })
-                console.log(reciplelist)
-                /*
-                .catch(err =>{
-                    console.log("error:", err);
-                });
-                */
+            promises.push(promise);
         } //end of foor loop
+        
+        Promise.all(promises).then(() =>{
+            reciplelist.forEach(function(i) { count[i] = (count[i]||0) + 1;}); 
+            for (let i in count){
+                if(count[i] == userInputArray.length){
+                    updatedlist.push(i);
+                }
+            }
+           console.log(updatedlist);
+        });
     }
     return(
         <View style={styles.container}>
