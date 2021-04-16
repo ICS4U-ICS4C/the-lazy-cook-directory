@@ -89,11 +89,11 @@ export default function SearchBar({navigation}){
                 })
             promises.push(promise);
         } //end of foor loop
-        
+    
         Promise.all(promises).then(() =>{
             reciplelist.forEach(function(i) { count[i] = (count[i]||0) + 1;}); 
             for (let i in count){
-                if(count[i] == userInputArray.length){
+                if(count[i] <= userInputArray.length){
                     updatedlist.push(i);
                 }
             }
