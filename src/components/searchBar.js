@@ -80,28 +80,40 @@ export default function SearchBar({navigation}){
         //have to navigate to results page (not done)
         const firestore = firebase.firestore();
         const col = firestore.collection('Recipes');
-        let reciplelist = []
+        let reciplelist = [];
+        let updatedlist = [];
+        var  count = {}; 
+        const promises = [];
         for (let i =0; i< userInputArray.length; i++){
+<<<<<<< HEAD
             let col = firestore.collection('Recipes').where('ingredients','array-contains', userInputArray[i]).get()
             //check if this ingredient value is in userInputArray[i]?
+=======
+            let promise = firestore.collection('Recipes').where('ingredients','array-contains', userInputArray[i]).get()
+>>>>>>> 7f887700e3e251f2e6559b17d030f733622de971
                 .then(snapshot=>{
                     if(snapshot.empty){
                         Alert.alert("No matching recipes, time to go shopping")
                         {text: 'ok'}
                     }
                     snapshot.docs.forEach(doc =>{
-                        //console.log(doc.data().name)
                         reciplelist.push(doc.data().name)
                         //console.log(reciplelist);
-                    })
+                    });
+                    return;
                 })
-                console.log(reciplelist)
-                /*
-                .catch(err =>{
-                    console.log("error:", err);
-                });
-                */
+            promises.push(promise);
         } //end of foor loop
+        
+        Promise.all(promises).then(() =>{
+            reciplelist.forEach(function(i) { count[i] = (count[i]||0) + 1;}); 
+            for (let i in count){
+                if(count[i] == userInputArray.length){
+                    updatedlist.push(i);
+                }
+            }
+           console.log(updatedlist);
+        });
     }
     return(
         <View style={styles.container}>

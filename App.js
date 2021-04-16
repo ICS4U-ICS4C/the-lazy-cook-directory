@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View } from 'react-native';
 import Home from './src/screens/Home';
@@ -10,6 +10,7 @@ import FbTester from './src/screens/firebaseTesting';
 // import { StackRouter } from 'react-navigation';
 // import { DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
+
 
 
 // header + menu code
@@ -32,9 +33,11 @@ const HomeStackScreen  = ({navigation}) => (
     }
   }}>
     <HomeStack.Screen name="Home" component={Home}
+    //creating screen for when the drawer is opened
     options={{
       title:'Home Of Lazy Cooks',
       headerLeft:  () => (
+        //what the header will hold; menu icon on top that will open drawer
         <Icon.Button name="menu" 
         size={25}
         backgroundColor="#8bc225"
