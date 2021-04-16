@@ -1,13 +1,23 @@
 import { Navigation } from '@material-ui/icons';
 import React, {Component, useEffect, useState} from 'react';
-import {View, TextInput, StyleSheet, StatusBar, FlatList, Text, Button, ScrollView,Alert,Pressable} from 'react-native';
+import {View,
+    Pressable,
+    TextInput,
+    StyleSheet,
+    StatusBar,
+    FlatList,
+    Text,
+    Button,
+    ScrollView,
+    Alert,
+    LogBox} from 'react-native';
 import theRecipes from '../db/firebaseConfig';
 import IngredientItem from './ingredientItem';
 import {listt} from './testRecipDb';
 import 'firebase/firestore';
 import * as firebase from 'firebase';
 import { firestore } from 'firebase';
-import { LogBox } from 'react-native';
+
 //for ignoring warning message in console
 LogBox.ignoreLogs(['Setting a timer']);
 //idea: 1. user write their ingredient, when clicking enter it stores it in a list
@@ -75,10 +85,15 @@ export default function SearchBar({navigation}){
         var  count = {}; 
         const promises = [];
         for (let i =0; i< userInputArray.length; i++){
+<<<<<<< HEAD
+            let col = firestore.collection('Recipes').where('ingredients','array-contains', userInputArray[i]).get()
+            //check if this ingredient value is in userInputArray[i]?
+=======
             let promise = firestore.collection('Recipes').where('ingredients','array-contains', userInputArray[i]).get()
+>>>>>>> 7f887700e3e251f2e6559b17d030f733622de971
                 .then(snapshot=>{
                     if(snapshot.empty){
-                        Alert.alert("Sorry no matching recipes")
+                        Alert.alert("No matching recipes, time to go shopping")
                         {text: 'ok'}
                     }
                     snapshot.docs.forEach(doc =>{
@@ -103,7 +118,6 @@ export default function SearchBar({navigation}){
     return(
         <View style={styles.container}>
             <View>
-                
                 <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
                     onChangeText={changeHandler}/>
 
@@ -131,24 +145,6 @@ export default function SearchBar({navigation}){
     )
 }
 
-// const fbSbTesting = () => {
-
-//     useEffect(() =>{
-//         db.collection('Recipes')
-//         .get()
-//         .then(result=> result.docs)
-//         .then(docs => docs.map(doc => ({
-//             // id: doc.id, 
-//             duration: doc.duration, 
-//             ingredients: doc.created, 
-//             name:doc.name, 
-//             preparation: doc.preparation, 
-//             quantity: doc.quantity, 
-//             type: doc.type
-//         })))
-
-//     },[])
-// }
 //added temporary styling for buttons, anyone can change them to how they like
 const styles = StyleSheet.create({
     container:{
@@ -175,7 +171,7 @@ const styles = StyleSheet.create({
         paddingVertical: 10,
         paddingHorizontal: 32,
         borderRadius: 4,
-        backgroundColor: '#8cbb6c',
+        backgroundColor: 'black',
         borderStyle: 'dashed',
         borderColor: 'black',
         marginBottom: 10,
@@ -205,3 +201,55 @@ const styles = StyleSheet.create({
         color: 'white',
       }
 })
+
+
+// import React, { useState } from 'react';
+// import { Pressable, StyleSheet, Text, View } from 'react-native';
+
+// export default function App() {
+//     const [timesPressed, setTimesPressed] = useState(0);
+  
+//     let textLog = '';
+//     if (timesPressed > 1) {
+//       textLog = timesPressed + 'x onPress';
+//     } else if (timesPressed > 0) {
+//       textLog = 'onPress';
+//     }
+  
+//     return (
+//       <View>
+//         <Pressable
+//           onPress={() => {
+//             setTimesPressed(current => current + 1);
+//           }}
+//           style={({ pressed }) => [
+//             {
+//               backgroundColor: pressed ? 'rgb(210, 230, 255)' : 'white',
+//             },
+//             styles.wrapperCustom,
+//           ]}>
+//           {({ pressed }) => <Text style={styles.text}>{pressed ? 'Pressed!' : 'Press Me'}</Text>}
+//         </Pressable>
+//         <View style={styles.logBox}>
+//           <Text testID="pressable_press_console">{textLog}</Text>
+//         </View>
+//       </View>
+//     );
+//   }
+  
+//   const styles = StyleSheet.create({
+//     text: {
+//       fontSize: 16,
+//     },
+//     wrapperCustom: {
+//       borderRadius: 8,
+//       padding: 6,
+//     },
+//     logBox: {
+//       padding: 20,
+//       margin: 10,
+//       borderWidth: StyleSheet.hairlineWidth,
+//       borderColor: '#f0f0f0',
+//       backgroundColor: '#000000',
+//     },
+//   });
