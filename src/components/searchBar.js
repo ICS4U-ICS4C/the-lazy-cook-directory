@@ -85,12 +85,7 @@ export default function SearchBar({navigation}){
         var  count = {}; 
         const promises = [];
         for (let i =0; i< userInputArray.length; i++){
-<<<<<<< HEAD
-            let col = firestore.collection('Recipes').where('ingredients','array-contains', userInputArray[i]).get()
-            //check if this ingredient value is in userInputArray[i]?
-=======
             let promise = firestore.collection('Recipes').where('ingredients','array-contains', userInputArray[i]).get()
->>>>>>> 7f887700e3e251f2e6559b17d030f733622de971
                 .then(snapshot=>{
                     if(snapshot.empty){
                         Alert.alert("No matching recipes, time to go shopping")
