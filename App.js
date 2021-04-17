@@ -10,7 +10,8 @@ import FbTester from './src/screens/firebaseTesting';
 // import { StackRouter } from 'react-navigation';
 // import { DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+//import Navigation from './src/navconfig.js/navigation';
+//export default () => <Navigation/>;
 
 
 // header + menu code

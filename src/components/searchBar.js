@@ -13,28 +13,19 @@ import {View,
     LogBox} from 'react-native';
 import theRecipes from '../db/firebaseConfig';
 import IngredientItem from './ingredientItem';
-//import {listt} from './testRecipDb';
 import 'firebase/firestore';
 import * as firebase from 'firebase';
 import { firestore } from 'firebase';
-// import { NavigationContainer } from '@react-navigation/native';
-// import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import navigation from '../navconfig.js/navigation';
+//import {listt} from './testRecipDb';
 
 //for ignoring warning message in console
 LogBox.ignoreLogs(['Setting a timer']);
-//idea: 1. user write their ingredient, when clicking enter it stores it in a list
-//2. display this list under the search bar, style it, make it horizontal
-/*
-const SearchBar = () => {
-    return(
-        <View style={styles.container}>
-            <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "/>
-        </View>
-    )
-}
-*/
 
-export default function SearchBar(){
+
+export default function SearchBar({Navigation}){
     //has array of items, ingredients is the array and setingredients is equal to usestate in which we can change the array
     const [ingredients,setingredients] = useState([
         {text: "milk", key:"1"}
@@ -71,6 +62,7 @@ export default function SearchBar(){
     //for searching ingredients, how to access each ingredient. store this
     //value into another array which we will use to search
     const search = (ingredients) =>{
+        navigation.push("sResults")
         let userInputArray = []
         for (let i of ingredients){
             userInputArray.push(i.text)
@@ -105,14 +97,11 @@ export default function SearchBar(){
             for (let i in count){
                 if(count[i] <= userInputArray.length){
                     updatedlist.push(i);
-                   
                 }
             }
            console.log(updatedlist);
-          
         });
     }
-    
     return(
         <View style={styles.container}>
             <View>
@@ -136,16 +125,9 @@ export default function SearchBar(){
                         <IngredientItem item = {item} pressDelete ={pressDelete}/>
                     )}
                 />
-                //tying to see if updatedlist shows up on app
-                <FlatList
-                    data = {updatedlist}
-                    renderItem ={({item}) => (
-                        <Text >{item}</Text>
-                    )}
-                />
+             
             </View>
             </View>
-           
     </View>
     )
 }
