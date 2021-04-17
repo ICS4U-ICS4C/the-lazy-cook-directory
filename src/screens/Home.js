@@ -4,13 +4,14 @@ import { Card, Title, Paragraph } from 'react-native-paper';
 //import { AppNavigator } from '../../routes/Stack';
 //import sResults from '../screens/sResults';
 import SearchBar from '../components/searchBar';
+//home page of Lazy Cook's Directory
 
-const ListItem = ({ item }) => {
+const ListItem = ({ item }) => { // this is for the creators fav section
   return (
     <View style={styles.item}>
       <Image
         source={{
-          uri: item.imageurl,
+          uri: item.imageurl, //url for image cover
         }}
         style={styles.itemPhoto}
         resizeMode="cover"
@@ -19,7 +20,8 @@ const ListItem = ({ item }) => {
     </View>
   );
 };
-const FEATURED = [
+const FEATURED = [ 
+  /** these are the creator's fav */ 
   {
    title: 'Creators Picks',
    horizontal: true,
@@ -48,7 +50,10 @@ export default () => {
   return (
     <View style={styles.container}>
       <Card style={styles.introCard}>
-      <Card.Content>
+      <Card.Content> {/**this card contains the contructions and
+       * search bar, one could think of this as a div function
+       * in HTML
+       */}
         <Title>Welcome to the Lazy Cooks' Directory</Title>
         <Paragraph>Input the ingredients you want to cook with and we'll give you a recipe you thought was never possible with minimal ingredients!</Paragraph>
         <Paragraph> Note: for seasonings aside from salt and paper, please write "seasoning", the type will be specified in the recipe.</Paragraph>
@@ -56,7 +61,10 @@ export default () => {
       </Card.Content>
     </Card>
 
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1 }}> 
+    {/** this is where the creators's fav section gets coded and
+     * designed to be outputed on screen
+     */}
       <SectionList
         contentContainerStyle={{ paddingHorizontal: 10 }}
         stickySectionHeadersEnabled={false}

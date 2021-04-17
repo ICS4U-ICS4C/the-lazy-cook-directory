@@ -1,5 +1,7 @@
 export const listt = [
     {
+        // list of recipes used to practice and 
+        //test run if our function worked
         name: 'Sweet and Sour Noodles',
         ingredients:{
             noodles:'noodles',
