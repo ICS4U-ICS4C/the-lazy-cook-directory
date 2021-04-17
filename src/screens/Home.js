@@ -1,97 +1,58 @@
-import React from 'react';
-import {StyleSheet,Text,View,SectionList,SafeAreaView,Image,FlatList,} from 'react-native';
+import React, { useCallback } from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  SectionList,
+  SafeAreaView,
+  Image,
+  FlatList,} from 'react-native';
 import { Card, Title, Paragraph } from 'react-native-paper';
 import sResults from '../screens/sResults';
 import SearchBar from '../components/searchBar';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
+import { ScrollView } from 'react-native-gesture-handler';
+import Category from '../components/category'
+import bltFav from '../screens/bltFav'
+// import BLTSandwich from '../icons/BLTSandwich.png'
 //home page of Lazy Cook's Directory
 
-const ListItem = ({ item }) => { // this is for the creators fav section
-  return (
-    <View style={styles.item}>
-      <Image
-        source={{
-          uri: item.imageurl, //url for image cover
-        }}
-        style={styles.itemPhoto}
-        resizeMode="cover"
-      />
-      <Text style={styles.itemText}>{item.text}</Text>
-    </View>
-  );
-};
-const FEATURED = [ 
-  /** these are the creator's fav */ 
-  {
-   title: 'Creators Picks',
-   horizontal: true,
-   data: [
-     {
-       key: '1',
-       text: 'Abeers Fav',
-       imageurl: 'https://assets.bonappetit.com/photos/5aa9665c275dc52331d9184b/5:7/w_2445,h_3423,c_limit/pantry-pasta.jpg',
-     },
-     {
-       key: '2',
-       text: 'Amats Fav',
-       imageurl: 'https://www.thespruceeats.com/thmb/ZunmTodJtTh5qOfWJfxiksmO0MI=/1885x1414/smart/filters:no_upscale()/GettyImages-639704020-5c4a63ecc9e77c00017bfebf.jpg',
-     },
 
-     {
-       key: '3',
-       text: 'Jasmines Fav',
-       imageurl: 'https://www.cookingclassy.com/wp-content/uploads/2017/12/chicken-broccoli-stir-fry-13.jpg',
-     }
-   ],
- }
-];
+
 export default () => {
   return (
-    <View style={styles.container}>
-      <Card style={styles.introCard}>
-      <Card.Content> 
-           {/* *this card contains the contructions and
-//        * search bar, one could think of this as a div function
-//        * in HTML
-//        */}
-        <Title>Welcome to the Lazy Cooks' Directory</Title>
-        <Paragraph>Input the ingredients you want to cook with and we'll give you a recipe you thought was never possible with minimal ingredients!</Paragraph>
-        <Paragraph> Note: for seasonings aside from salt and paper, please write "seasoning", the type will be specified in the recipe.</Paragraph>
-        <SearchBar/>
-      </Card.Content>
-    </Card>
+    <SafeAreaView style={{ flex: 1 }}>
+      <ScrollView>
+       <View style={styles.container}>
+         <Card style={styles.introCard}>
+         <Card.Content> 
 
-    <SafeAreaView style={{ flex: 1 }}> 
-    {/** this is where the creators's fav section gets coded and
-     * designed to be outputed on screen
-     */}
-      <SectionList
-        contentContainerStyle={{ paddingHorizontal: 10 }}
-        stickySectionHeadersEnabled={false}
-        sections={FEATURED}
-        renderSectionHeader={({ section }) => (
-          <>
-            <Text style={styles.sectionHeader}>{section.title}</Text>
-            {section.horizontal ? (
-              <FlatList
-                horizontal
-                data={section.data}
-                renderItem={({ item }) => <ListItem item={item} />}
-                showsHorizontalScrollIndicator={false}
-              />
-            ) : null}
-          </>
-        )}
-        renderItem={({ section, item }) => {
-          if (section.horizontal) {
-            return null;
-          }
-          return <ListItem item={item} />;
-        }}
-      />
-    </SafeAreaView>
-    </View>
+           <Title>Welcome to the Lazy Cooks' Directory</Title>
+           <Paragraph>Input the ingredients you want to cook with and we'll give you a recipe you thought was never possible with minimal ingredients!</Paragraph>
+           <Paragraph> Note: for seasonings aside from salt and paper, please write "seasoning", the type will be specified in the recipe.</Paragraph>
+           <SearchBar/>
+         </Card.Content>
+       </Card>
+      
+
+        <ScrollView scrollEventThrottle={16}>
+
+                <View style={{ height: 130, marginTop: 20 }}>
+                    <ScrollView
+                        horizontal={true}
+                        showsHorizontalScrollIndicator={false}
+                    >
+                        <Category imageUri={require('../icons/BLTSandwich.png')}
+                            name="BLT Sandwich" link = {bltFav}
+                        />
+
+                    </ScrollView>
+                </View>
+              </ScrollView>
+            </View>
+        </ScrollView>
+      </SafeAreaView>
   );
 };
 
@@ -103,28 +64,13 @@ const styles = StyleSheet.create({
   },
   introCard:{
     borderBottomRightRadius: 20,
-    borderBottomLeftRadius: 20
+    borderBottomLeftRadius: 20,
+    height: "75%" 
   },
-  sectionHeader: {
-    fontWeight: '800',
-    fontSize: 18,
-    color: '#f4f4f4',
-    marginTop: 20,
-    marginBottom: 5,
-  },
-  item: {
-    margin: 10,
-    padding:10,
-    backgroundColor:'white',
-    borderRadius: 20
-  },
-  itemPhoto: {
-    width: 200,
-    height: 200,
-    borderRadius: 20
-  },
-  itemText: {
-    color: 'black',
-    marginTop: 5,
-  },
+  favHeader1:{
+    flex:1,
+    paddingTop: 10, 
+    paddingLeft: 8,
+  }
 });
+
