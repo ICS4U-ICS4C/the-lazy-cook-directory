@@ -29,8 +29,8 @@ export default () => {
          <Card.Content> 
 
            <Title>Welcome to the Lazy Cooks' Directory</Title>
-           <Paragraph>Input the ingredients you want to cook with and we'll give you a recipe you thought was never possible with minimal ingredients!</Paragraph>
-           <Paragraph> Note: for seasonings aside from salt and paper, please write "seasoning", the type will be specified in the recipe.</Paragraph>
+           <Paragraph>Explicitly input the ingredients you want to cook with and we'll give you a recipes. </Paragraph>
+           <Paragraph> Note: type 'seasoning' for seasonings except for salt and paper.</Paragraph>
            <SearchBar/>
          </Card.Content>
        </Card>
@@ -59,17 +59,14 @@ export default () => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#121212',
   },
   introCard:{
     borderBottomRightRadius: 20,
-    borderBottomLeftRadius: 20,
-    height: "75%" 
+    borderBottomLeftRadius: 20, 
   },
   favHeader1:{
     flex:1,
-    paddingTop: 10, 
     paddingLeft: 8,
   }
 });
