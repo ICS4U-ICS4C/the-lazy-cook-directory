@@ -1,7 +1,9 @@
 import React from 'react';
 import {StyleSheet,Text,View,SectionList,SafeAreaView,Image,FlatList,} from 'react-native';
+import { Card, Title, Paragraph } from 'react-native-paper';
+//import { AppNavigator } from '../../routes/Stack';
 //import sResults from '../screens/sResults';
-import SearchBar from '../components/searchBar'
+import SearchBar from '../components/searchBar';
 //home page of Lazy Cook's Directory
 
 const ListItem = ({ item }) => { // this is for the creators fav section
@@ -46,7 +48,6 @@ const FEATURED = [
 //<Navigation/>
 export default () => {
   return (
-    
     <View style={styles.container}>
       <Card style={styles.introCard}>
       <Card.Content> {/**this card contains the contructions and

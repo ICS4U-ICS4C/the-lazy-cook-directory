@@ -11,7 +11,6 @@ import {View,
     ScrollView,
     Alert,
     LogBox} from 'react-native';
-import theRecipes from '../db/firebaseConfig';
 import IngredientItem from './ingredientItem';
 import 'firebase/firestore';
 import * as firebase from 'firebase';
@@ -19,7 +18,7 @@ import { firestore } from 'firebase';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import navigation from '../navconfig.js/navigation';
-//import {listt} from './testRecipDb';
+
 
 // this code is for the search bar function and styling
 
@@ -108,13 +107,13 @@ export default function SearchBar({navigation}){
         <View style={styles.container}>
             <View>
                 <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
-                    onChangeText={changeHandler}/> {/** search bar with place holder */}
+                    onChangeText={changeHandler}/> 
                      <Pressable style={styles.button} onPress={()=> submit(text)}>
-                        <Text style={styles.text}>Add</Text> {/** button to add ingreident */}
+                        <Text style={styles.text}>Add</Text> 
                     </Pressable>
 
                     <Pressable style={styles.buttonSearch}  onPress = {()=> search(ingredients)}>
-                        <Text style={styles.textSearch}>Search</Text>{/** button to search recipes */}
+                        <Text style={styles.textSearch}>Search</Text>
                     </Pressable>
 
     
