@@ -1,7 +1,7 @@
 import React from 'react';
 import {StyleSheet,Text,View,SectionList,SafeAreaView,Image,FlatList,} from 'react-native';
 //import sResults from '../screens/sResults';
-import SearchBar from '../components/searchBar';
+import SearchBar from '../components/searchBar'
 //home page of Lazy Cook's Directory
 
 const ListItem = ({ item }) => { // this is for the creators fav section
