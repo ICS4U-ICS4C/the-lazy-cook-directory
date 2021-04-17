@@ -188,10 +188,4 @@ const styles = StyleSheet.create({
         color: 'white',
       }
 })
-<<<<<<< HEAD
-=======
 
-<<<<<<< Updated upstream
-=======
->>>>>>> 15f8ac876c6f35c087bb1c616a4587e61910fbe6
->>>>>>> Stashed changes
