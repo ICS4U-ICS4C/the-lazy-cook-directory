@@ -12,14 +12,13 @@ import {View,
     Alert,
     LogBox} from 'react-native';
 import IngredientItem from './ingredientItem';
-import 'firebase/firestore';
 import * as firebase from 'firebase';
+import 'firebase/firestore';
 import { firestore } from 'firebase';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../screens/Home';
 import sResults from '../screens/sResults';
-
 
 // this code is for the search bar function and styling
 
@@ -79,7 +78,7 @@ export default function SearchBar({navigation}){
     //for searching ingredients, how to access each ingredient. store this
     //value into another array which we will use to search
     const search = (ingredients) =>{
-        navigation.navigate("sResults");
+        //navigation.navigate("sResults")
         let userInputArray = []
         for (let i of ingredients){
             userInputArray.push(i.text)
@@ -131,6 +130,8 @@ export default function SearchBar({navigation}){
                     <Pressable style={styles.buttonSearch}  onPress = {()=> search(ingredients)}>
                         <Text style={styles.textSearch}>Search</Text>
                     </Pressable>
+                    <Button style={styles.buttonSearch} title = 'gaga' onPress = {()=> navigation.navigate('sResults')}/>
+                      
 
     
                 <View style = {styles.list}>
