@@ -14,7 +14,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 //export default () => <Navigation/>;
 
 
-// header + menu code
+// header + menu code, route home page (as in home page is desplayed)
 const HomeStack = createStackNavigator();
 //const RecipesStack = createStackNavigator(); 
 const LocatorStack = createStackNavigator();

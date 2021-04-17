@@ -7,10 +7,16 @@ import MapView, {
 } from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
 
-//writing important coordinates to be used to locate grocery stores.
-//Stores Mississauga's, Walmart, Food Basics, FreshCo, No Frills, Oceans, and Adonis coordinates
-//to be accessed like:   
-//>> {this.places.walcoordinates}
+/** code for store locator where users can find the Walmart, Food Basics, 
+ * FreshCo, No Frills, Oceans, and Adonis around them
+*/
+
+/**writing important coordinates to be used to locate grocery stores.
+Stores Mississauga's, Walmart, Food Basics, FreshCo, No Frills, Oceans, and Adonis coordinates
+to be accessed like:   
+>> {this.places.walcoordinates}
+*/
+
 export default class App extends React.Component {
   places = {
     miscoordinates: [
@@ -64,6 +70,7 @@ export default class App extends React.Component {
 
 //First Marker starts with Walmart. On click, you see the store name,
 //coordinates are of all Walmarts across Mississauga.
+
 //Custome image for the pin, creating personally with Walmart's blue colour.
 //This Marker format goes on for all the stores.
   render() {
@@ -87,6 +94,7 @@ export default class App extends React.Component {
          />
 
           {this.places.walcoordinates.map((marker) => (
+            // walmart marker
             <Marker
               key={marker.name}
               coordinate={{
@@ -104,6 +112,7 @@ export default class App extends React.Component {
 
           {this.places.foocoordinates.map((marker) => (
             <Marker
+            // food basics marker
               key={marker.name}
               coordinate={{
                 latitude: marker.latitude,
@@ -118,6 +127,7 @@ export default class App extends React.Component {
 
           {this.places.freshcoordinates.map((marker) => (
             <Marker
+            // frescho marker
               key={marker.name}
               coordinate={{
                 latitude: marker.latitude,
@@ -132,6 +142,7 @@ export default class App extends React.Component {
 
           {this.places.nocoordinates.map((marker) => (
             <Marker
+            // no frills marker
               key={marker.name}
               coordinate={{
                 latitude: marker.latitude,
@@ -146,6 +157,7 @@ export default class App extends React.Component {
 
           {this.places.oceanscoordinates.map((marker) => (
             <Marker
+            // oceans marker
               key={marker.name}
               coordinate={{
                 latitude: marker.latitude,
@@ -160,6 +172,7 @@ export default class App extends React.Component {
 
           {this.places.adoniscoordinates.map((marker) => (
             <Marker
+            // adonis marker
               key={marker.name}
               coordinate={{
                 latitude: marker.latitude,

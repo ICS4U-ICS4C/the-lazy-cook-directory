@@ -21,6 +21,8 @@ import { createStackNavigator } from '@react-navigation/stack';
 import navigation from '../navconfig.js/navigation';
 //import {listt} from './testRecipDb';
 
+// this code is for the search bar function and styling
+
 //for ignoring warning message in console
 LogBox.ignoreLogs(['Setting a timer']);
 
@@ -72,8 +74,8 @@ export default function SearchBar({Navigation}){
         //have to navigate to results page (not done)
         const firestore = firebase.firestore();
         const col = firestore.collection('Recipes');
-        let reciplelist = [];
-        let updatedlist = [];
+        let reciplelist = []; //list that possible recipes will be pushed to
+        let updatedlist = []; // list of the recipes that will be outputed
         var  count = {}; 
         const promises = [];
         for (let i =0; i< userInputArray.length; i++){
@@ -95,7 +97,7 @@ export default function SearchBar({Navigation}){
         Promise.all(promises).then(() =>{
             reciplelist.forEach(function(i) { count[i] = (count[i]||0) + 1;}); 
             for (let i in count){
-                if(count[i] <= userInputArray.length){
+                if(count[i] == userInputArray.length){
                     updatedlist.push(i);
                 }
             }
@@ -106,14 +108,13 @@ export default function SearchBar({Navigation}){
         <View style={styles.container}>
             <View>
                 <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
-                    onChangeText={changeHandler}/>
-
+                    onChangeText={changeHandler}/> {/** search bar with place holder */}
                      <Pressable style={styles.button} onPress={()=> submit(text)}>
-                        <Text style={styles.text}>Add</Text>
+                        <Text style={styles.text}>Add</Text> {/** button to add ingreident */}
                     </Pressable>
 
                     <Pressable style={styles.buttonSearch}  onPress = {()=> search(ingredients)}>
-                        <Text style={styles.textSearch}>Search</Text>
+                        <Text style={styles.textSearch}>Search</Text>{/** button to search recipes */}
                     </Pressable>
 
     
@@ -132,7 +133,6 @@ export default function SearchBar({Navigation}){
     )
 }
 
-//added temporary styling for buttons, anyone can change them to how they like
 const styles = StyleSheet.create({
     container:{
         marginTop: StatusBar.currentHeight,
@@ -188,4 +188,10 @@ const styles = StyleSheet.create({
         color: 'white',
       }
 })
+<<<<<<< HEAD
+=======
 
+<<<<<<< Updated upstream
+=======
+>>>>>>> 15f8ac876c6f35c087bb1c616a4587e61910fbe6
+>>>>>>> Stashed changes
