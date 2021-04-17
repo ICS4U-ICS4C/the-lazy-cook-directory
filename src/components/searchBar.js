@@ -27,7 +27,7 @@ import navigation from '../navconfig.js/navigation';
 LogBox.ignoreLogs(['Setting a timer']);
 
 
-export default function SearchBar({Navigation}){
+export default function SearchBar({navigation}){
     //has array of items, ingredients is the array and setingredients is equal to usestate in which we can change the array
     const [ingredients,setingredients] = useState([
         {text: "milk", key:"1"}
