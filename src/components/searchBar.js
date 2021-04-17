@@ -22,8 +22,8 @@ import sResults from '../screens/sResults';
 
 // this code is for the search bar function and styling
 
-//for ignoring warning message in console
 LogBox.ignoreLogs(['Setting a timer']);
+//for ignoring warning message in console
 
 const Stack = createStackNavigator();
 
