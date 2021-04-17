@@ -12,8 +12,9 @@ import {View,
     Alert,
     LogBox} from 'react-native';
 import IngredientItem from './ingredientItem';
-import * as firebase from 'firebase';
+import theRecipes from '../db/firebaseConfig';
 import 'firebase/firestore';
+import * as firebase from 'firebase';
 import { firestore } from 'firebase';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -142,6 +143,8 @@ export default function SearchBar({navigation}){
                         <IngredientItem item = {item} pressDelete ={pressDelete}/>
                     )}
                 />
+                
+
              
             </View>
             </View>
