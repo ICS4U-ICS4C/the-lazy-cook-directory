@@ -6,7 +6,6 @@ import { StyleSheet, Text, View } from 'react-native';
 import Home from './src/screens/Home';
 //import Recipes from './src/screens/Recipes';
 import storeLocator from './src/screens/storeLocator';
-import FbTester from './src/screens/firebaseTesting';
 // import { StackRouter } from 'react-navigation';
 // import { DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
