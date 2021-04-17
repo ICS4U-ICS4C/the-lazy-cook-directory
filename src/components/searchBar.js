@@ -19,11 +19,8 @@ import * as firebase from 'firebase';
 import { firestore } from 'firebase';
 // import { NavigationContainer } from '@react-navigation/native';
 // import { createStackNavigator } from '@react-navigation/stack';
-<<<<<<< Updated upstream
-=======
 
 // this code is for the search bar function and styling
->>>>>>> Stashed changes
 
 //for ignoring warning message in console
 LogBox.ignoreLogs(['Setting a timer']);
