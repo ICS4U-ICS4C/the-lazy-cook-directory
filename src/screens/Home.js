@@ -43,10 +43,10 @@ const FEATURED = [
    ],
  }
 ];
-
+//<Navigation/>
 export default () => {
   return (
-    <Navigation/>
+    
     <View style={styles.container}>
       <Card style={styles.introCard}>
       <Card.Content> {/**this card contains the contructions and
