@@ -1,9 +1,10 @@
 import React from 'react';
 import {StyleSheet,Text,View,SectionList,SafeAreaView,Image,FlatList,} from 'react-native';
 import { Card, Title, Paragraph } from 'react-native-paper';
-//import { AppNavigator } from '../../routes/Stack';
-//import sResults from '../screens/sResults';
+import sResults from '../screens/sResults';
 import SearchBar from '../components/searchBar';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 //home page of Lazy Cook's Directory
 
 const ListItem = ({ item }) => { // this is for the creators fav section
@@ -93,6 +94,7 @@ export default () => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container: {

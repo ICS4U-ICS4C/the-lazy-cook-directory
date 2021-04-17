@@ -17,7 +17,8 @@ import * as firebase from 'firebase';
 import { firestore } from 'firebase';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import navigation from '../navconfig.js/navigation';
+import Home from '../screens/Home';
+import sResults from '../screens/sResults';
 
 
 // this code is for the search bar function and styling
@@ -25,7 +26,22 @@ import navigation from '../navconfig.js/navigation';
 //for ignoring warning message in console
 LogBox.ignoreLogs(['Setting a timer']);
 
+const Stack = createStackNavigator();
 
+function App(){
+  return(
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+        name = "homescreen"
+        component= {Home}/>
+        <Stack.Screen
+        name = "resultsscreen"
+        component= {sResults}/>
+      </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
 export default function SearchBar({navigation}){
     //has array of items, ingredients is the array and setingredients is equal to usestate in which we can change the array
     const [ingredients,setingredients] = useState([
@@ -63,7 +79,7 @@ export default function SearchBar({navigation}){
     //for searching ingredients, how to access each ingredient. store this
     //value into another array which we will use to search
     const search = (ingredients) =>{
-        navigation.push("sResults")
+        navigation.navigate("sResults");
         let userInputArray = []
         for (let i of ingredients){
             userInputArray.push(i.text)
@@ -187,4 +203,3 @@ const styles = StyleSheet.create({
         color: 'white',
       }
 })
-
