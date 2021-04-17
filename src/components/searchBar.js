@@ -373,7 +373,7 @@ export default function SearchBar({navigation}){
                     <Pressable style={styles.buttonSearch}  onPress = {()=> search(ingredients)}>
                         <Text style={styles.textSearch}>Search</Text>
                     </Pressable>
-                    <Button style={styles.buttonSearch} title = 'gaga' onPress = {()=> navigation.navigate('sResults')}/>
+                    <Button style={styles.buttonSearch} title = 'test' onPress = {()=> navigation.navigate('sResults')}/>
                       
 
     
