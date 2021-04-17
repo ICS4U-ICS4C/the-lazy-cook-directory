@@ -13,10 +13,12 @@ import {View,
     LogBox} from 'react-native';
 import theRecipes from '../db/firebaseConfig';
 import IngredientItem from './ingredientItem';
-import {listt} from './testRecipDb';
+//import {listt} from './testRecipDb';
 import 'firebase/firestore';
 import * as firebase from 'firebase';
 import { firestore } from 'firebase';
+// import { NavigationContainer } from '@react-navigation/native';
+// import { createStackNavigator } from '@react-navigation/stack';
 
 //for ignoring warning message in console
 LogBox.ignoreLogs(['Setting a timer']);
@@ -32,7 +34,7 @@ const SearchBar = () => {
 }
 */
 
-export default function SearchBar({navigation}){
+export default function SearchBar(){
     //has array of items, ingredients is the array and setingredients is equal to usestate in which we can change the array
     const [ingredients,setingredients] = useState([
         {text: "milk", key:"1"}
@@ -69,12 +71,10 @@ export default function SearchBar({navigation}){
     //for searching ingredients, how to access each ingredient. store this
     //value into another array which we will use to search
     const search = (ingredients) =>{
-      
         let userInputArray = []
         for (let i of ingredients){
             userInputArray.push(i.text)
         }
-      
         //have to fix it and make sure that it only gets recipes with ingredients we want
         //instead of console.log, show it on recipe results page
         //have to navigate to results page (not done)
@@ -105,11 +105,14 @@ export default function SearchBar({navigation}){
             for (let i in count){
                 if(count[i] <= userInputArray.length){
                     updatedlist.push(i);
+                   
                 }
             }
            console.log(updatedlist);
+          
         });
     }
+    
     return(
         <View style={styles.container}>
             <View>
@@ -131,6 +134,13 @@ export default function SearchBar({navigation}){
                     data = {ingredients}
                     renderItem ={({item}) => (
                         <IngredientItem item = {item} pressDelete ={pressDelete}/>
+                    )}
+                />
+                //tying to see if updatedlist shows up on app
+                <FlatList
+                    data = {updatedlist}
+                    renderItem ={({item}) => (
+                        <Text >{item}</Text>
                     )}
                 />
             </View>
@@ -197,54 +207,3 @@ const styles = StyleSheet.create({
       }
 })
 
-
-// import React, { useState } from 'react';
-// import { Pressable, StyleSheet, Text, View } from 'react-native';
-
-// export default function App() {
-//     const [timesPressed, setTimesPressed] = useState(0);
-  
-//     let textLog = '';
-//     if (timesPressed > 1) {
-//       textLog = timesPressed + 'x onPress';
-//     } else if (timesPressed > 0) {
-//       textLog = 'onPress';
-//     }
-  
-//     return (
-//       <View>
-//         <Pressable
-//           onPress={() => {
-//             setTimesPressed(current => current + 1);
-//           }}
-//           style={({ pressed }) => [
-//             {
-//               backgroundColor: pressed ? 'rgb(210, 230, 255)' : 'white',
-//             },
-//             styles.wrapperCustom,
-//           ]}>
-//           {({ pressed }) => <Text style={styles.text}>{pressed ? 'Pressed!' : 'Press Me'}</Text>}
-//         </Pressable>
-//         <View style={styles.logBox}>
-//           <Text testID="pressable_press_console">{textLog}</Text>
-//         </View>
-//       </View>
-//     );
-//   }
-  
-//   const styles = StyleSheet.create({
-//     text: {
-//       fontSize: 16,
-//     },
-//     wrapperCustom: {
-//       borderRadius: 8,
-//       padding: 6,
-//     },
-//     logBox: {
-//       padding: 20,
-//       margin: 10,
-//       borderWidth: StyleSheet.hairlineWidth,
-//       borderColor: '#f0f0f0',
-//       backgroundColor: '#000000',
-//     },
-//   });

@@ -1,7 +1,8 @@
 import React from 'react';
 import {StyleSheet,Text,View,SectionList,SafeAreaView,Image,FlatList,} from 'react-native';
 import { Card, Title, Paragraph } from 'react-native-paper';
-
+//import { AppNavigator } from '../../routes/Stack';
+//import sResults from '../screens/sResults';
 import SearchBar from '../components/searchBar';
 
 const ListItem = ({ item }) => {
