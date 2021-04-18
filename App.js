@@ -34,6 +34,8 @@ const HomeStackScreen  = ({navigation}) => (
     //creating screen for when the drawer is opened
     options={{
       title:'Home Of Lazy Cooks',
+        
+      
       headerLeft:  () => (
         //what the header will hold; menu icon on top that will open drawer
         <Icon.Button name="menu" 
