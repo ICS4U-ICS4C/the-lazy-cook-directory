@@ -68,13 +68,13 @@ const FEATURED = [
 
 export default () => {
   
-  let [fontsLoaded, error] = useFonts({
-    NanumBrushScript_400Regular
-  });
+  // let [fontsLoaded, error] = useFonts({
+  //   NanumBrushScript_400Regular
+  // });
 
-  if (!fontsLoaded){
-    return <AppLoading/>;
-  }
+  // if (!fontsLoaded){
+  //   return <AppLoading/>;
+  // }
 
   return (
     <View style={styles.container}>
