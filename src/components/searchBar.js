@@ -74,7 +74,7 @@ export default function SearchBar({navigation}){
     const [firestoredb, setfirestoredb] = useState([]);
     //TEMPORARY LIST FOR UPDATED RECIPES
     const [updatedl, setupdatedl] = useState([]);
-    //final array that contains the recipes!
+    //final array that contains the recipes
     const[finalrecipes,setfinalrecipes] = useState([]);
 
     //when cliking the ingredients, function recieve key, filter item with that key out of array and return new array
@@ -109,45 +109,56 @@ export default function SearchBar({navigation}){
     //value into another array which we will use to search
     const search = (ingredients,recipes,firestoredb,updatedl,finalrecipes) =>{
         //navigation.navigate("sResults")
+        //for every item in ingredient, push that into userInputArray
         let userInputArray = []
         for (let i of ingredients){
             userInputArray.push(i.text)
         }
+        //if userInputArray.length ==0 /or if empty then alert user
         if(userInputArray.length == 0){
             Alert.alert("please enter your ingredients")
         }
+        //connection to firestore
         const firestore = firebase.firestore();
         let reciplelist = []; //list that possible recipes will be pushed to
         let updatedlist = []; // list of the recipes that will be outputed
         let dbingredients = [];
         var count = {};
         let finalarray = [];
+        //perform firebase query
         const col = firestore.collection("Recipes")
+        //for each item in userInputArray, check database for recipes that have that item, and store it into reciplelist
         for(let i in userInputArray){
             const query =col.where('ingredients','array-contains', userInputArray[i])
             query.get().then(snapshot =>{
                 snapshot.docs.forEach(doc=>{
                     reciplelist.push(doc.data().name)
-                    setrecipes((prevrecipe)=>{
+                    //put recipelist array into recipes array
+                    setrecipes(()=>{
                         return reciplelist
                     })
                 })
             })
-        } 
+        }
+        //count the number of duplicated recipe names in recipes array 
         recipes.forEach(function(i) { count[i] = (count[i]||0) + 1;}); 
+        //for every object in count, check if the number of duplicate names == length of userInputarray
         for (let i in count){
             if(count[i] == userInputArray.length){
                 updatedlist.push(i);
-                setupdatedl((prevrecipe)=>{
+                //put updatedlist srray into updatedl array
+                setupdatedl((/*prevrecipe*/)=>{
                     return updatedlist
                 })
             }
         }
+        //looping through every item in updatedlist and performing query to get ingredients of recipe names that match those in updatedlist
         for(let i in updatedlist){
             const newquery = col.where('name', '==', updatedlist[i])
             newquery.get().then(snapshot=>{
                 snapshot.docs.forEach(doc=>{
                     dbingredients.push(doc.data().ingredients)
+                    //putting dbingredients array into firestoredb array
                     setfirestoredb((previngredients)=>{
                         return dbingredients
                     })
@@ -155,15 +166,20 @@ export default function SearchBar({navigation}){
             })
          
         }
+        //looping through every item in updatedl, then looping through every array inside firestoredb array
         for(let i in updatedl){
             for(let j in firestoredb){
+                //checking if userInputArray length is less and or requal to the length of each array of ingredients in firestoredb array
                 if(userInputArray.length <= firestoredb[j].length){
+                    //if it is then push the name of the recipe name that it was looping on
                     finalarray.push(updatedl[i])
                 }
             }
         }
+        //checks if finalarray which has the recipe names is empty, if it is then alert
         if(finalarray && finalarray.length==0){
             Alert.alert("sorry no matches :(")
+            //if it is not empty then put it in finalrecipes array
         } else{
             setfinalrecipes((prev)=>{
                 return finalarray
