@@ -63,25 +63,6 @@ LogBox.ignoreLogs(['Setting a timer']);
 //     return null;
 //   }
 
-LogBox.ignoreLogs(['Setting a timer']);
-//for ignoring warning message in console
-
- const Stack = createStackNavigator();
-
-// function App(){
-//   return(
-//     <NavigationContainer>
-//       <Stack.Navigator>
-//         <Stack.Screen
-//         name = "homescreen"
-//         component= {Home}/>
-//         <Stack.Screen
-//         name = "resultsscreen"
-//         component= {sResults}/>
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   )
-// }
 export default function SearchBar({navigation}){
     //has array of items, ingredients is the array and setingredients is equal to usestate in which we can change the array
     const [ingredients,setingredients] = useState([
