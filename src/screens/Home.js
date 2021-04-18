@@ -1,26 +1,34 @@
 import React from 'react';
-import {StyleSheet,Text,View,SectionList,SafeAreaView,Image,FlatList,} from 'react-native';
+import { Alert } from 'react-native';
+import {StyleSheet,
+  Text,
+  View,
+  SectionList,
+  SafeAreaView,
+  Image,
+  FlatList,
+  TouchableOpacity} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Card, Title, Paragraph } from 'react-native-paper';
-//import { AppNavigator } from '../../routes/Stack';
-//import sResults from '../screens/sResults';
 import SearchBar from '../components/searchBar';
 //home page of Lazy Cook's Directory
 
 const ListItem = ({ item }) => { // this is for the creators fav section
   return (
     <View style={styles.item}>
-      <Image
-        source={{
-          uri: item.imageurl, //url for image cover
-        }}
-        style={styles.itemPhoto}
-        resizeMode="cover"
-      />
-      <Text style={styles.itemText}>{item.text}</Text>
+        <TouchableOpacity
+          onPress={() => Alert.alert('Input these ingredients in the search bar for the recipe 😁 ',item.ingredients)}
+          >
+          <Text style={styles.itemText}>{item.text}</Text>
+          <Image source={{ uri: item.imageurl }} style={styles.logo} style={styles.itemPhoto} resizeMode="cover"/>
+      </TouchableOpacity>
+
     </View>
   );
 };
+
+
+
 const FEATURED = [ 
   /** these are the creator's fav */ 
   {
@@ -31,17 +39,20 @@ const FEATURED = [
        key: '1',
        text: 'Abeers Fav',
        imageurl: 'https://assets.bonappetit.com/photos/5aa9665c275dc52331d9184b/5:7/w_2445,h_3423,c_limit/pantry-pasta.jpg',
+       ingredients: "pasta"
      },
      {
        key: '2',
        text: 'Amats Fav',
        imageurl: 'https://www.thespruceeats.com/thmb/ZunmTodJtTh5qOfWJfxiksmO0MI=/1885x1414/smart/filters:no_upscale()/GettyImages-639704020-5c4a63ecc9e77c00017bfebf.jpg',
+       ingredients: "flour, egg, water, yeast, tomato sauce, cheese"
      },
 
      {
        key: '3',
        text: 'Jasmines Fav',
-       imageurl: 'https://www.cookingclassy.com/wp-content/uploads/2017/12/chicken-broccoli-stir-fry-13.jpg',
+       imageurl: 'https://natashaskitchen.com/wp-content/uploads/2020/07/BLT-Sandwich-Recipe-4.jpg',
+       ingredients: "tomato, lettuce, bacon, bread, mayonaisse"
      }
    ],
  }
@@ -111,16 +122,19 @@ const styles = StyleSheet.create({
   item: {
     margin: 10,
     padding:10,
-    backgroundColor:'white',
+    backgroundColor:'grey',
     borderRadius: 20
   },
   itemPhoto: {
     width: 200,
     height: 200,
-    borderRadius: 20
+    borderRadius: 20,
+    borderWidth: 3
   },
   itemText: {
     color: 'black',
-    marginTop: 5,
+    marginTop: 0,
+    marginBottom: 3,
+    backgroundColor: 'white'
   },
 });
