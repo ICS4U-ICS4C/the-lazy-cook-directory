@@ -5,7 +5,7 @@ import MapView, {
   Callout,
   Polygon,
 } from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions, Image } from 'react-native';
+import { StyleSheet, View, Dimensions, Image } from 'react-native';
 
 /** code for store locator where users can find the Walmart, Food Basics, 
  * FreshCo, No Frills, Oceans, and Adonis around them
@@ -18,7 +18,7 @@ to be accessed like:
 */
 
 export default class App extends React.Component {
-  places = {
+  places = { 
     miscoordinates: [
       { latitude: 43.7343, longitude: -79.6359 },
       { latitude: 43.5789, longitude: -79.5437 },
