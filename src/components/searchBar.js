@@ -323,6 +323,8 @@ export default function SearchBar({navigation}){
     const [firestoredb, setfirestoredb] = useState([]);
     //TEMPORARY LIST FOR UPDATED RECIPES
     const [updatedl, setupdatedl] = useState([]);
+    //final array that contains the recipes!
+    const[finalrecipes,setfinalrecipes] = useState([]);
 
     //when cliking the ingredients, function recieve key, filter item with that key out of array and return new array
     const pressDelete = (key) =>{
@@ -354,17 +356,21 @@ export default function SearchBar({navigation}){
     }
     //for searching ingredients, how to access each ingredient. store this
     //value into another array which we will use to search
-    const search = (ingredients,recipes,firestoredb) =>{
+    const search = (ingredients,recipes,firestoredb,updatedl,finalrecipes) =>{
         //navigation.navigate("sResults")
         let userInputArray = []
         for (let i of ingredients){
             userInputArray.push(i.text)
+        }
+        if(userInputArray.length == 0){
+            Alert.alert("please enter your ingredients")
         }
         const firestore = firebase.firestore();
         let reciplelist = []; //list that possible recipes will be pushed to
         let updatedlist = []; // list of the recipes that will be outputed
         let dbingredients = [];
         var count = {};
+        let finalarray = [];
         const col = firestore.collection("Recipes")
         for(let i in userInputArray){
             const query =col.where('ingredients','array-contains', userInputArray[i])
@@ -398,23 +404,20 @@ export default function SearchBar({navigation}){
             })
          
         }
-
-         console.log(updatedl)
-        // // let final=[];
-        // console.log(userInputArray.length)
-        // console.log(firestoredb.length)
-        // console.log(firestoredb)
-        // for(let i in firestoredb){
-        //     for(let j in i){
-        //         console.log(j)
-        //     }
-    
-        // }
-        // for (let i in updatedl){
-        //     if(userInputArray.length == firestoredb.length){
-        //         console.log("i")
-        //     }
-        //  }
+        for(let i in updatedl){
+            for(let j in firestoredb){
+                if(userInputArray.length <= firestoredb[j].length){
+                    finalarray.push(updatedl[i])
+                }
+            }
+        }
+        if(finalarray && finalarray.length==0){
+            Alert.alert("sorry no matches :(")
+        } else{
+            setfinalrecipes((prev)=>{
+                return finalarray
+            })
+        }
     }
     return(
                  <View style={styles.container}>
@@ -428,7 +431,7 @@ export default function SearchBar({navigation}){
                                  <Text style = {styles.text}> Add Ingredient(s)</Text>
                              </TouchableOpacity>
         
-                             <TouchableOpacity style = {styles.button} onPress={()=> search(ingredients,recipes,firestoredb,updatedl)}>
+                             <TouchableOpacity style = {styles.button} onPress={()=> search(ingredients,recipes,firestoredb,updatedl,finalrecipes)}>
                                  <Text style = {styles.text}> Search</Text>
                              </TouchableOpacity>
         
@@ -447,13 +450,13 @@ export default function SearchBar({navigation}){
                                  <IngredientItem item = {item} pressDelete ={pressDelete}/>
                              )}
                          />
-           {/* <FlatList
+           <FlatList
                     
-                    data = {updatedl}
+                    data = {finalrecipes}
                     renderItem ={({item}) => (
                         <Text>{item}</Text>
                     )}
-                />  */}
+                /> 
                         
         
                      
