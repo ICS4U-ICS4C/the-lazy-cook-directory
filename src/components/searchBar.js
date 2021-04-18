@@ -262,6 +262,8 @@ export default function SearchBar({navigation}){
     const [ingredients,setingredients] = useState([
         {text: "milk", key:"1"}
     ]);
+    //database recipes
+    const [recipes,setrecipes] = useState([]);
     
     //when cliking the ingredients, function recieve key, filter item with that key out of array and return new array
     const pressDelete = (key) =>{
@@ -293,73 +295,46 @@ export default function SearchBar({navigation}){
     }
     //for searching ingredients, how to access each ingredient. store this
     //value into another array which we will use to search
-    const search = (ingredients) =>{
+    const search = (ingredients,recipes) =>{
         //navigation.navigate("sResults")
         let userInputArray = []
         for (let i of ingredients){
             userInputArray.push(i.text)
         }
-        //have to fix it and make sure that it only gets recipes with ingredients we want
-        //instead of console.log, show it on recipe results page
-        //have to navigate to results page (not done)
         const firestore = firebase.firestore();
-        //const col = firestore.collection('Recipes');
         let reciplelist = []; //list that possible recipes will be pushed to
         let updatedlist = []; // list of the recipes that will be outputed
         let dbingredients = [];
-        var  count = {}; 
-        const promises = [];
-        for (let i =0; i< userInputArray.length; i++){
-            let promise = firestore.collection('Recipes').where('ingredients','array-contains', userInputArray[i]).get()
-                .then(snapshot=>{
-                    if(snapshot.empty){
-                        Alert.alert("No matching recipes, time to go shopping")
-                        {text: 'ok'}
-                    }
-                    snapshot.docs.forEach(doc =>{
-                        reciplelist.push(doc.data().name)
-                        //console.log(reciplelist);
-                        
-                    });
-                    return;
+        var count = {};
+        const col = firestore.collection("Recipes")
+        for(let i in userInputArray){
+            const query =col.where('ingredients','array-contains', userInputArray[i])
+            query.get().then(snapshot =>{
+                snapshot.docs.forEach(doc=>{
+                    reciplelist.push(doc.data().name)
+                    setrecipes((prevrecipe)=>{
+                        return [reciplelist]
+                    })
                 })
-            promises.push(promise);
-        } //end of foor loop
-        
-        Promise.all(promises).then(() =>{
-           //console.log(reciplelist);
-           //for (i in reciplelist)
-           reciplelist.forEach(function(i) { count[i] = (count[i]||0) + 1;}); 
-           for (let i in count){
-               if (count[i] == userInputArray.length){
-                   updatedlist.push(i)
-               } else{
-                   //console.log("no match oops")
-               }
-          }
-          //trying to get ingredients from database
-          const gaga = firebase.firestore();
-          for (let j in updatedlist){
-            let newquery = gaga.collection('Recipes').where('name', '==', updatedlist[j]).get()
-            .then((querySnapshot) =>{querySnapshot.forEach((doc)=>{
-                dbingredients.push(doc.data().ingredients);
-                //console.log(dbingredients);
             })
-             return;
-            })
-            promises.push(newquery);
-          }
-          Promise.all(promises).then(() =>{
-            for (i in userInputArray){
-                if (userInputArray.length == dbingredients.length){
-                    console.log()
-                }
+        } 
+        let what = recipes[0]
+        what.forEach(function(i) { count[i] = (count[i]||0) + 1;}); 
+        for (let i in count){
+            if(count[i] == userInputArray.length){
+                updatedlist.push(i);
             }
-            console.log(dbingredients);
-            console.log(updatedlist);
-          })
-         
-        });
+        }
+        for(let i in updatedlist){
+            const newquery = col.where('name', '==', updatedlist[i])
+            newquery.get().then(snapshot=>{
+                snapshot.docs.forEach(doc=>{
+                    dbingredients.push(doc.data().ingredients)
+                    console.log(dbingredients)
+                })
+            })
+        }
+        console.log(dbingredients); 
     }
     return(
         <View style={styles.container}>
@@ -370,10 +345,10 @@ export default function SearchBar({navigation}){
                         <Text style={styles.text}>Add</Text> 
                     </Pressable>
 
-                    <Pressable style={styles.buttonSearch}  onPress = {()=> search(ingredients)}>
+                    <Pressable style={styles.buttonSearch}  onPress = {()=> search(ingredients,recipes)}>
                         <Text style={styles.textSearch}>Search</Text>
                     </Pressable>
-                    <Button style={styles.buttonSearch} title = 'test' onPress = {()=> navigation.navigate('sResults')}/>
+                    <Button style={styles.buttonSearch} title = 'test' onPress = {()=> console.log(recipes)}/>
                       
 
     
@@ -385,6 +360,13 @@ export default function SearchBar({navigation}){
                         <IngredientItem item = {item} pressDelete ={pressDelete}/>
                     )}
                 />
+                {/* <FlatList
+                    
+                    data = {recipes}
+                    renderItem ={({item}) => (
+                        <Text>{item}</Text>
+                    )}
+                /> */}
                 
 
              

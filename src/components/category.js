@@ -14,7 +14,7 @@ class Category extends Component {
                 <View style={{ flex: 2 }}>
 
                         <TouchableOpacity onPress={ () => this.props.link()}>
-                            <Image style={{ flex: 1, width: null, height: null, resizeMode: 'cover' }} source= {this.props.imageUri} />
+                            <Image style={{ flex: 1, resizeMode: 'cover' }} source= {this.props.imageUri} />
                         </TouchableOpacity>
                    
                 </View>
