@@ -11,8 +11,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 //import Navigation from './src/navconfig.js/navigation';
 
 
-//export default () => <Navigation/>;
-
 
 // header + menu code, route home page (as in home page is desplayed)
 const HomeStack = createStackNavigator();
@@ -95,7 +93,6 @@ const LocatorStackScreen  = ({navigation}) => (
 
 
 export default function Menu() {
-
   return ( 
 
     <NavigationContainer>

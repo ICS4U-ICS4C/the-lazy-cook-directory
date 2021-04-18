@@ -81,9 +81,9 @@ export default () => {
     NanumBrushScript_400Regular
   });
 
-  if (!fontsLoaded){
-    return <AppLoading/>;
-  }
+  // if (!fontsLoaded){
+  //   return <AppLoading/>;
+  // }
 
   return (
     /**
