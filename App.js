@@ -9,8 +9,7 @@ import storeLocator from './src/screens/storeLocator';
 // import { DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 //import Navigation from './src/navconfig.js/navigation';
-import { useFonts,NanumBrushScript_400Regular } from '@expo-google-fonts/nanum-brush-script';
-import { AppLoading } from 'expo';
+
 
 //export default () => <Navigation/>;
 
@@ -19,7 +18,6 @@ import { AppLoading } from 'expo';
 const HomeStack = createStackNavigator();
 //const RecipesStack = createStackNavigator(); 
 const LocatorStack = createStackNavigator();
-const TesterStack = createDrawerNavigator();
 const Drawer = createDrawerNavigator();
 
 
@@ -94,40 +92,9 @@ const LocatorStackScreen  = ({navigation}) => (
     }}/>
   </LocatorStack.Navigator>
 );
-//Fb tester tab
-const TesterStackScreen  = ({navigation}) => (
-  <TesterStack.Navigator screenOptions={{
-    headerStyle: {
-      backgroundColor: '#f5df62',
-      fontFamily:"NanumBrushScript_400Regular"
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-
-    }
-  }}>
-    <TesterStack.Screen name='Firestore Tester'component={FbTester}
-    options={{
-      headerLeft:  () => (
-        <Icon.Button name="menu" 
-        size={25}
-        backgroundColor="#f5df62"
-        onPress={() => navigation.openDrawer()}/>
-      )
-    }}/>
-  </TesterStack.Navigator>
-)
 
 
 export default function Menu() {
-  
-  let [fontsLoaded, error] = useFonts({
-    NanumBrushScript_400Regular
-  });
-  
-  if (!fontsLoaded){
-    return <AppLoading/>;
-  }
 
   return ( 
 
@@ -135,7 +102,6 @@ export default function Menu() {
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name ='Home' component={HomeStackScreen}/>
         <Drawer.Screen name = 'Store Locator' component={LocatorStackScreen }/>
-        <Drawer.Screen name = 'Firestore Tester' component={TesterStackScreen}/>
       </Drawer.Navigator>
     </NavigationContainer>
 

@@ -12,7 +12,6 @@ import {View,
     LogBox,
     TouchableOpacity} from 'react-native';
 import IngredientItem from './ingredientItem';
-import theRecipes from '../db/firebaseConfig';
 import 'firebase/firestore';
 import * as firebase from 'firebase';
 import { NavigationContainer } from '@react-navigation/native';
