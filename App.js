@@ -9,10 +9,7 @@ import storeLocator from './src/screens/storeLocator';
 // import { DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 //import Navigation from './src/navconfig.js/navigation';
-import { 
-  useFonts,
-  NanumBrushScript_400Regular 
-} from '@expo-google-fonts/nanum-brush-script';
+import { useFonts,NanumBrushScript_400Regular } from '@expo-google-fonts/nanum-brush-script';
 import { AppLoading } from 'expo';
 
 //export default () => <Navigation/>;
