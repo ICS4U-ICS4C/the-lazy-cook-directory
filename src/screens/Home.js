@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Alert } from 'react-native'; 
 import {StyleSheet,
   Text,
@@ -11,11 +11,12 @@ import {StyleSheet,
 import { ScrollView } from 'react-native-gesture-handler';
 import { Card, Title, Paragraph } from 'react-native-paper';
 import SearchBar from '../components/searchBar';
-import { 
-  useFonts,
-  NanumBrushScript_400Regular 
-} from '@expo-google-fonts/nanum-brush-script';
-import { AppLoading } from 'expo';
+import * as Font from 'expo-font';
+// import AppLoading from 'expo-app-loading';
+// import {AppLoading} from 'expo';
+
+
+
 
 //importing componenets used in this program
 
@@ -74,15 +75,22 @@ const ListItem = ({ item }) => {
 };
 
 
-export default () => {
-  
-  //checks if the imported font (NanumBrushScript_400Regular)loaded 
-  let [fontsLoaded, error] = useFonts({
-    NanumBrushScript_400Regular
-  });
+// const fetchFonts = ()=> {
+//   return Font.loadAsync({
+//     'NanumPenScript_400Regular': require('../fonts/NanumBrushScript-Regular.ttf')
+//   });
+// };
 
-  // if (!fontsLoaded){
-  //   return <AppLoading/>;
+export default () => {
+  // const [dataLoaded,setDataLoaded] = useState(false);
+
+  // if (!dataLoaded){
+  //   return (
+  //     <AppLoading
+  //     startAsync = {fetchFonts}
+  //     onFinish={() => setDataLoaded(true)}
+  //     />
+  //   );
   // }
 
   return (
@@ -102,7 +110,7 @@ export default () => {
       <ScrollView>
         <Card style={styles.introCard}>
         <Card.Content> 
-          <Title style ={{fontFamily:"NanumBrushScript_400Regular", fontSize:25}}>Welcome to the Lazy Cooks' Directory</Title>
+          <Title style ={{fontSize:25}}>Welcome to the Lazy Cooks' Directory</Title>
           <Paragraph>Input the ingredients you want to cook with and we'll give you a recipe you thought was never possible with minimal ingredients!</Paragraph>
           <Paragraph> Note: for seasonings aside from salt and paper, please write "seasoning", the type will be specified in the recipe.</Paragraph>
           <SearchBar/>
