@@ -53,30 +53,6 @@ LogBox.ignoreLogs(['Setting a timer']);
 //   )
 // }
 
-import { Navigation } from '@material-ui/icons';
-import React, {Component, useEffect, useState} from 'react';
-import {View,
-    Pressable,
-    TextInput,
-    StyleSheet,
-    StatusBar,
-    FlatList,
-    Text,
-    Button,
-    ScrollView,
-    Alert,
-    LogBox,
-    TouchableOpacity} from 'react-native';
-import IngredientItem from './ingredientItem';
-import theRecipes from '../db/firebaseConfig';
-import 'firebase/firestore';
-import * as firebase from 'firebase';
-import { firestore } from 'firebase';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Home from '../screens/Home';
-import sResults from '../screens/sResults';
-
 /**
  * this is the code dedicated to coding the functinality and 
  * design of the selective search bar
