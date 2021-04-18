@@ -1541,6 +1541,11 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/nanum-brush-script/-/nanum-brush-script-0.1.0.tgz#719880ed77554973233c89d02fbdbbfcbe52745f"
   integrity sha512-kIMVLXnncobQRh/HfNr8vG0wCv94lnZU16+KDLao+tdbha8Uysi2iAfpVxoHLNOZPy++S9DBias4bfjDMccLDg==
 
+"@expo-google-fonts/nanum-pen-script@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/nanum-pen-script/-/nanum-pen-script-0.1.0.tgz#eb5b48993d783c33c0be4155bf0e6027cde2e596"
+  integrity sha512-z5mvljWaM/L/n94yPL6SqtS/0GZ1W8zsgh89h9TYyGOF7eJw/pxK2gxUKhNOh9M/8VBBwA9/Dg/n5KuWrnINwg==
+
 "@expo/config-plugins@1.0.26", "@expo/config-plugins@^1.0.18":
   version "1.0.26"
   resolved "https://registry.yarnpkg.com/@expo/config-plugins/-/config-plugins-1.0.26.tgz#afe2463aba3a54ab7e27e2c2e4ac325ced60d467"
