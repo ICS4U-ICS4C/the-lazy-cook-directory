@@ -1,22 +1,9 @@
 import React from 'react';
 import {StyleSheet,View,Text,Image,FlatList} from 'react-native';
-import { Ionicons } from '@expo/vector-icons';
-import { 
-  useFonts,
-  NanumBrushScript_400Regular 
-} from '@expo-google-fonts/nanum-brush-script';
-import { AppLoading } from 'expo';
+
   
 
 export default function sResults() {
-  let [fontsLoaded, error] = useFonts({
-    NanumBrushScript_400Regular
-  });
-
-  if (!fontsLoaded){
-    return <AppLoading/>;
-  }
-
     return(
     <View style={styles.container}>
       <Ionicons name="ios-menu-sharp" size={24} color="black" />

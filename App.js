@@ -16,7 +16,6 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const HomeStack = createStackNavigator();
 //const RecipesStack = createStackNavigator(); 
 const LocatorStack = createStackNavigator();
-const TesterStack = createDrawerNavigator();
 const Drawer = createDrawerNavigator();
 
 
@@ -91,29 +90,6 @@ const LocatorStackScreen  = ({navigation}) => (
     }}/>
   </LocatorStack.Navigator>
 );
-//Fb tester tab
-const TesterStackScreen  = ({navigation}) => (
-  <TesterStack.Navigator screenOptions={{
-    headerStyle: {
-      backgroundColor: '#f5df62',
-      fontFamily:"NanumBrushScript_400Regular"
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-
-    }
-  }}>
-    <TesterStack.Screen name='Firestore Tester'component={FbTester}
-    options={{
-      headerLeft:  () => (
-        <Icon.Button name="menu" 
-        size={25}
-        backgroundColor="#f5df62"
-        onPress={() => navigation.openDrawer()}/>
-      )
-    }}/>
-  </TesterStack.Navigator>
-)
 
 
 export default function Menu() {
@@ -123,7 +99,6 @@ export default function Menu() {
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name ='Home' component={HomeStackScreen}/>
         <Drawer.Screen name = 'Store Locator' component={LocatorStackScreen }/>
-        <Drawer.Screen name = 'Firestore Tester' component={TesterStackScreen}/>
       </Drawer.Navigator>
     </NavigationContainer>
 

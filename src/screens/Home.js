@@ -1,5 +1,5 @@
 import React from 'react';
-import { Alert } from 'react-native';
+import { Alert } from 'react-native'; 
 import {StyleSheet,
   Text,
   View,
@@ -16,22 +16,10 @@ import {
   NanumBrushScript_400Regular 
 } from '@expo-google-fonts/nanum-brush-script';
 import { AppLoading } from 'expo';
+
+//importing componenets used in this program
+
 //home page of Lazy Cook's Directory
-
-const ListItem = ({ item }) => { // this is for the creators fav section
-  return (
-    <View style={styles.item}>
-        <TouchableOpacity
-          onPress={() => Alert.alert('Input these ingredients in the search bar for the recipe 😁 ',item.ingredients)}
-          >
-          <Text style={styles.itemText}>{item.text}</Text>
-          <Image source={{ uri: item.imageurl }} style={styles.logo} style={styles.itemPhoto} resizeMode="cover"/>
-      </TouchableOpacity>
-
-    </View>
-  );
-};
-
 
 
 const FEATURED = [ 
@@ -64,19 +52,52 @@ const FEATURED = [
  }
 ];
 
+const ListItem = ({ item }) => {
+   /**this is for the creators fav section
+    * 
+    * When the user presses on the image the recipes displayed
+    * an Alet will pop up, stating the ingredeitns the user
+    * has to search to retrive the recipe
+    * 
+    * item.text means to retrive the item 'text' from the data above stored in FEATURED
+    * same with imageurl(the url of the image on screen) and ingredients
+    * */ 
+  return (
+    <View style={styles.item}>
+        <TouchableOpacity onPress={() => Alert.alert('Input these ingredients in the search bar for the recipe 😁 ',item.ingredients)}>
+          <Text style={styles.itemText}>{item.text}</Text>
+          <Image source={{ uri: item.imageurl }} style={styles.logo} style={styles.itemPhoto} resizeMode="cover"/>
+      </TouchableOpacity>
+
+    </View>
+  );
+};
 
 
 export default () => {
   
-  // let [fontsLoaded, error] = useFonts({
-  //   NanumBrushScript_400Regular
-  // });
+  //checks if the imported font loaded 
+  let [fontsLoaded, error] = useFonts({
+    NanumBrushScript_400Regular
+  });
 
   // if (!fontsLoaded){
   //   return <AppLoading/>;
   // }
 
   return (
+    /**
+     * in the Card, the instructions are listed as well as a note to the user. Below the note is the 
+     * search bar component being called from searchBar.js. It calls the search bar along with buttons
+     * accompanying the functionality of the search bar. 
+     * 
+     * After the card is a section list which is where the Creator's Fav section is displayed.
+     * It calls the data from FEATURED
+     * the title for this compartment is called by 'section.title'
+     * The flatList is the list of the creator's favroutie reicpe. Its set to be horizontal
+     * and can be scrolled horizontally however the scroll bar is not visible. 
+     * The if statement is to prevent the duplicate vertical version of the list from appearing
+     */
     <View style={styles.container}>
       <ScrollView>
         <Card style={styles.introCard}>
@@ -120,6 +141,8 @@ export default () => {
   );
 };
 
+
+//styling
 const styles = StyleSheet.create({
   container: {
     flex: 1,

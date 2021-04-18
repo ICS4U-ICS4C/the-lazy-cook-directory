@@ -271,7 +271,8 @@ import {View,
     Button,
     ScrollView,
     Alert,
-    LogBox} from 'react-native';
+    LogBox,
+    TouchableOpacity} from 'react-native';
 import IngredientItem from './ingredientItem';
 import theRecipes from '../db/firebaseConfig';
 import 'firebase/firestore';
@@ -282,27 +283,35 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../screens/Home';
 import sResults from '../screens/sResults';
 
-// this code is for the search bar function and styling
+/**
+ * this is the code dedicated to coding the functinality and 
+ * design of the selective search bar
+ *  
+ */
+
+//   if (!loaded) {
+//     return null;
+//   }
 
 LogBox.ignoreLogs(['Setting a timer']);
 //for ignoring warning message in console
 
-const Stack = createStackNavigator();
+ const Stack = createStackNavigator();
 
-function App(){
-  return(
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-        name = "homescreen"
-        component= {Home}/>
-        <Stack.Screen
-        name = "resultsscreen"
-        component= {sResults}/>
-      </Stack.Navigator>
-    </NavigationContainer>
-  )
-}
+// function App(){
+//   return(
+//     <NavigationContainer>
+//       <Stack.Navigator>
+//         <Stack.Screen
+//         name = "homescreen"
+//         component= {Home}/>
+//         <Stack.Screen
+//         name = "resultsscreen"
+//         component= {sResults}/>
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   )
+// }
 export default function SearchBar({navigation}){
     //has array of items, ingredients is the array and setingredients is equal to usestate in which we can change the array
     const [ingredients,setingredients] = useState([
@@ -387,8 +396,10 @@ export default function SearchBar({navigation}){
                     })
                 })
             })
+         
         }
-        // console.log(updatedl)
+
+         console.log(updatedl)
         // // let final=[];
         // console.log(userInputArray.length)
         // console.log(firestoredb.length)
@@ -417,7 +428,7 @@ export default function SearchBar({navigation}){
                                  <Text style = {styles.text}> Add Ingredient(s)</Text>
                              </TouchableOpacity>
         
-                             <TouchableOpacity style = {styles.button} onPress={()=> search(ingredients)}>
+                             <TouchableOpacity style = {styles.button} onPress={()=> search(ingredients,recipes,firestoredb,updatedl)}>
                                  <Text style = {styles.text}> Search</Text>
                              </TouchableOpacity>
         
@@ -436,13 +447,13 @@ export default function SearchBar({navigation}){
                                  <IngredientItem item = {item} pressDelete ={pressDelete}/>
                              )}
                          />
-          {/* <FlatList
+           {/* <FlatList
                     
-                    data = {firestoredb}
+                    data = {updatedl}
                     renderItem ={({item}) => (
                         <Text>{item}</Text>
                     )}
-                /> */}
+                />  */}
                         
         
                      
