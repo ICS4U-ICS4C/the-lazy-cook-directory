@@ -4,7 +4,6 @@ import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View } from 'react-native';
 import Home from './src/screens/Home';
-//import Recipes from './src/screens/Recipes';
 import storeLocator from './src/screens/storeLocator';
 // import { StackRouter } from 'react-navigation';
 // import { DrawerItem } from '@react-navigation/drawer';
@@ -15,6 +14,7 @@ import {
   NanumBrushScript_400Regular 
 } from '@expo-google-fonts/nanum-brush-script';
 import { AppLoading } from 'expo';
+
 //export default () => <Navigation/>;
 
 
@@ -123,6 +123,7 @@ const TesterStackScreen  = ({navigation}) => (
 
 
 export default function Menu() {
+  
   let [fontsLoaded, error] = useFonts({
     NanumBrushScript_400Regular
   });
@@ -140,6 +141,7 @@ export default function Menu() {
         <Drawer.Screen name = 'Firestore Tester' component={TesterStackScreen}/>
       </Drawer.Navigator>
     </NavigationContainer>
+
   )};
 
 //<Drawer.Screen name ='Recipes' component={RecipesStackScreen}/>
