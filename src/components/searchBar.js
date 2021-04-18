@@ -87,13 +87,13 @@ export default function SearchBar({navigation}){
     const [ingredients,setingredients] = useState([
         {text: "milk", key:"1"}
     ]);
-    //recipes that will be displayed
+    //recipes that user input
     const [recipes,setrecipes] = useState([]);
 
-    //recipes from database
+    //recipe ingredients from database
     const [firestoredb, setfirestoredb] = useState([]);
     
-    //TEMPORARY LIST FOR UPDATED RECIPES
+    //list for updated recipes
     const [updatedl, setupdatedl] = useState([]);
     //final array that contains the recipes
     const[finalrecipes,setfinalrecipes] = useState([]);
