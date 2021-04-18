@@ -56,8 +56,8 @@ const ListItem = ({ item }) => {
    /**this is for the creators fav section
     * 
     * When the user presses on the image the recipes displayed
-    * an Alet will pop up, stating the ingredeitns the user
-    * has to search to retrive the recipe
+    * an Alet will pop up, stating the ingredients the user
+    * has to search to retrieve the recipe
     * 
     * item.text means to retrive the item 'text' from the data above stored in FEATURED
     * same with imageurl(the url of the image on screen) and ingredients
@@ -76,7 +76,7 @@ const ListItem = ({ item }) => {
 
 export default () => {
   
-  //checks if the imported font loaded 
+  //checks if the imported font (NanumBrushScript_400Regular)loaded 
   let [fontsLoaded, error] = useFonts({
     NanumBrushScript_400Regular
   });
@@ -94,7 +94,7 @@ export default () => {
      * After the card is a section list which is where the Creator's Fav section is displayed.
      * It calls the data from FEATURED
      * the title for this compartment is called by 'section.title'
-     * The flatList is the list of the creator's favroutie reicpe. Its set to be horizontal
+     * The flatList is the list of the creator's favourite recipe. Its set to be horizontal
      * and can be scrolled horizontally however the scroll bar is not visible. 
      * The if statement is to prevent the duplicate vertical version of the list from appearing
      */
