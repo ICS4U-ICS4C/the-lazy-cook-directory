@@ -1,7 +1,6 @@
 import { Navigation } from '@material-ui/icons';
 import React, {Component, useEffect, useState} from 'react';
 import {View,
-    Pressable,
     TextInput,
     StyleSheet,
     StatusBar,
@@ -10,26 +9,50 @@ import {View,
     Button,
     ScrollView,
     Alert,
-    LogBox} from 'react-native';
+    LogBox,
+    TouchableOpacity} from 'react-native';
 import IngredientItem from './ingredientItem';
 import theRecipes from '../db/firebaseConfig';
 import 'firebase/firestore';
 import * as firebase from 'firebase';
-import { firestore } from 'firebase';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Home from '../screens/Home';
 import sResults from '../screens/sResults';
 
-// this code is for the search bar function and styling
+/**
+ * this is the code dedicated to coding the functinality and 
+ * design of the selective search bar
+ *  
+ */
+
+//   if (!loaded) {
+//     return null;
+//   }
+
 
 LogBox.ignoreLogs(['Setting a timer']);
 //for ignoring warning message in console
 
 const Stack = createStackNavigator();
 
-function App(){
-  return(
+// function App(){
+//   return(
+//     <NavigationContainer>
+//       <Stack.Navigator>
+//         <Stack.Screen
+//         name = "homescreen"
+//         component= {Home}/>
+//         <Stack.Screen
+//         name = "resultsscreen"
+//         component= {sResults}/>
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   )
+// }
+export default function SearchBar({navigation}){
+
+
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
@@ -40,9 +63,7 @@ function App(){
         component= {sResults}/>
       </Stack.Navigator>
     </NavigationContainer>
-  )
-}
-export default function SearchBar({navigation}){
+
     //has array of items, ingredients is the array and setingredients is equal to usestate in which we can change the array
     const [ingredients,setingredients] = useState([
         {text: "milk", key:"1"}
@@ -151,14 +172,21 @@ export default function SearchBar({navigation}){
             <View>
                 <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
                     onChangeText={changeHandler}/> 
-                     <Pressable style={styles.button} onPress={()=> submit(text)}>
+                     {/* <Pressable style={styles.button} onPress={()=> submit(text)}>
                         <Text style={styles.text}>Add</Text> 
-                    </Pressable>
+                    </Pressable> */}
+                    <TouchableOpacity style = {styles.button} onPress={()=> submit(text)}>
+                        <Text style = {styles.text}> Add Ingredient(s)</Text>
+                    </TouchableOpacity>
 
-                    <Pressable style={styles.buttonSearch}  onPress = {()=> search(ingredients)}>
+                    <TouchableOpacity style = {styles.button} onPress={()=> search(ingredients)}>
+                        <Text style = {styles.text}> Search</Text>
+                    </TouchableOpacity>
+
+                    {/* <Pressable style={styles.buttonSearch}  onPress = {()=> search(ingredients)}>
                         <Text style={styles.textSearch}>Search</Text>
-                    </Pressable>
-                    <Button style={styles.buttonSearch} title = 'test' onPress = {()=> navigation.navigate('sResults')}/>
+                    </Pressable> */}
+                    <Button style={styles.buttonSearch} title = 'navigator' onPress = {()=> navigation.navigate('sResults')}/>
                       
 
     
@@ -199,16 +227,9 @@ const styles = StyleSheet.create({
         marginTop: 15
     },
     button: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingVertical: 10,
-        paddingHorizontal: 32,
-        borderRadius: 4,
-        backgroundColor: 'grey',
-        borderStyle: 'dashed',
-        borderColor: 'black',
-        marginBottom: 10,
-        color: 'black'
+        padding: 8, 
+        backgroundColor:'#fce874',
+        margin: 5
       },
       text: {
         fontSize: 16,
@@ -216,6 +237,8 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
+        textAlign: 'center',
+        
       },
       buttonSearch:{
         alignItems: 'center',
