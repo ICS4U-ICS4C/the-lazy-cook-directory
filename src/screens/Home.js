@@ -11,6 +11,11 @@ import {StyleSheet,
 import { ScrollView } from 'react-native-gesture-handler';
 import { Card, Title, Paragraph } from 'react-native-paper';
 import SearchBar from '../components/searchBar';
+import { 
+  useFonts,
+  NanumBrushScript_400Regular 
+} from '@expo-google-fonts/nanum-brush-script';
+import { AppLoading } from 'expo';
 //home page of Lazy Cook's Directory
 
 const ListItem = ({ item }) => { // this is for the creators fav section
@@ -30,7 +35,8 @@ const ListItem = ({ item }) => { // this is for the creators fav section
 
 
 const FEATURED = [ 
-  /** these are the creator's fav */ 
+  /** data for creator's favourite recipe section that is 
+   * displayed at the bottom of the home page */ 
   {
    title: 'Creators Picks',
    horizontal: true,
@@ -58,13 +64,24 @@ const FEATURED = [
  }
 ];
 
+
+
 export default () => {
+  
+  let [fontsLoaded, error] = useFonts({
+    NanumBrushScript_400Regular
+  });
+
+  if (!fontsLoaded){
+    return <AppLoading/>;
+  }
+
   return (
     <View style={styles.container}>
       <ScrollView>
         <Card style={styles.introCard}>
         <Card.Content> 
-          <Title>Welcome to the Lazy Cooks' Directory</Title>
+          <Title style ={{fontFamily:"NanumBrushScript_400Regular", fontSize:25}}>Welcome to the Lazy Cooks' Directory</Title>
           <Paragraph>Input the ingredients you want to cook with and we'll give you a recipe you thought was never possible with minimal ingredients!</Paragraph>
           <Paragraph> Note: for seasonings aside from salt and paper, please write "seasoning", the type will be specified in the recipe.</Paragraph>
           <SearchBar/>
@@ -106,7 +123,7 @@ export default () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#121212',
+    backgroundColor: '#f5f5f5',
   },
   introCard:{
     borderBottomRightRadius: 20,
@@ -114,27 +131,28 @@ const styles = StyleSheet.create({
   },
   sectionHeader: {
     fontWeight: '800',
-    fontSize: 18,
-    color: '#f4f4f4',
+    fontSize: 25,
+    color: 'black',
     marginTop: 20,
-    marginBottom: 5,
   },
   item: {
-    margin: 10,
-    padding:10,
-    backgroundColor:'grey',
-    borderRadius: 20
+    marginHorizontal: 15,
+    paddingTop:20,
+    paddingHorizontal: 10,
+    paddingBottom: 10,
+    backgroundColor:'black',
+    borderRadius: 10
   },
   itemPhoto: {
     width: 200,
     height: 200,
-    borderRadius: 20,
+    borderRadius: 10,
     borderWidth: 3
   },
   itemText: {
-    color: 'black',
-    marginTop: 0,
+    color: 'white',
+    marginLeft: 8,
     marginBottom: 3,
-    backgroundColor: 'white'
+    fontSize:18
   },
 });
