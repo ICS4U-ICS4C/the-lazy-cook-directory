@@ -115,6 +115,7 @@ export default function SearchBar({navigation}){
         //checks if an ingredient is written, if it isnt then an alert pops up
         if(text.length >1){
         setingredients((priorIngredients) =>{
+            //returning new text/ingrediets into ingredients array
             return [
                 {text: text.toLowerCase(), key: Math.random().toString()},
                 /// assigned key for each new ingredient
