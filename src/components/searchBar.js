@@ -169,21 +169,21 @@ export default function SearchBar(){
          } 
     }
     //for retrieving the data for each induvidual recipe
-    let info = [];
-    const modall = (item,information) =>{
-        const firestore = firebase.firestore();
-        const col = firestore.collection("Recipes")
-        const query =col.where('name','==', item).get().then((snapshot)=>{
-            snapshot.docs.forEach(doc =>{
-                info.push(doc)
-                setinformation(()=>{
-                    return info
-                })
-            })
-        })
+    // let info = [];
+    // const modall = (item,information) =>{
+    //     const firestore = firebase.firestore();
+    //     const col = firestore.collection("Recipes")
+    //     const query =col.where('name','==', item).get().then((snapshot)=>{
+    //         snapshot.docs.forEach(doc =>{
+    //             info.push(doc)
+    //             setinformation(()=>{
+    //                 return info
+    //             })
+    //         })
+    //     })
                 
        
-     } 
+    //  } 
 
     const navigation = useNavigation(); 
     const [modalOpen, setModalOpen] = useState(false);
