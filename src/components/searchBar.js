@@ -212,7 +212,7 @@ export default function SearchBar(){
                                     data = {finalrecipes}
                                     renderItem ={({item}) => (
                                     <TouchableOpacity>
-                                        <Text>{item}</Text>
+                                        <Text style = {styles.SubText}>{item}</Text>
                                     </TouchableOpacity>
                                     )}
                                     />
