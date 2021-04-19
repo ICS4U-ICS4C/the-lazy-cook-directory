@@ -223,7 +223,7 @@ export default function SearchBar(){
             Alert.alert("no matching recipes, please input more ingredients")
         }
         
-        checks if finalarray which has the recipe names is empty, if it is then alert
+        // checks if finalarray which has the recipe names is empty, if it is then alert
         if(finalarray && finalarray.length==0){
             Alert.alert("sorry no matches :(")
             //if it is not empty then put it in finalrecipes array
@@ -281,7 +281,7 @@ export default function SearchBar(){
                     renderItem ={({item}) => (
                         <Text>{item}</Text>
                     )}
-                />  */}
+                />  
                         
         
                      
