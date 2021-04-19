@@ -98,13 +98,13 @@ export default function SearchBar(){
                 snapshot.docs.forEach(doc=>{
                     reciplelist.push(doc.data().name)
                     setrecipes((prevrecipe)=>{
-                        return [reciplelist]
+                        return reciplelist
                     })
                 })
             })
         } 
-        let what = recipes[0]
-        what.forEach(function(i) { count[i] = (count[i]||0) + 1;}); 
+        //let what = recipes[0]
+        recipes.forEach(function(i) { count[i] = (count[i]||0) + 1;}); 
         for (let i in count){
             if(count[i] == userInputArray.length){
                 updatedlist.push(i);
