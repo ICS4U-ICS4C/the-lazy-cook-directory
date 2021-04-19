@@ -10,7 +10,9 @@ import {View,
     Button,
     ScrollView,
     Alert,
-    LogBox} from 'react-native';
+    LogBox,
+    Modal,
+    TouchableOpacity} from 'react-native';
 import IngredientItem from './ingredientItem';
 import theRecipes from '../db/firebaseConfig';
 import 'firebase/firestore';
@@ -18,6 +20,7 @@ import * as firebase from 'firebase';
 import { firestore } from 'firebase';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import Home from '../screens/Home';
 import sResults from '../screens/sResults';
 
@@ -121,20 +124,38 @@ export default function SearchBar(){
         }
         console.log(dbingredients); 
     }
+    const navigation = useNavigation(); 
+    const [modalOpen, setModalOpen] = useState(false);
     return(
         <View style={styles.container}>
             <View>
                 <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
                     onChangeText={changeHandler}/> 
-                     <Pressable style={styles.button} onPress={()=> submit(text)}>
-                        <Text style={styles.text}>Add</Text> 
-                    </Pressable>
 
-                    <Pressable style={styles.buttonSearch}  onPress = {()=> search(ingredients,recipes)}>
-                        <Text style={styles.textSearch}>Search</Text>
-                    </Pressable>
-                    <Button style={styles.buttonSearch} title = 'test' onPress = {()=> console.log(recipes)}/>
-                      
+                     <TouchableOpacity style={styles.button} onPress={()=> submit(text)}>
+                        <Text style={styles.text}>Add</Text> 
+                    </TouchableOpacity>
+                    
+                    <TouchableOpacity style={styles.button} onPress= {()=> search(ingredients,recipes)}>
+                        <Text style={styles.text}>Search</Text> 
+                    </TouchableOpacity>
+
+                    <Modal visible = {modalOpen} animationType='slide'>
+                        <View style = {styles.ModalContent}>
+                            <Text style={styles.Title}> Hai Amat and Abeerus-sama </Text>
+                                <Text style = {styles.SubText}> We can put our recipe results here </Text>
+                            <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setModalOpen(false)}>
+                                <Text style = {styles.testerText}> Back to Home </Text>
+                                </TouchableOpacity>
+                            </View>
+                        </Modal>
+
+
+                        <TouchableOpacity style = {styles.modalToggle} onPress = {() => setModalOpen(true)}>
+                            <Text style = {styles.testerText}> True Search </Text>
+                        </TouchableOpacity>
+
+                    <Button onPress={() => navigation.navigate('sResults')} title="Search" />           
 
     
                 <View style = {styles.list}>
@@ -187,26 +208,13 @@ const styles = StyleSheet.create({
         paddingHorizontal: 32,
         borderRadius: 4,
         backgroundColor: 'black',
-        borderStyle: 'dashed',
-        borderColor: 'black',
         marginBottom: 10,
       },
       text: {
         fontSize: 16,
         lineHeight: 21,
-        fontWeight: 'bold',
-        letterSpacing: 0.25,
+        letterSpacing: 0.75,
         color: 'white',
-      },
-      buttonSearch:{
-        alignItems: 'center',
-        justifyContent: 'center',
-        paddingVertical: 10,
-        paddingHorizontal: 32,
-        borderRadius: 4,
-        backgroundColor: '#8cbb6c',
-        borderStyle: 'dashed',
-        borderColor: 'black',
       },
       textSearch:{
         fontSize: 16,
@@ -214,5 +222,43 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
+      },
+      testerText:{
+          padding:10,
+          backgroundColor: 'black',
+          color: 'white'
+      },
+      Title:{
+        fontSize: 35,
+        color: 'black',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingHorizontal: 8,
+        borderColor: '#f5f3f5',
+        borderWidth: 8,
+        borderRadius: 10,
+      },
+      SubText:{
+        fontSize: 20,
+        color: '#000',
+        alignItems: 'center',
+        justifyContent: 'center'
+      },
+      ModalContent:{
+          marginTop: 25, 
+          marginBottom: 0,
+      },
+      modalToggle:{
+        marginBottom:10,
+        borderWidth:1,
+        borderColor: '#f3f3f3',
+        padding:10,
+        borderRadius: 5,
+        alignSelf: 'center'
+
+      },
+      ModalClose:{
+          flex:1,
       }
+      
 })
