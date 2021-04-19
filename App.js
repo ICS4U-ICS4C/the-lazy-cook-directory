@@ -118,11 +118,6 @@ export default function Menu() {
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name ='Home' component={HomeStackScreen}/>
         <Drawer.Screen name = 'Store Locator' component={LocatorStackScreen }/>
-        <Drawer.Screen name = 'Search' component={sResults}/>
-        {/* <Button  
-                  title="Search"  
-                  onPress={() => this.props.navigation.navigate('sResults')} 
-              /> */}
       </Drawer.Navigator>
     </NavigationContainer>
 

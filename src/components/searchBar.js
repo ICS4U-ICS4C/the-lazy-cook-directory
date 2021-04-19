@@ -250,23 +250,22 @@ export default function SearchBar(){
                         <TouchableOpacity style = {styles.button} onPress={()=> search(ingredients,recipes,firestoredb,updatedl,finalrecipes)}>
                             <Text style = {styles.text}> Search</Text>
                         </TouchableOpacity>
-
+                        
+                        {/** this will be the pop up screen for the search results */}
                         <Modal visible = {modalOpen} animationType='slide'>
                             <View style = {styles.ModalContent}>
-                            <Text style={styles.Title}> Hai Amat and Abeerus-sama </Text>
-                                <Text style = {styles.SubText}> We can put our recipe results here </Text>
-                            <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setModalOpen(false)}>
-                            <Text style = {styles.testerText}> Back to Home </Text>
-                        </TouchableOpacity>
+                                <Text style={styles.Title}> Results </Text>
+                                  <Text style = {styles.SubText}> BLT Sandwich </Text>
+                                <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setModalOpen(false)}>
+                                    <Text style = {styles.testerText}> Back to Modal </Text>
+                                    </TouchableOpacity>
                             </View>
                         </Modal>
 
 
                         <TouchableOpacity style = {styles.modalToggle} onPress = {() => setModalOpen(true)}>
-                            <Text style = {styles.testerText}> Pres Moi </Text>
+                            <Text style = {styles.testerText}> Search </Text>
                         </TouchableOpacity>
-
-                    <Button onPress={() => navigation.navigate('sResults')} title="Search" />
 
                     <View style = {styles.list}>
                     <FlatList
@@ -323,15 +322,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 32,
         borderRadius: 4,
         backgroundColor: 'black',
-        borderStyle: 'dashed',
-        borderColor: 'black',
         marginBottom: 10,
       },
       text: {
         fontSize: 16,
         lineHeight: 21,
-        fontWeight: 'bold',
-        letterSpacing: 0.25,
+        letterSpacing: 0.75,
         color: 'white',
       },
       buttonSearch:{
@@ -353,32 +349,28 @@ const styles = StyleSheet.create({
       },
       testerText:{
           padding:10,
-          backgroundColor: 'purple',
+          backgroundColor: 'black',
           color: 'white'
       },
       Title:{
         fontSize: 35,
-        color: 'white',
+        color: 'black',
         alignItems: 'center',
         justifyContent: 'center',
         paddingHorizontal: 8,
-        borderColor: '#b4d12e',
+        borderColor: '#f5f3f5',
         borderWidth: 8,
-        borderRadius: 20,
-        backgroundColor: '#bfde31',
+        borderRadius: 10,
       },
       SubText:{
         fontSize: 20,
-        color: '#e5e059',
+        color: '#000',
         alignItems: 'center',
         justifyContent: 'center'
       },
       ModalContent:{
           marginTop: 25, 
           marginBottom: 0,
-
-          
-
       },
       modalToggle:{
         marginBottom:10,
