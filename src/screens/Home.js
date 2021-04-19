@@ -7,11 +7,15 @@ import {StyleSheet,
   SafeAreaView,
   Image,
   FlatList,
-  TouchableOpacity} from 'react-native';
+  TouchableOpacity,
+} from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Card, Title, Paragraph } from 'react-native-paper';
 import SearchBar from '../components/searchBar';
+import sResults from '../screens/sResults';
 import * as Font from 'expo-font';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 // import AppLoading from 'expo-app-loading';
 // import {AppLoading} from 'expo';
 
@@ -80,8 +84,18 @@ const ListItem = ({ item }) => {
 //     'NanumPenScript_400Regular': require('../fonts/NanumBrushScript-Regular.ttf')
 //   });
 // };
-
-export default () => {
+const Stack = createStackNavigator();
+const Screenss =() =>{
+  return(
+    <NavigationContainer>
+      <Stack.Navigator>
+    <Stack.Screen name = "Home" component={Home}/>
+    <Stack.Screen name = "sResults" component = {sResults}/>
+    </Stack.Navigator>
+    </NavigationContainer>
+  )
+}
+export default ({ navigation }) => {
   // const [dataLoaded,setDataLoaded] = useState(false);
 
   // if (!dataLoaded){
@@ -114,6 +128,7 @@ export default () => {
           <Paragraph>Input the ingredients you want to cook with and we'll give you a recipe you thought was never possible with minimal ingredients!</Paragraph>
           <Paragraph> Note: for seasonings aside from salt and paper, please write "seasoning", the type will be specified in the recipe.</Paragraph>
           <SearchBar/>
+          <TouchableOpacity onPress = {()=>navigation.navigate('sResults')}><Text>poop</Text></TouchableOpacity>
         </Card.Content>
       </Card>
 

@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View } from 'react-native';
 import Home from './src/screens/Home';
 import storeLocator from './src/screens/storeLocator';
+import sResults from './src/screens/sResults';
 // import { StackRouter } from 'react-navigation';
 // import { DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -104,7 +105,10 @@ export default function Menu() {
       </Drawer.Navigator>
     </NavigationContainer>
 
+
   )};
+
+
 
 //<Drawer.Screen name ='Recipes' component={RecipesStackScreen}/>
 

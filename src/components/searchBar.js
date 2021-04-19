@@ -19,6 +19,7 @@ import * as firebase from 'firebase';
 import { firestore } from 'firebase';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import Home from '../screens/Home';
 import sResults from '../screens/sResults';
 // {the old code is at the bottom}
@@ -36,8 +37,18 @@ import sResults from '../screens/sResults';
 LogBox.ignoreLogs(['Setting a timer']);
 //for ignoring warning message in console
 
- const Stack = createStackNavigator();
+const Stack = createStackNavigator();
 
+const Screenssss =() =>{
+    return(
+      <NavigationContainer>
+        <Stack.Navigator>
+      <Stack.Screen name = "Home" component={Home}/>
+      <Stack.Screen name = "sResults" component = {sResults}/>
+      </Stack.Navigator>
+      </NavigationContainer>
+    )
+  }
 // function App(){
 //   return(
 //     <NavigationContainer>
@@ -95,7 +106,7 @@ export default function SearchBar({navigation}){
     
     //list for updated recipes
     const [updatedl, setupdatedl] = useState([]);
-    //final array that contains the recipes
+    //contains the final recipe names after removing duplicates, or those that dont match ingredients the we input
     const[finalrecipes,setfinalrecipes] = useState([]);
 
     //when cliking the ingredients, function recieve key, filter item with that key out of array and return new array
@@ -156,7 +167,7 @@ export default function SearchBar({navigation}){
                 snapshot.docs.forEach(doc=>{
                     reciplelist.push(doc.data().name)
                     //put recipelist array into recipes array
-                    setrecipes(()=>{
+                    setrecipes((priorrecipe)=>{
                         return reciplelist
                     })
                 })
@@ -168,10 +179,10 @@ export default function SearchBar({navigation}){
         for (let i in count){
             if(count[i] == userInputArray.length){
                 updatedlist.push(i);
-                //put updatedlist srray into updatedl array
-                setupdatedl((/*prevrecipe*/)=>{
+                //put updatedlist array into updatedl array
+                setupdatedl((prevrecipe)=>{
                     return updatedlist
-                })
+                })  
             }
         }
         //looping through every item in updatedlist and performing query to get ingredients of recipe names that match those in updatedlist
@@ -188,6 +199,9 @@ export default function SearchBar({navigation}){
             })
          
         }
+        if(updatedl.length == 0){
+            Alert.alert("sorry no matching recipes")
+        }else{
         //looping through every item in updatedl, then looping through every array inside firestoredb array
         for(let i in updatedl){
             for(let j in firestoredb){
@@ -195,18 +209,22 @@ export default function SearchBar({navigation}){
                 if(userInputArray.length <= firestoredb[j].length){
                     //if it is then push the name of the recipe name that it was looping on
                     finalarray.push(updatedl[i])
+                    setfinalrecipes((prev)=>{
+                        return finalarray
+                    })
                 }
             }
         }
-        //checks if finalarray which has the recipe names is empty, if it is then alert
-        if(finalarray && finalarray.length==0){
-            Alert.alert("sorry no matches :(")
-            //if it is not empty then put it in finalrecipes array
-        } else{
-            setfinalrecipes((prev)=>{
-                return finalarray
-            })
         }
+        //checks if finalarray which has the recipe names is empty, if it is then alert
+        // if(finalarray && finalarray.length==0){
+        //     Alert.alert("sorry no matches :(")
+        //     //if it is not empty then put it in finalrecipes array
+        // } else{
+        //     setfinalrecipes((prev)=>{
+        //         return finalarray
+        //     })
+        // }
     }
     return(
                  <View style={styles.container}>
@@ -241,7 +259,7 @@ export default function SearchBar({navigation}){
                          />
            <FlatList
                     
-                    data = {finalrecipes}
+                    data = {updatedl}
                     renderItem ={({item}) => (
                         <Text>{item}</Text>
                     )}
