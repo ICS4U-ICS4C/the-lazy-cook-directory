@@ -1,4 +1,4 @@
-import { Navigation } from '@material-ui/icons';
+import { ContactPhoneOutlined, Navigation } from '@material-ui/icons';
 import React, {Component, useEffect, useState} from 'react';
 import {View,
     Pressable,
@@ -36,33 +36,6 @@ import sResults from '../screens/sResults';
 
 LogBox.ignoreLogs(['Setting a timer']);
 //for ignoring warning message in console
-
-const Stack = createStackNavigator();
-
-const Screenssss =() =>{
-    return(
-      <NavigationContainer>
-        <Stack.Navigator>
-      <Stack.Screen name = "Home" component={Home}/>
-      <Stack.Screen name = "sResults" component = {sResults}/>
-      </Stack.Navigator>
-      </NavigationContainer>
-    )
-  }
-// function App(){
-//   return(
-//     <NavigationContainer>
-//       <Stack.Navigator>
-//         <Stack.Screen
-//         name = "homescreen"
-//         component= {Home}/>
-//         <Stack.Screen
-//         name = "resultsscreen"
-//         component= {sResults}/>
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   )
-// }
 
 /**
  * this is the code dedicated to coding the functinality and 
@@ -173,18 +146,22 @@ export default function SearchBar({navigation}){
                 })
             })
         }
-        //count the number of duplicated recipe names in recipes array 
-        recipes.forEach(function(i) { count[i] = (count[i]||0) + 1;}); 
-        //for every object in count, check if the number of duplicate names == length of userInputarray
-        for (let i in count){
-            if(count[i] == userInputArray.length){
-                updatedlist.push(i);
-                //put updatedlist array into updatedl array
-                setupdatedl((prevrecipe)=>{
-                    return updatedlist
-                })  
-            }
-        }
+        let uniquechars = [...new Set(recipes)];
+        setupdatedl(()=>{
+            return uniquechars
+        })
+        // //count the number of duplicated recipe names in recipes array 
+        // recipes.forEach(function(i) { count[i] = (count[i]||0) + 1;}); 
+        // //for every object in count, check if the number of duplicate names == length of userInputarray
+        // for (let i in count){
+        //     if(count[i] <= userInputArray.length){
+        //         updatedlist.push(i);
+        //         //put updatedlist array into updatedl array
+        //         setupdatedl((prevrecipe)=>{
+        //             return updatedlist
+        //         })  
+        //     }
+        // }
         //looping through every item in updatedlist and performing query to get ingredients of recipe names that match those in updatedlist
         for(let i in updatedlist){
             const newquery = col.where('name', '==', updatedlist[i])
@@ -199,32 +176,33 @@ export default function SearchBar({navigation}){
             })
          
         }
-        if(updatedl.length == 0){
-            Alert.alert("sorry no matching recipes")
-        }else{
         //looping through every item in updatedl, then looping through every array inside firestoredb array
-        for(let i in updatedl){
+        // for(let i in updatedl){
             for(let j in firestoredb){
                 //checking if userInputArray length is less and or requal to the length of each array of ingredients in firestoredb array
-                if(userInputArray.length <= firestoredb[j].length){
+                if(firestoredb[j].length <= userInputArray.length){
                     //if it is then push the name of the recipe name that it was looping on
-                    finalarray.push(updatedl[i])
-                    setfinalrecipes((prev)=>{
-                        return finalarray
-                    })
+                    finalarray.push(firestoredb[j])
+                    
                 }
             }
-        }
-        }
-        //checks if finalarray which has the recipe names is empty, if it is then alert
-        // if(finalarray && finalarray.length==0){
-        //     Alert.alert("sorry no matches :(")
-        //     //if it is not empty then put it in finalrecipes array
-        // } else{
-        //     setfinalrecipes((prev)=>{
-        //         return finalarray
-        //     })
         // }
+        setfinalrecipes(()=>{
+            return finalarray
+        })
+        if(finalrecipes.length == 0){
+            Alert.alert("no matching recipes, please input more ingredients")
+        }
+        
+        checks if finalarray which has the recipe names is empty, if it is then alert
+        if(finalarray && finalarray.length==0){
+            Alert.alert("sorry no matches :(")
+            //if it is not empty then put it in finalrecipes array
+        } else{
+            setfinalrecipes((prev)=>{
+                return finalarray
+            })
+        }
     }
     return(
                  <View style={styles.container}>
@@ -245,7 +223,7 @@ export default function SearchBar({navigation}){
                              {/* <Pressable style={styles.buttonSearch}  onPress = {()=> search(ingredients,recipes,firestoredb)}>
                                  <Text style={styles.textSearch}>Search</Text>
                              </Pressable> */}
-                             <Button style={styles.buttonSearch} title = 'navigator' onPress = {()=> navigation.navigate('sResults')}/>
+                             <Button style={styles.buttonSearch} title = 'navigator' onPress = {()=>navigation.navigate('sResults')}/>
                               
         
             
@@ -257,13 +235,13 @@ export default function SearchBar({navigation}){
                                  <IngredientItem item = {item} pressDelete ={pressDelete}/>
                              )}
                          />
-           <FlatList
+           {/* <FlatList
                     
-                    data = {updatedl}
+                    data = {finalrecipes}
                     renderItem ={({item}) => (
                         <Text>{item}</Text>
                     )}
-                /> 
+                />  */}
                         
         
                      

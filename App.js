@@ -9,9 +9,9 @@ import sResults from './src/screens/sResults';
 // import { StackRouter } from 'react-navigation';
 // import { DrawerItem } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
-//import Navigation from './src/navconfig.js/navigation';
-
-
+//import Navigation from './src/navconfig.js/navigation'; 
+// import Stack from './src/components/searchBar';
+// import Screenss from './src/components/searchBar';
 
 // header + menu code, route home page (as in home page is desplayed)
 const HomeStack = createStackNavigator();

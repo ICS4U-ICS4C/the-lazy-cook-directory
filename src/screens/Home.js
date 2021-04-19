@@ -128,7 +128,7 @@ export default ({ navigation }) => {
           <Paragraph>Input the ingredients you want to cook with and we'll give you a recipe you thought was never possible with minimal ingredients!</Paragraph>
           <Paragraph> Note: for seasonings aside from salt and paper, please write "seasoning", the type will be specified in the recipe.</Paragraph>
           <SearchBar/>
-          <TouchableOpacity onPress = {()=>navigation.navigate('sResults')}><Text>poop</Text></TouchableOpacity>
+          {/* <TouchableOpacity><Text>nav fron home.js</Text></TouchableOpacity> */}
         </Card.Content>
       </Card>
 
