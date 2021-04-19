@@ -1546,10 +1546,10 @@
   resolved "https://registry.yarnpkg.com/@expo-google-fonts/miltonian/-/miltonian-0.1.0.tgz#ce4731f88143266a505badca0618e62b473bdd14"
   integrity sha512-uyc1a3vKV2nRXa4wUZQm61grydj2lQoL7TOZzoRx6hafH+bkfIJBeF1FDelh/VQZMZbrwO2S32t0bwAuaaZ0sQ==
 
-"@expo-google-fonts/nanum-pen-script@^0.1.0":
+"@expo-google-fonts/nanum-brush-script@^0.1.0":
   version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@expo-google-fonts/nanum-pen-script/-/nanum-pen-script-0.1.0.tgz#eb5b48993d783c33c0be4155bf0e6027cde2e596"
-  integrity sha512-z5mvljWaM/L/n94yPL6SqtS/0GZ1W8zsgh89h9TYyGOF7eJw/pxK2gxUKhNOh9M/8VBBwA9/Dg/n5KuWrnINwg==
+  resolved "https://registry.yarnpkg.com/@expo-google-fonts/nanum-brush-script/-/nanum-brush-script-0.1.0.tgz#719880ed77554973233c89d02fbdbbfcbe52745f"
+  integrity sha512-kIMVLXnncobQRh/HfNr8vG0wCv94lnZU16+KDLao+tdbha8Uysi2iAfpVxoHLNOZPy++S9DBias4bfjDMccLDg==
 
 "@expo-google-fonts/nanum-pen-script@^0.1.0":
   version "0.1.0"
@@ -2816,10 +2816,10 @@
     query-string "^6.13.6"
     react-is "^16.13.0"
 
-"@react-navigation/core@^5.15.2":
-  version "5.15.2"
-  resolved "https://registry.npmjs.org/@react-navigation/core/-/core-5.15.2.tgz"
-  integrity sha512-jNSP0FMu1N6Pa1Slsy8b/JbmlTAXcVeXVwnxrEMVGWeiNqUVYl+tx1FuQAqi3q1m4cg9ygXkGsgLgRmnXAEC8g==
+"@react-navigation/core@^5.15.3":
+  version "5.15.3"
+  resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-5.15.3.tgz#dce7090bf3ea0d302993d742c706825e495b812e"
+  integrity sha512-3ZdyDInh8qg1kygCNkmh9lFgpDf29lTvPsaMe2mm/qvmxLKSgttWBz07P2fc181aV9jTdgQpzYfWZ5KWT036zw==
   dependencies:
     "@react-navigation/routers" "^5.7.2"
     escape-string-regexp "^4.0.0"
@@ -2843,12 +2843,12 @@
     hoist-non-react-statics "^3.3.2"
     react-native-safe-area-view "^0.14.9"
 
-"@react-navigation/native@^5.9.3":
-  version "5.9.3"
-  resolved "https://registry.npmjs.org/@react-navigation/native/-/native-5.9.3.tgz"
-  integrity sha512-xaRlCDRVuFGxHsP/IetwLdNvLJwIJBYCUIx/ufWs6QkT9Q0EB0DtKzXCItuHydjMEVPd1Cy7lfjUlSM6hZ6Q3Q==
+"@react-navigation/native@^5.9.4":
+  version "5.9.4"
+  resolved "https://registry.yarnpkg.com/@react-navigation/native/-/native-5.9.4.tgz#414c044423c58aa1cdde1b6494309e0b51da08b8"
+  integrity sha512-BUCrOXfZDdKWBqM8OhOKQhCX5we4HUo5XG6tCQtVqQAep+7UcApZmMUuemUXDxVe8NPESUpoUlB0RaEpyIdfTQ==
   dependencies:
-    "@react-navigation/core" "^5.15.2"
+    "@react-navigation/core" "^5.15.3"
     escape-string-regexp "^4.0.0"
     nanoid "^3.1.15"
 

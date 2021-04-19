@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View,Button } from 'react-native';
 import Home from './src/screens/Home';
 import storeLocator from './src/screens/storeLocator';
 import sResults from './src/screens/sResults';
@@ -94,6 +94,22 @@ const LocatorStackScreen  = ({navigation}) => (
   </LocatorStack.Navigator>
 );
 
+{/* <Drawer.Screen name = 'Search' component={sResults}/> */}
+
+
+
+// class SearchBootan extends React.Component {  
+//   render() {  
+//       return (  
+//           <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>  
+//               <Button  
+//                   title="Search"  
+//                   onPress={() => this.props.navigation.navigate('sResults')}  
+//               />  
+//           </View>  
+//       );  
+//   }  
+// }  
 
 export default function Menu() {
   return ( 
@@ -102,6 +118,11 @@ export default function Menu() {
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name ='Home' component={HomeStackScreen}/>
         <Drawer.Screen name = 'Store Locator' component={LocatorStackScreen }/>
+        <Drawer.Screen name = 'Search' component={sResults}/>
+        {/* <Button  
+                  title="Search"  
+                  onPress={() => this.props.navigation.navigate('sResults')} 
+              /> */}
       </Drawer.Navigator>
     </NavigationContainer>
 

@@ -3,10 +3,9 @@ import {StyleSheet,View,Text,Image,FlatList} from 'react-native';
 
   
 
-export default function sResults() {
+export default function sResults({navigation}) {
     return(
     <View style={styles.container}>
-      <Ionicons name="ios-menu-sharp" size={24} color="black" />
       <Text style={styles.Title}> Welcome to Results </Text>
         <Text style = {styles.SubText}>
         For All of Our Lazy Cooks ~
