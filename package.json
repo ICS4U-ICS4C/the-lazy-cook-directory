@@ -19,7 +19,7 @@
     "@react-native-firebase/app": "^11.2.0",
     "@react-native-firebase/firestore": "^11.2.0",
     "@react-navigation/drawer": "^5.12.4",
-    "@react-navigation/native": "^5.9.3",
+    "@react-navigation/native": "^5.9.4",
     "@react-navigation/stack": "^5.14.3",
     "@use-expo/font": "^2.0.0",
     "expo": "^41.0.0",

@@ -11,6 +11,7 @@ import {View,
     ScrollView,
     Alert,
     LogBox,
+    Modal,
     TouchableOpacity} from 'react-native';
 import IngredientItem from './ingredientItem';
 import theRecipes from '../db/firebaseConfig';
@@ -36,6 +37,34 @@ import sResults from '../screens/sResults';
 
 LogBox.ignoreLogs(['Setting a timer']);
 //for ignoring warning message in console
+
+// const Stack = createStackNavigator();
+
+// const Screenssss =() =>{
+//     return(
+//       <NavigationContainer>
+//         <Stack.Navigator>
+//       <Stack.Screen name = "Home" component={Home}/>
+//       <Stack.Screen name = "sResults" component = {sResults}/>
+//       </Stack.Navigator>
+//       </NavigationContainer>
+//     )
+//   }
+
+// function App(){
+//   return(
+//     <NavigationContainer>
+//       <Stack.Navigator>
+//         <Stack.Screen
+//         name = "homescreen"
+//         component= {Home}/>
+//         <Stack.Screen
+//         name = "resultsscreen"
+//         component= {sResults}/>
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   )
+// }
 
 /**
  * this is the code dedicated to coding the functinality and 
@@ -66,7 +95,7 @@ LogBox.ignoreLogs(['Setting a timer']);
 //     </NavigationContainer>
 //   )
 // }
-export default function SearchBar({navigation}){
+export default function SearchBar(){
     //has array of items, ingredients is the array and setingredients is equal to usestate in which we can change the array
     const [ingredients,setingredients] = useState([
         {text: "milk", key:"1"}
@@ -204,38 +233,50 @@ export default function SearchBar({navigation}){
             })
         }
     }
+    const navigation = useNavigation(); 
+    const [modalOpen, setModalOpen] = useState(false);
     return(
-                 <View style={styles.container}>
-                     <View>
-                         <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
-                             onChangeText={changeHandler}/> 
-                              {/* <Pressable style={styles.button} onPress={()=> submit(text)}>
-                                 <Text style={styles.text}>Add</Text> 
-                             </Pressable> */}
-                             <TouchableOpacity style = {styles.button} onPress={()=> submit(text)}>
-                                 <Text style = {styles.text}> Add Ingredient(s)</Text>
-                             </TouchableOpacity>
-        
-                             <TouchableOpacity style = {styles.button} onPress={()=> search(ingredients,recipes,firestoredb,updatedl,finalrecipes)}>
-                                 <Text style = {styles.text}> Search</Text>
-                             </TouchableOpacity>
-        
-                             {/* <Pressable style={styles.buttonSearch}  onPress = {()=> search(ingredients,recipes,firestoredb)}>
-                                 <Text style={styles.textSearch}>Search</Text>
-                             </Pressable> */}
-                             <Button style={styles.buttonSearch} title = 'navigator' onPress = {()=>navigation.navigate('sResults')}/>
-                              
-        
-            
-                         <View style = {styles.list}>
-                         <FlatList
-                             horizontal = {true}
-                             data = {ingredients}
-                             renderItem ={({item}) => (
-                                 <IngredientItem item = {item} pressDelete ={pressDelete}/>
-                             )}
-                         />
-           {/* <FlatList
+            <View style={styles.container}>
+                <View>
+                    <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
+                        onChangeText={changeHandler}/> 
+                        {/* <Pressable style={styles.button} onPress={()=> submit(text)}>
+                            <Text style={styles.text}>Add</Text> 
+                        </Pressable> */}
+                        <TouchableOpacity style = {styles.button} onPress={()=> submit(text)}>
+                            <Text style = {styles.text}> Add Ingredient(s)</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity style = {styles.button} onPress={()=> search(ingredients,recipes,firestoredb,updatedl,finalrecipes)}>
+                            <Text style = {styles.text}> Search</Text>
+                        </TouchableOpacity>
+
+                        <Modal visible = {modalOpen} animationType='slide'>
+                            <View style = {styles.ModalContent}>
+                            <Text style={styles.Title}> Hai Amat and Abeerus-sama </Text>
+                                <Text style = {styles.SubText}> We can put our recipe results here </Text>
+                            <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setModalOpen(false)}>
+                            <Text style = {styles.testerText}> Back to Home </Text>
+                        </TouchableOpacity>
+                            </View>
+                        </Modal>
+
+
+                        <TouchableOpacity style = {styles.modalToggle} onPress = {() => setModalOpen(true)}>
+                            <Text style = {styles.testerText}> Pres Moi </Text>
+                        </TouchableOpacity>
+
+                    <Button onPress={() => navigation.navigate('sResults')} title="Search" />
+
+                    <View style = {styles.list}>
+                    <FlatList
+                        horizontal = {true}
+                        data = {ingredients}
+                        renderItem ={({item}) => (
+                            <IngredientItem item = {item} pressDelete ={pressDelete}/>
+                        )}
+                    />
+           <FlatList
                     
                     data = {finalrecipes}
                     renderItem ={({item}) => (
@@ -252,6 +293,9 @@ export default function SearchBar({navigation}){
 
     
 }
+{/* <TouchableOpacity onPress={() => navigation.navigate('sResults')} >
+<Text style = {styles.testerText}>Search</Text>
+</TouchableOpacity>  */}
 
 const styles = StyleSheet.create({
     container:{
@@ -306,5 +350,47 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
+      },
+      testerText:{
+          padding:10,
+          backgroundColor: 'purple',
+          color: 'white'
+      },
+      Title:{
+        fontSize: 35,
+        color: 'white',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingHorizontal: 8,
+        borderColor: '#b4d12e',
+        borderWidth: 8,
+        borderRadius: 20,
+        backgroundColor: '#bfde31',
+      },
+      SubText:{
+        fontSize: 20,
+        color: '#e5e059',
+        alignItems: 'center',
+        justifyContent: 'center'
+      },
+      ModalContent:{
+          marginTop: 25, 
+          marginBottom: 0,
+
+          
+
+      },
+      modalToggle:{
+        marginBottom:10,
+        borderWidth:1,
+        borderColor: '#f3f3f3',
+        padding:10,
+        borderRadius: 5,
+        alignSelf: 'center'
+
+      },
+      ModalClose:{
+          flex:1,
       }
+      
 })

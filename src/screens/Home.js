@@ -8,6 +8,8 @@ import {StyleSheet,
   Image,
   FlatList,
   TouchableOpacity,
+  Button,
+  Modal
 } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import { Card, Title, Paragraph } from 'react-native-paper';
@@ -16,6 +18,7 @@ import sResults from '../screens/sResults';
 import * as Font from 'expo-font';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import {createNativeStackNavigator} from 'react-native-screens/native-stack';
 // import AppLoading from 'expo-app-loading';
 // import {AppLoading} from 'expo';
 
@@ -79,23 +82,8 @@ const ListItem = ({ item }) => {
 };
 
 
-// const fetchFonts = ()=> {
-//   return Font.loadAsync({
-//     'NanumPenScript_400Regular': require('../fonts/NanumBrushScript-Regular.ttf')
-//   });
-// };
-const Stack = createStackNavigator();
-const Screenss =() =>{
-  return(
-    <NavigationContainer>
-      <Stack.Navigator>
-    <Stack.Screen name = "Home" component={Home}/>
-    <Stack.Screen name = "sResults" component = {sResults}/>
-    </Stack.Navigator>
-    </NavigationContainer>
-  )
-}
-export default ({ navigation }) => {
+
+export default () => {
   // const [dataLoaded,setDataLoaded] = useState(false);
 
   // if (!dataLoaded){
@@ -107,7 +95,11 @@ export default ({ navigation }) => {
   //   );
   // }
 
+  // const Stack = createNativeStackNavigator()
+
   return (
+
+
     /**
      * in the Card, the instructions are listed as well as a note to the user. Below the note is the 
      * search bar component being called from searchBar.js. It calls the search bar along with buttons
@@ -128,7 +120,7 @@ export default ({ navigation }) => {
           <Paragraph>Input the ingredients you want to cook with and we'll give you a recipe you thought was never possible with minimal ingredients!</Paragraph>
           <Paragraph> Note: for seasonings aside from salt and paper, please write "seasoning", the type will be specified in the recipe.</Paragraph>
           <SearchBar/>
-          {/* <TouchableOpacity><Text>nav fron home.js</Text></TouchableOpacity> */}
+ 
         </Card.Content>
       </Card>
 
@@ -201,4 +193,7 @@ const styles = StyleSheet.create({
     marginBottom: 3,
     fontSize:18
   },
+  ModalContent:{
+    backgroundColor:'grey'
+  }
 });
