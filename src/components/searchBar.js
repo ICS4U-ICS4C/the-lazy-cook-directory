@@ -167,26 +167,39 @@ export default function SearchBar(){
                 }
             }
          } 
+    
+        //checks if finalarray which has the recipe names is empty, if it is then alert
+        if(finalarray && finalarray.length==0){
+            Alert.alert("sorry no matches :(")
+            //if it is not empty then put it in finalrecipes array
+            }   // } else{
+        //     setfinalrecipes((prev)=>{
+        //         return finalarray
+        //     })
+        // }
     }
     //for retrieving the data for each induvidual recipe
-    // let info = [];
-    // const modall = (item,information) =>{
-    //     const firestore = firebase.firestore();
-    //     const col = firestore.collection("Recipes")
-    //     const query =col.where('name','==', item).get().then((snapshot)=>{
-    //         snapshot.docs.forEach(doc =>{
-    //             info.push(doc)
-    //             setinformation(()=>{
-    //                 return info
-    //             })
-    //         })
-    //     })
-                
+    let info = [];
+    const modall = (item,information) =>{
+        //setsecmodalOpen(true)
+        const firestore = firebase.firestore();
+        const col = firestore.collection("Recipes")
+        const query =col.where('name','==', item).get().then((snapshot)=>{
+            snapshot.docs.forEach(doc =>{
+                info.push(doc.data())
+                setinformation(()=>{
+                    return info
+                })
+            })
+        })
+        //testing this to see if the query works and shows the data
+         console.log(information)       
        
-    //  } 
+     } 
 
     const navigation = useNavigation(); 
     const [modalOpen, setModalOpen] = useState(false);
+    const[secmodalOpen, setsecmodalOpen] = useState(false);
     return(
             <View style={styles.container}>
                 <View>
@@ -211,7 +224,7 @@ export default function SearchBar(){
                                   <FlatList
                                     data = {finalrecipes}
                                     renderItem ={({item}) => (
-                                    <TouchableOpacity>
+                                    <TouchableOpacity onPress={()=> modall(item,information)}>
                                         <Text style = {styles.SubText}>{item}</Text>
                                     </TouchableOpacity>
                                     )}
@@ -222,6 +235,7 @@ export default function SearchBar(){
                                     </TouchableOpacity>
                             </View>
                         </Modal>
+                        {/* maybe making second modal that displays the instructions?? */}
 
 
                         <TouchableOpacity style = {styles.modalToggle} onPress = {() => setModalOpen(true)}>
