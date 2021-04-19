@@ -246,16 +246,18 @@ export default function SearchBar(){
                             <Text style = {styles.text}> Search</Text>
                         </TouchableOpacity>
 
-                        <Modal visible = {modalOpen}>
+                        <Modal visible = {modalOpen} animationType='slide'>
                             <View style = {styles.ModalContent}>
-                            <Text style = {styles.container}> Tifa says hi from modal :D</Text>
-                            <TouchableOpacity onPress = {() => setModalOpen(false)}>
+                            <Text style={styles.Title}> Hai Amat and Abeerus-sama </Text>
+                                <Text style = {styles.SubText}> We can put our recipe results here </Text>
+                            <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setModalOpen(false)}>
                             <Text style = {styles.testerText}> Back to Home </Text>
                         </TouchableOpacity>
                             </View>
-
                         </Modal>
-                        <TouchableOpacity onPress = {() => setModalOpen(true)}>
+
+
+                        <TouchableOpacity style = {styles.modalToggle} onPress = {() => setModalOpen(true)}>
                             <Text style = {styles.testerText}> Pres Moi </Text>
                         </TouchableOpacity>
 
@@ -348,6 +350,42 @@ const styles = StyleSheet.create({
           padding:10,
           backgroundColor: 'purple',
           color: 'white'
+      },
+      Title:{
+        fontSize: 35,
+        color: 'white',
+        alignItems: 'center',
+        justifyContent: 'center',
+        paddingHorizontal: 8,
+        borderColor: '#b4d12e',
+        borderWidth: 8,
+        borderRadius: 20,
+        backgroundColor: '#bfde31',
+      },
+      SubText:{
+        fontSize: 20,
+        color: '#e5e059',
+        alignItems: 'center',
+        justifyContent: 'center'
+      },
+      ModalContent:{
+          marginTop: 25, 
+          marginBottom: 0,
+
+          
+
+      },
+      modalToggle:{
+        marginBottom:10,
+        borderWidth:1,
+        borderColor: '#f3f3f3',
+        padding:10,
+        borderRadius: 5,
+        alignSelf: 'center'
+
+      },
+      ModalClose:{
+          flex:1,
       }
       
 })
