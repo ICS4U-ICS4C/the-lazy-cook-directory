@@ -62,6 +62,8 @@ export default function SearchBar(){
             return priorIngredients.filter(ingredient => ingredient.key != key);
         })
     }
+    //this is where the information/instructions/time everything is stored, u can chage how u want to store it
+    //informaton is stored in an empty array but if that causes problems then change it
     const [information,setinformation] = useState([]);
 
     //keeping track of what user types in a string
@@ -89,7 +91,7 @@ export default function SearchBar(){
     }
     //for searching ingredients, how to access each ingredient. store this
     //value into another array which we will use to search
-    const search = (ingredients,recipes,firestoredb,updatedl,finalrecipes,information) =>{
+    const search = (ingredients,recipes,firestoredb,updatedl,finalrecipes) =>{
         setModalOpen(true)
        
         //for every item in ingredient, push that into userInputArray
@@ -157,13 +159,12 @@ export default function SearchBar(){
          for(let i in updatedl){
             for(let j in firestoredb){
                 //checking if userInputArray length is less and or requal to the length of each array of ingredients in firestoredb array
-                if(firestoredb[j].length <= userInputArray.length){
+                if(userInputArray.length <= firestoredb[j].length){
                     //if it is then push the name of the recipe name that it was looping on
                     finalarray.push(updatedl[i])
-                    setfinalrecipes(()=>{
-                        return finalarray
-                    })
-                    
+                    // setfinalrecipes(()=>{
+                    //     return finalarray
+                    // })  
                 }
             }
          } 
@@ -172,34 +173,38 @@ export default function SearchBar(){
         if(finalarray && finalarray.length==0){
             Alert.alert("sorry no matches :(")
             //if it is not empty then put it in finalrecipes array
-            }   // } else{
-        //     setfinalrecipes((prev)=>{
-        //         return finalarray
-        //     })
-        // }
+            } else{
+             setfinalrecipes((prev)=>{
+                 return finalarray
+             })
+         }
     }
     //for retrieving the data for each induvidual recipe
     let info = [];
     const modall = (item,information) =>{
         //setsecmodalOpen(true)
+        //im getting the documents in which the name equals the item, and this value is the recipe u press
+        //it should automatically passs the recipe name
         const firestore = firebase.firestore();
         const col = firestore.collection("Recipes")
         const query =col.where('name','==', item).get().then((snapshot)=>{
             snapshot.docs.forEach(doc =>{
+                //im storing the document data in the info array
                 info.push(doc.data())
+                //and now im put the information in the info array into the information array which is this==> const [information,setinformation] = useState([]);
                 setinformation(()=>{
                     return info
                 })
             })
         })
         //testing this to see if the query works and shows the data
-         console.log(information)       
+         console.log(information[0])       
        
      } 
 
     const navigation = useNavigation(); 
     const [modalOpen, setModalOpen] = useState(false);
-    const[secmodalOpen, setsecmodalOpen] = useState(false);
+    //const[secmodalOpen, setsecmodalOpen] = useState(false);
     return(
             <View style={styles.container}>
                 <View>
@@ -221,6 +226,7 @@ export default function SearchBar(){
                             <View style = {styles.ModalContent}>
                                 <Text style={styles.Title}> Results </Text>
                                   <Text style = {styles.SubText}> BLT Sandwich </Text>
+                                  {/* the recipe names are shown through flatlist  */}
                                   <FlatList
                                     data = {finalrecipes}
                                     renderItem ={({item}) => (
@@ -237,6 +243,7 @@ export default function SearchBar(){
                         </Modal>
                         {/* maybe making second modal that displays the instructions?? */}
 
+                        
 
                         <TouchableOpacity style = {styles.modalToggle} onPress = {() => setModalOpen(true)}>
                             <Text style = {styles.testerText}> Search </Text>
