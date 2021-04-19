@@ -182,7 +182,7 @@ export default function SearchBar(){
     //for retrieving the data for each induvidual recipe
     let info = [];
     const modall = (item,information) =>{
-        //setsecmodalOpen(true)
+        setsecmodalOpen(true)
         //im getting the documents in which the name equals the item, and this value is the recipe u press
         //it should automatically passs the recipe name
         const firestore = firebase.firestore();
@@ -198,13 +198,13 @@ export default function SearchBar(){
             })
         })
         //testing this to see if the query works and shows the data
-         console.log(information[0])       
+         //console.log(information[0])       
        
      } 
 
     const navigation = useNavigation(); 
     const [modalOpen, setModalOpen] = useState(false);
-    //const[secmodalOpen, setsecmodalOpen] = useState(false);
+    const[secmodalOpen, setsecmodalOpen] = useState(false);
     return(
             <View style={styles.container}>
                 <View>
@@ -223,6 +223,7 @@ export default function SearchBar(){
                         
                         {/** this will be the pop up screen for the search results */}
                         <Modal visible = {modalOpen} animationType='slide'>
+                         
                             <View style = {styles.ModalContent}>
                                 <Text style={styles.Title}> Results </Text>
                                   <Text style = {styles.SubText}> BLT Sandwich </Text>
@@ -243,8 +244,6 @@ export default function SearchBar(){
                         </Modal>
                         {/* maybe making second modal that displays the instructions?? */}
 
-                        
-
                         <TouchableOpacity style = {styles.modalToggle} onPress = {() => setModalOpen(true)}>
                             <Text style = {styles.testerText}> Search </Text>
                         </TouchableOpacity>
@@ -259,6 +258,27 @@ export default function SearchBar(){
                     />
                      
                      </View>
+                        {/* ================================================================= */}
+                        <Modal animationType='fade' visible = {secmodalOpen} >
+                                <View style = {styles.ModalContent}>
+                                {/* <Text style={styles.Title}> Results </Text> */}
+                                  {/* <Text style = {styles.SubText}> BLT Sandwich </Text> */}
+                                    <Text>welcome to modal2</Text>
+                                  <FlatList
+                                    data = {information}
+                                    renderItem ={({item}) => (
+                                    <TouchableOpacity >
+                                        <Text style = {styles.SubText}>{item}</Text>
+                                    </TouchableOpacity>
+                                    )}
+                                    />
+                                   
+                                    <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setsecmodalOpen(false)}>
+                                    <Text style = {styles.testerText}> Back to Modal1 </Text>
+                                    </TouchableOpacity>
+                                </View>
+                            </Modal>
+                            {/* ======================================================================== */}
                      </View>
              </View>
              )
