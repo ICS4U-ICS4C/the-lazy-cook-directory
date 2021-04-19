@@ -26,23 +26,23 @@ import sResults from '../screens/sResults';
 LogBox.ignoreLogs(['Setting a timer']);
 //for ignoring warning message in console
 
-const Stack = createStackNavigator();
+// const Stack = createStackNavigator();
 
-function App(){
-  return(
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-        name = "homescreen"
-        component= {Home}/>
-        <Stack.Screen
-        name = "resultsscreen"
-        component= {sResults}/>
-      </Stack.Navigator>
-    </NavigationContainer>
-  )
-}
-export default function SearchBar({navigation}){
+// function App(){
+//   return(
+//     <NavigationContainer>
+//       <Stack.Navigator>
+//         <Stack.Screen
+//         name = "homescreen"
+//         component= {Home}/>
+//         <Stack.Screen
+//         name = "resultsscreen"
+//         component= {sResults}/>
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   )
+// }
+export default function SearchBar(){
     //has array of items, ingredients is the array and setingredients is equal to usestate in which we can change the array
     const [ingredients,setingredients] = useState([
         {text: "milk", key:"1"}
@@ -121,109 +121,20 @@ export default function SearchBar({navigation}){
         }
         console.log(dbingredients); 
     }
-    //for retrieving the data for each induvidual recipe
-    let info = [];
-    const modall = (item,information) =>{
-        setsecmodalOpen(true)
-        //im getting the documents in which the name equals the item, and this value is the recipe u press
-        //it should automatically passs the recipe name
-        const firestore = firebase.firestore();
-        const col = firestore.collection("Recipes")
-        const query =col.where('name','==', item).get().then((snapshot)=>{
-            snapshot.docs.forEach(doc =>{
-                //im storing the document data in the info array
-                info.push(doc.data())
-                //and now im put the information in the info array into the information array which is this==> const [information,setinformation] = useState([]);
-                setinformation(()=>{
-                    return info
-                })
-            })
-        })
-        //testing this to see if the query works and shows the data
-         //console.log(information[0])       
-       
-     } 
-
-    const navigation = useNavigation(); 
-    const [modalOpen, setModalOpen] = useState(false);
-    const[secmodalOpen, setsecmodalOpen] = useState(false);
     return(
-            <View style={styles.container}>
-                <View>
-                    <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
-                        onChangeText={changeHandler}/> 
-                        {/* <Pressable style={styles.button} onPress={()=> submit(text)}>
-                            <Text style={styles.text}>Add</Text> 
-                        </Pressable> */}
-                        <TouchableOpacity style = {styles.button} onPress={()=> submit(text)}>
-                            <Text style = {styles.text}> Add Ingredient(s)</Text>
-                        </TouchableOpacity>
+        <View style={styles.container}>
+            <View>
+                <TextInput style={styles.searchInput} placeholder = "Insert Ingredients here... "
+                    onChangeText={changeHandler}/> 
+                     <Pressable style={styles.button} onPress={()=> submit(text)}>
+                        <Text style={styles.text}>Add</Text> 
+                    </Pressable>
 
-                        <TouchableOpacity style = {styles.button} onPress={()=> search(ingredients,recipes,firestoredb,updatedl,finalrecipes)}>
-                            <Text style = {styles.text}> Search</Text>
-                        </TouchableOpacity>
-                        
-                        {/** this will be the pop up screen for the search results */}
-                        <Modal visible = {modalOpen} animationType='slide'>
-                         
-                            <View style = {styles.ModalContent}>
-                                <Text style={styles.Title}> Results </Text>
-                                  <Text style = {styles.SubText}> BLT Sandwich </Text>
-                                  {/* the recipe names are shown through flatlist  */}
-                                  <FlatList
-                                    data = {finalrecipes}
-                                    renderItem ={({item}) => (
-                                    <TouchableOpacity onPress={()=> modall(item,information)}>
-                                        <Text style = {styles.SubText}>{item}</Text>
-                                    </TouchableOpacity>
-                                    )}
-                                    />
-        
-                                <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setModalOpen(false)}>
-                                    <Text style = {styles.testerText}> Back to Modal </Text>
-                                    </TouchableOpacity>
-                            </View>
-                        </Modal>
-                        {/* maybe making second modal that displays the instructions?? */}
-
-                        <TouchableOpacity style = {styles.modalToggle} onPress = {() => setModalOpen(true)}>
-                            <Text style = {styles.testerText}> Search </Text>
-                        </TouchableOpacity>
-
-                    <View style = {styles.list}>
-                    <FlatList
-                        horizontal = {true}
-                        data = {ingredients}
-                        renderItem ={({item}) => (
-                            <IngredientItem item = {item} pressDelete ={pressDelete}/>
-                        )}
-                    />
-                     
-                     </View>
-                        {/* ================================================================= */}
-                        <Modal animationType='fade' visible = {secmodalOpen} >
-                                <View style = {styles.ModalContent}>
-                                {/* <Text style={styles.Title}> Results </Text> */}
-                                  {/* <Text style = {styles.SubText}> BLT Sandwich </Text> */}
-                                    <Text>welcome to modal2</Text>
-                                  <FlatList
-                                    data = {information}
-                                    renderItem ={({item}) => (
-                                    <TouchableOpacity >
-                                        <Text style = {styles.SubText}>{item}</Text>
-                                    </TouchableOpacity>
-                                    )}
-                                    />
-                                   
-                                    <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setsecmodalOpen(false)}>
-                                    <Text style = {styles.testerText}> Back to Modal1 </Text>
-                                    </TouchableOpacity>
-                                </View>
-                            </Modal>
-                            {/* ======================================================================== */}
-                     </View>
-             </View>
-             )
+                    <Pressable style={styles.buttonSearch}  onPress = {()=> search(ingredients,recipes)}>
+                        <Text style={styles.textSearch}>Search</Text>
+                    </Pressable>
+                    <Button style={styles.buttonSearch} title = 'test' onPress = {()=> console.log(recipes)}/>
+                      
 
     
                 <View style = {styles.list}>
@@ -303,5 +214,5 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         letterSpacing: 0.25,
         color: 'white',
-      }  
+      }
 })
