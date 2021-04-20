@@ -1,4 +1,4 @@
-import { Navigation } from '@material-ui/icons';
+import { Navigation, Timeline } from '@material-ui/icons';
 import React, {Component, useEffect, useState} from 'react';
 import {View,
     Pressable,
@@ -23,6 +23,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import Home from '../screens/Home';
 import SResults from '../screens/sResults';
+import { Image } from 'native-base';
 
 // this code is for the search bar function and styling
 
@@ -48,7 +49,6 @@ LogBox.ignoreLogs(['Setting a timer']);
 export default function SearchBar(){
     //has array of items, ingredients is the array and setingredients is equal to usestate in which we can change the array
     const [ingredients,setingredients] = useState([
-        {text: "milk", key:"1"}
     ]);
     //database recipes
     const [recipes,setrecipes] = useState([]);
@@ -188,7 +188,7 @@ export default function SearchBar(){
         const querythree =col.where('name','==', item).get().then((snapshot)=>{
             snapshot.docs.forEach(doc =>{
                 //im storing the document data in the info array
-                otherinfo.push(doc.data().duration)
+                timee.push(doc.data().duration)
                 //and now im put the information in the info array into the information array which is this==> const [information,setinformation] = useState([]);
                 settime(()=>{
                     return timee
@@ -196,11 +196,46 @@ export default function SearchBar(){
             
             })
         })
+        let quantityy = [];
+        const queryfour =col.where('name','==', item).get().then((snapshot)=>{
+            snapshot.docs.forEach(doc =>{
+                quantityy.push(doc.data().quantity)
+                setquantityy(()=>{
+                    return quantityy
+                })
+            
+            })
+        })  
+        let imageSource = [];
+        const queryfive =col.where('name','==', item).get().then((snapshot)=>{
+            snapshot.docs.forEach(doc =>{
+                imageSource.push(doc.data().image)
+                setimageSource(()=>{
+                    return imageSource
+                })
+            
+            })
+        }) 
+        let ingredienttt = [];
+        const querysix =col.where('name','==', item).get().then((snapshot)=>{
+            snapshot.docs.forEach(doc =>{
+                ingredienttt.push(doc.data().image)
+                setingredienttt(()=>{
+                    return ingredienttt
+                })
+            
+            })
+        }) 
 
 
     }
     const[informationtwo,setinformationtwo] = useState([]);
     const[time,settime] = useState([]);
+    const [quantityy, setquantityy] = useState([]);
+    const [imageSource, setimageSource] = useState([]);
+    const [ingredienttt, setingredienttt] = useState([]);
+
+
     //console.log(information)
     const navigation = useNavigation(); 
     //modal for displaying recipes
@@ -225,7 +260,6 @@ export default function SearchBar(){
                     <Modal visible = {modalOpen} animationType='slide'>
                         <View style = {styles.ModalContent}>
                             <Text style={styles.Title}>Results </Text>
-                                <Text style = {styles.SubText}> We can put our recipe results here </Text>
                             <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setModalOpen(false)}>
                                 <Text style = {styles.testerText}> Back to Home </Text>
                                 </TouchableOpacity>
@@ -233,28 +267,38 @@ export default function SearchBar(){
                                 data = {finalrecipes}
                                 renderItem={({item})=>(
                                     <TouchableOpacity onPress={ ()=> modall(item,information)}>
-                                    <Text>{item}</Text>
+                                    <Text style = {styles.itemText}>{item}</Text>
                                     </TouchableOpacity>
                                 )}/>
                                 {/* ========module2=========== */}
                             <Modal visible = {modaltwo} animationType='slide'>
                       
                              <View>
-                                 <Text>name: {information}</Text>
-                                 <Text>prep:  {informationtwo}</Text>
-                                 <Text>duration :{time}</Text>
-                             </View>
+                                 <ScrollView>
+                                    {/* <Image source ={{uri: imageSource}}/> */}
+                                    <Text style = {styles.textResults}>name: {information}</Text>
+                                    <Text style = {styles.textResults}>prep:  {informationtwo}</Text>
+                                    <Text style = {styles.textResults}> duration :{time}</Text>
+                                    <Text style = {styles.textResults}>quantity: {quantityy}</Text>
+                                    <FlatList 
+                                    data = {{ingredienttt}}
+                                    renderItem = {({item}) => (
+                                        <Text style = {styles.flatListItem}>{item}</Text>
+                                    )}
+                                    />
+                                    </ScrollView>
+                                </View>
                            
                             <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setmodaltwo(false)}>
-                                <Text style = {styles.testerText}> Back to Home </Text>
+                                <Text style = {styles.testerText}> Results </Text>
                                 </TouchableOpacity>
                             </Modal>
                             </View>
                    </Modal>
 
 
-                        <TouchableOpacity style = {styles.modalToggle} onPress = {() => setModalOpen(true)}>
-                            <Text style = {styles.testerText}> True Search </Text>
+                        <TouchableOpacity style = {styles.button} onPress = {() => setModalOpen(true)}>
+                            <Text style = {styles.testerText}> Results </Text>
                         </TouchableOpacity>   
 
     
@@ -301,7 +345,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 32,
         borderRadius: 4,
         backgroundColor: 'black',
-        marginBottom: 10,
+        paddingVertical: 10,
+        paddingHorizontal: 32,
+        margin: 5,
       },
       text: {
         fontSize: 16,
@@ -309,11 +355,17 @@ const styles = StyleSheet.create({
         letterSpacing: 0.75,
         color: 'white',
       },
+      textResults: {
+        fontSize: 16,
+        lineHeight: 21,
+        letterSpacing: 0.75,
+        color:'black'
+      },
       textSearch:{
         fontSize: 16,
         lineHeight: 21,
         fontWeight: 'bold',
-        letterSpacing: 0.25,
+        letterSpacing: 0.85,
         color: 'white',
       },
       testerText:{
@@ -330,6 +382,7 @@ const styles = StyleSheet.create({
         borderColor: '#f5f3f5',
         borderWidth: 8,
         borderRadius: 10,
+        
       },
       SubText:{
         fontSize: 20,
@@ -342,16 +395,27 @@ const styles = StyleSheet.create({
           marginBottom: 0,
       },
       modalToggle:{
-        marginBottom:10,
         borderWidth:1,
         borderColor: '#f3f3f3',
-        padding:10,
-        borderRadius: 5,
-        alignSelf: 'center'
+        borderRadius: 10,
+        alignSelf: 'center',
+        paddingVertical: 10,
+        paddingHorizontal: 32,
 
       },
       ModalClose:{
           flex:1,
+      },
+      flatListItem:{
+          paddingVertical: 5,
+          paddingHorizontal: 10,
+          backgroundColor: '#f3f5f3'
+      },
+      itemText:{
+          paddingHorizontal:30,
+          paddingVertical: 5,
+          margin: 5,
+          backgroundColor: '#f3f5f3'
       }
       
 })
