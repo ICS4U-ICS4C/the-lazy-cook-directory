@@ -149,7 +149,6 @@ export default function SearchBar(){
                 }
             }
          } 
-         console.log(finalrecipes)
          if(finalrecipes && finalrecipes.length==0)
          Alert.alert("No matching recipes")
         
@@ -260,9 +259,6 @@ export default function SearchBar(){
                     <Modal visible = {modalOpen} animationType='slide'>
                         <View style = {styles.ModalContent}>
                             <Text style={styles.Title}>Results </Text>
-                            <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setModalOpen(false)}>
-                                <Text style = {styles.testerText}> Back to Home </Text>
-                                </TouchableOpacity>
                                 <FlatList
                                 data = {finalrecipes}
                                 renderItem={({item})=>(
@@ -270,13 +266,16 @@ export default function SearchBar(){
                                     <Text style = {styles.itemText}>{item}</Text>
                                     </TouchableOpacity>
                                 )}/>
+                                      <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setModalOpen(false)}>
+                                     <Text style = {styles.testerText}> Back to Home </Text>
+                                     </TouchableOpacity>
                                 {/* ========module2=========== */}
                             <Modal visible = {modaltwo} animationType='slide'>
                       
                              <View>
                                  <ScrollView>
                                     {/* <Image source ={{uri: imageSource}}/> */}
-                                    <Text style = {styles.textResults}>name: {information}</Text>
+                                    <Text style = {styles.textResults}>{information}</Text>
                                     <Text style = {styles.textResults}>prep:  {informationtwo}</Text>
                                     <Text style = {styles.textResults}> duration :{time}</Text>
                                     <Text style = {styles.textResults}>quantity: {quantityy}</Text>
@@ -290,7 +289,7 @@ export default function SearchBar(){
                                 </View>
                            
                             <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setmodaltwo(false)}>
-                                <Text style = {styles.testerText}> Results </Text>
+                                <Text style = {styles.testerText}> Go Back </Text>
                                 </TouchableOpacity>
                             </Modal>
                             </View>
@@ -359,7 +358,10 @@ const styles = StyleSheet.create({
         fontSize: 16,
         lineHeight: 21,
         letterSpacing: 0.75,
-        color:'black'
+        color:'black',
+        margin: 10,
+        borderBottomWidth: 1,
+        borderColor: '#cfcfcf',
       },
       textSearch:{
         fontSize: 16,
@@ -409,13 +411,14 @@ const styles = StyleSheet.create({
       flatListItem:{
           paddingVertical: 5,
           paddingHorizontal: 10,
-          backgroundColor: '#f3f5f3'
+          backgroundColor: '#f3f5f3',
       },
       itemText:{
           paddingHorizontal:30,
           paddingVertical: 5,
           margin: 5,
-          backgroundColor: '#f3f5f3'
+          backgroundColor: '#f3f5f3',
+          fontSize: 18,
       }
       
 })
