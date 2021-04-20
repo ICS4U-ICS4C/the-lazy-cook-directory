@@ -271,8 +271,8 @@ export default function SearchBar(){
                                     <Text style = {styles.textResults}>prep:  {informationtwo}</Text>
                                     <Text style = {styles.textResults}> duration :{time}</Text>
                                     <Text style = {styles.textResults}>quantity: {quantityy}</Text>
-                                    <Text style = {styles.textResults}>quantity: {ingredienttt}</Text>
-                                    <Text>{ingredienttt}</Text>
+                                    <Text style = {styles.textResults}>ingredients: {ingredienttt}</Text>
+                                    
                                     {/* <FlatList 
                                     data = {{ingredienttt}}
                                     renderItem = {({item}) => (
