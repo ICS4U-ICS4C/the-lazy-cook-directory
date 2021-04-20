@@ -188,7 +188,7 @@ export default function SearchBar(){
         const querythree =col.where('name','==', item).get().then((snapshot)=>{
             snapshot.docs.forEach(doc =>{
                 //im storing the document data in the info array
-                otherinfo.push(doc.data().duration)
+                timee.push(doc.data().duration)
                 //and now im put the information in the info array into the information array which is this==> const [information,setinformation] = useState([]);
                 settime(()=>{
                     return timee
@@ -242,7 +242,7 @@ export default function SearchBar(){
                              <View>
                                  <Text>name: {information}</Text>
                                  <Text>prep:  {informationtwo}</Text>
-                                 <Text>duration :{time}</Text>
+                                 <Text>duration:{time}</Text>
                              </View>
                            
                             <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setmodaltwo(false)}>
