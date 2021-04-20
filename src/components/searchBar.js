@@ -52,8 +52,15 @@ export default function SearchBar(){
     ]);
     //database recipes
     const [recipes,setrecipes] = useState([]);
+
+    //containing imgredients from db
+    const[firestoredb, setfirestoredb] = useState([]);
     
+    const[updated,setupdated] = useState([]);
     //when cliking the ingredients, function recieve key, filter item with that key out of array and return new array
+
+    const[finalrecipes, setfinalrecipes] = useState([]);
+
     const pressDelete = (key) =>{
         setingredients((priorIngredients) =>{
             return priorIngredients.filter(ingredient => ingredient.key != key);
@@ -83,17 +90,19 @@ export default function SearchBar(){
     }
     //for searching ingredients, how to access each ingredient. store this
     //value into another array which we will use to search
-    const search = (ingredients,recipes) =>{
+    const search = (ingredients,recipes,firestoredb,updated,finalrecipes) =>{
         //navigation.navigate("sResults")
         let userInputArray = []
         for (let i of ingredients){
             userInputArray.push(i.text)
         }
+ 
         const firestore = firebase.firestore();
         let reciplelist = []; //list that possible recipes will be pushed to
         let updatedlist = []; // list of the recipes that will be outputed
         let dbingredients = [];
         var count = {};
+        let finalarray = [];
         const col = firestore.collection("Recipes")
         for(let i in userInputArray){
             const query =col.where('ingredients','array-contains', userInputArray[i])
@@ -106,26 +115,51 @@ export default function SearchBar(){
                 })
             })
         } 
-        //let what = recipes[0]
+      
         recipes.forEach(function(i) { count[i] = (count[i]||0) + 1;}); 
         for (let i in count){
             if(count[i] == userInputArray.length){
                 updatedlist.push(i);
+                setupdated(()=>{
+                    return updatedlist
+                })
             }
         }
-        for(let i in updatedlist){
-            const newquery = col.where('name', '==', updatedlist[i])
+         for(let i in updated){
+            const newquery = col.where('name', '==', updated[i])
             newquery.get().then(snapshot=>{
                 snapshot.docs.forEach(doc=>{
                     dbingredients.push(doc.data().ingredients)
-                    console.log(dbingredients)
+                    setfirestoredb(()=>{
+                        return dbingredients
+                    })
                 })
             })
         }
-        console.log(dbingredients); 
+        for(let i in updated){
+            for(let j in firestoredb){
+                //checking if userInputArray length is less and or requal to the length of each array of ingredients in firestoredb array
+                if(userInputArray.length <= firestoredb[j].length){
+                    //if it is then push the name of the recipe name that it was looping on
+                    finalarray.push(updated[i])
+                    setfinalrecipes(()=>{
+                        return finalarray
+                    })  
+                }
+            }
+         } 
+         //console.log(finalrecipes)
+         if(finalrecipes && finalrecipes.length==0)
+         Alert.alert("No matching recipes")
+
+    }
+    const modall = (item) =>{
+        setmodaltwo(true)
     }
     const navigation = useNavigation(); 
     const [modalOpen, setModalOpen] = useState(false);
+    const [modaltwo, setmodaltwo] = useState(false);
+
     return(
         <View style={styles.container}>
             <View>
@@ -136,7 +170,7 @@ export default function SearchBar(){
                         <Text style={styles.text}>Add</Text> 
                     </TouchableOpacity>
                     
-                    <TouchableOpacity style={styles.button} onPress= {()=> search(ingredients,recipes)}>
+                    <TouchableOpacity style={styles.button} onPress= {()=> search(ingredients,recipes,firestoredb,updated,finalrecipes)}>
                         <Text style={styles.text}>Search</Text> 
                     </TouchableOpacity>
 
@@ -147,15 +181,27 @@ export default function SearchBar(){
                             <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setModalOpen(false)}>
                                 <Text style = {styles.testerText}> Back to Home </Text>
                                 </TouchableOpacity>
+                                <FlatList
+                                data = {finalrecipes}
+                                renderItem={({item})=>(
+                                    <TouchableOpacity onPress={ ()=> modall(item)}>
+                                    <Text>{item}</Text>
+                                    </TouchableOpacity>
+                                )}/>
+                                {/* ========module2=========== */}
+                            <Modal visible = {modaltwo} animationType='slide'>
+                            <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setmodaltwo(false)}>
+                                <Text style = {styles.testerText}> Back to Home </Text>
+                                </TouchableOpacity>
+                                
+                            </Modal>
                             </View>
-                        </Modal>
+                   </Modal>
 
 
                         <TouchableOpacity style = {styles.modalToggle} onPress = {() => setModalOpen(true)}>
                             <Text style = {styles.testerText}> True Search </Text>
-                        </TouchableOpacity>
-
-                    <Button onPress={() => navigation.navigate('sResults')} title="Search" />           
+                        </TouchableOpacity>   
 
     
                 <View style = {styles.list}>
