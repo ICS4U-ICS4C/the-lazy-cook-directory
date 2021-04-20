@@ -172,7 +172,7 @@ export default function SearchBar(){
             
             })
         })
-        otherinfo = [];
+        let otherinfo = [];
         const querytwo =col.where('name','==', item).get().then((snapshot)=>{
             snapshot.docs.forEach(doc =>{
                 //im storing the document data in the info array
@@ -184,9 +184,23 @@ export default function SearchBar(){
             
             })
         })
+        let timee = [];
+        const querythree =col.where('name','==', item).get().then((snapshot)=>{
+            snapshot.docs.forEach(doc =>{
+                //im storing the document data in the info array
+                otherinfo.push(doc.data().duration)
+                //and now im put the information in the info array into the information array which is this==> const [information,setinformation] = useState([]);
+                settime(()=>{
+                    return timee
+                })
+            
+            })
+        })
+
 
     }
     const[informationtwo,setinformationtwo] = useState([]);
+    const[time,settime] = useState([]);
     //console.log(information)
     const navigation = useNavigation(); 
     //modal for displaying recipes
@@ -224,17 +238,11 @@ export default function SearchBar(){
                                 )}/>
                                 {/* ========module2=========== */}
                             <Modal visible = {modaltwo} animationType='slide'>
-                             {/* <View>
-                            <Text>{information[0].name[0]}</Text>
-                            <Text>{information[0].duration[0]}</Text>
-                            <Text>{information[0].ingredients[0]}</Text>
-                            <Text>{information[0].quantity[0]}</Text>
-                            <Text>{information[0].preparation[0]}</Text>
-                            </View> 
-                             */}
+                      
                              <View>
-                                 <Text>{information}</Text>
-                                 <Text>{informationtwo}</Text>
+                                 <Text>name: {information}</Text>
+                                 <Text>prep:  {informationtwo}</Text>
+                                 <Text>duration :{time}</Text>
                              </View>
                            
                             <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setmodaltwo(false)}>
