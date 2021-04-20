@@ -61,6 +61,7 @@ export default function SearchBar(){
 
     const[finalrecipes, setfinalrecipes] = useState([]);
 
+    const [information, setinformation] = useState([]);
     const pressDelete = (key) =>{
         setingredients((priorIngredients) =>{
             return priorIngredients.filter(ingredient => ingredient.key != key);
@@ -153,11 +154,28 @@ export default function SearchBar(){
          Alert.alert("No matching recipes")
 
     }
-    const modall = (item) =>{
+    const modall = (item,information) =>{
+        let info = [];
         setmodaltwo(true)
+        const firestore = firebase.firestore();
+        const col = firestore.collection("Recipes")
+        const query =col.where('name','==', item).get().then((snapshot)=>{
+            snapshot.docs.forEach(doc =>{
+                //im storing the document data in the info array
+                info.push(doc.data())
+                //and now im put the information in the info array into the information array which is this==> const [information,setinformation] = useState([]);
+                setinformation(()=>{
+                    return info
+                })
+            })
+        })
+
     }
+    //console.log(information)
     const navigation = useNavigation(); 
+    //modal for displaying recipes
     const [modalOpen, setModalOpen] = useState(false);
+    //modal for displaying instructions for recipes
     const [modaltwo, setmodaltwo] = useState(false);
 
     return(
@@ -176,7 +194,7 @@ export default function SearchBar(){
 
                     <Modal visible = {modalOpen} animationType='slide'>
                         <View style = {styles.ModalContent}>
-                            <Text style={styles.Title}> Hai Amat and Abeerus-sama </Text>
+                            <Text style={styles.Title}>Results </Text>
                                 <Text style = {styles.SubText}> We can put our recipe results here </Text>
                             <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setModalOpen(false)}>
                                 <Text style = {styles.testerText}> Back to Home </Text>
@@ -184,16 +202,21 @@ export default function SearchBar(){
                                 <FlatList
                                 data = {finalrecipes}
                                 renderItem={({item})=>(
-                                    <TouchableOpacity onPress={ ()=> modall(item)}>
+                                    <TouchableOpacity onPress={ ()=> modall(item,information)}>
                                     <Text>{item}</Text>
                                     </TouchableOpacity>
                                 )}/>
                                 {/* ========module2=========== */}
                             <Modal visible = {modaltwo} animationType='slide'>
+                            <Text>{information[0].name[0]}</Text>
+                            <Text>{information[0].duration[0]}</Text>
+                            <Text>{information[0].ingredients[0]}</Text>
+                            <Text>{information[0].quantity[0]}</Text>
+                            <Text>{information[0].preparation[0]}</Text>
+                                
                             <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setmodaltwo(false)}>
                                 <Text style = {styles.testerText}> Back to Home </Text>
                                 </TouchableOpacity>
-                                
                             </Modal>
                             </View>
                    </Modal>
