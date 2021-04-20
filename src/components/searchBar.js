@@ -206,7 +206,7 @@ export default function SearchBar(){
                                     <Text>{item}</Text>
                                     </TouchableOpacity>
                                 )}/>
-                                {/* ========module2=========== */}
+                                {/* ========modal2=========== */}
                             <Modal visible = {modaltwo} animationType='slide'>
                             <Text>{information[0].name[0]}</Text>
                             <Text>{information[0].duration[0]}</Text>
