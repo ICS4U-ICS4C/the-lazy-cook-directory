@@ -59,9 +59,11 @@ export default function SearchBar(){
     const[updated,setupdated] = useState([]);
     //when cliking the ingredients, function recieve key, filter item with that key out of array and return new array
 
+    //array for final recipes after they are filtered
     const[finalrecipes, setfinalrecipes] = useState([]);
-
+    //information represents the name of recipe
     const [information, setinformation] = useState([]);
+
     const pressDelete = (key) =>{
         setingredients((priorIngredients) =>{
             return priorIngredients.filter(ingredient => ingredient.key != key);
@@ -100,10 +102,10 @@ export default function SearchBar(){
  
         const firestore = firebase.firestore();
         let reciplelist = []; //list that possible recipes will be pushed to
-        let updatedlist = []; // list of the recipes that will be outputed
-        let dbingredients = [];
-        var count = {};
-        let finalarray = [];
+        let updatedlist = []; // list of the recipes after checking if they match the length of userinputarray
+        let dbingredients = [];//list of ingredients from firestore database
+        var count = {}; //counts duplicated recipe names
+        let finalarray = []; //final recipe list after comparing with ingredients from firestore
         const col = firestore.collection("Recipes")
         for(let i in userInputArray){
             const query =col.where('ingredients','array-contains', userInputArray[i])
@@ -116,7 +118,7 @@ export default function SearchBar(){
                 })
             })
         } 
-      
+        //checking if the number of dplicated recipes equal the userInputArray.length
         recipes.forEach(function(i) { count[i] = (count[i]||0) + 1;}); 
         for (let i in count){
             if(count[i] == userInputArray.length){
@@ -126,6 +128,7 @@ export default function SearchBar(){
                 })
             }
         }
+        //querying ingredients list from firestore for each recipe in updated array
          for(let i in updated){
             const newquery = col.where('name', '==', updated[i])
             newquery.get().then(snapshot=>{
@@ -149,12 +152,14 @@ export default function SearchBar(){
                 }
             }
          } 
+         //if the final recipe list is empty, then alert the user
          if(finalrecipes && finalrecipes.length==0)
          Alert.alert("No matching recipes")
         
 
 
     }
+    //query to get name for each recipe, shown on second modal
     const modall = (item,information) =>{
         let info = [];
         setmodaltwo(true)
@@ -162,15 +167,16 @@ export default function SearchBar(){
         const col = firestore.collection("Recipes")
         const query =col.where('name','==', item).get().then((snapshot)=>{
             snapshot.docs.forEach(doc =>{
-                //im storing the document data in the info array
+                //storing the document data in the info array
                 info.push(doc.data().name)
-                //and now im put the information in the info array into the information array which is this==> const [information,setinformation] = useState([]);
+                //puting the information in the info array into the information array which is this==> const [information,setinformation] = useState([]);
                 setinformation(()=>{
                     return info
                 })
             
             })
         })
+        //query to get preparation instructions, shown in second modal
         let otherinfo = [];
         const querytwo =col.where('name','==', item).get().then((snapshot)=>{
             snapshot.docs.forEach(doc =>{
@@ -183,6 +189,7 @@ export default function SearchBar(){
             
             })
         })
+        //query to get duration for recipe, shown in second modal
         let timee = [];
         const querythree =col.where('name','==', item).get().then((snapshot)=>{
             snapshot.docs.forEach(doc =>{
@@ -195,6 +202,7 @@ export default function SearchBar(){
             
             })
         })
+        //query to get quantity of ingredients, which will be shown on second modal
         let quantityy = [];
         const queryfour =col.where('name','==', item).get().then((snapshot)=>{
             snapshot.docs.forEach(doc =>{
@@ -205,6 +213,7 @@ export default function SearchBar(){
             
             })
         })  
+        //query to get image for each recipe
         let imageSource = [];
         const queryfive =col.where('name','==', item).get().then((snapshot)=>{
             snapshot.docs.forEach(doc =>{
@@ -215,6 +224,7 @@ export default function SearchBar(){
             
             })
         }) 
+        //query to get ingredient list for each recipe
         let ingredienttt = [];
         const querysix =col.where('name','==', item).get().then((snapshot)=>{
             snapshot.docs.forEach(doc =>{
@@ -234,12 +244,10 @@ export default function SearchBar(){
     const [imageSource, setimageSource] = useState([]);
     const [ingredienttt, setingredienttt] = useState([]);
 
-
-    //console.log(information)
     const navigation = useNavigation(); 
     //modal for displaying recipes
     const [modalOpen, setModalOpen] = useState(false);
-    //modal for displaying instructions for recipes
+    //modal for displaying instructions/quantity/duration, etc for recipes
     const [modaltwo, setmodaltwo] = useState(false);
    
     return(
@@ -269,7 +277,7 @@ export default function SearchBar(){
                                       <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setModalOpen(false)}>
                                      <Text style = {styles.testerText}> Back to Home </Text>
                                      </TouchableOpacity>
-                                {/* ========module2=========== */}
+                                {/* ========modal2=========== */}
                             <Modal visible = {modaltwo} animationType='slide'>
                       
                              <View>
@@ -279,12 +287,14 @@ export default function SearchBar(){
                                     <Text style = {styles.textResults}>prep:  {informationtwo}</Text>
                                     <Text style = {styles.textResults}> duration :{time}</Text>
                                     <Text style = {styles.textResults}>quantity: {quantityy}</Text>
-                                    <FlatList 
+                                    <Text style = {styles.textResults}>quantity: {ingredienttt}</Text>
+                                    <Text>{ingredienttt}</Text>
+                                    {/* <FlatList 
                                     data = {{ingredienttt}}
                                     renderItem = {({item}) => (
                                         <Text style = {styles.flatListItem}>{item}</Text>
                                     )}
-                                    />
+                                    /> */}
                                     </ScrollView>
                                 </View>
                            
