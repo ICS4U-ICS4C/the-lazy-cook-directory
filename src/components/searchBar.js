@@ -22,7 +22,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import {useNavigation, useRoute} from '@react-navigation/native';
 import Home from '../screens/Home';
-import sResults from '../screens/sResults';
+import SResults from '../screens/sResults';
 
 // this code is for the search bar function and styling
 
@@ -149,9 +149,11 @@ export default function SearchBar(){
                 }
             }
          } 
-         //console.log(finalrecipes)
+         console.log(finalrecipes)
          if(finalrecipes && finalrecipes.length==0)
          Alert.alert("No matching recipes")
+        
+
 
     }
     const modall = (item,information) =>{
@@ -162,22 +164,36 @@ export default function SearchBar(){
         const query =col.where('name','==', item).get().then((snapshot)=>{
             snapshot.docs.forEach(doc =>{
                 //im storing the document data in the info array
-                info.push(doc.data())
+                info.push(doc.data().name)
                 //and now im put the information in the info array into the information array which is this==> const [information,setinformation] = useState([]);
                 setinformation(()=>{
                     return info
                 })
+            
+            })
+        })
+        otherinfo = [];
+        const querytwo =col.where('name','==', item).get().then((snapshot)=>{
+            snapshot.docs.forEach(doc =>{
+                //im storing the document data in the info array
+                otherinfo.push(doc.data().preparation)
+                //and now im put the information in the info array into the information array which is this==> const [information,setinformation] = useState([]);
+                setinformationtwo(()=>{
+                    return otherinfo
+                })
+            
             })
         })
 
     }
+    const[informationtwo,setinformationtwo] = useState([]);
     //console.log(information)
     const navigation = useNavigation(); 
     //modal for displaying recipes
     const [modalOpen, setModalOpen] = useState(false);
     //modal for displaying instructions for recipes
     const [modaltwo, setmodaltwo] = useState(false);
-
+   
     return(
         <View style={styles.container}>
             <View>
@@ -206,14 +222,21 @@ export default function SearchBar(){
                                     <Text>{item}</Text>
                                     </TouchableOpacity>
                                 )}/>
-                                {/* ========modal2=========== */}
+                                {/* ========module2=========== */}
                             <Modal visible = {modaltwo} animationType='slide'>
+                             {/* <View>
                             <Text>{information[0].name[0]}</Text>
                             <Text>{information[0].duration[0]}</Text>
                             <Text>{information[0].ingredients[0]}</Text>
                             <Text>{information[0].quantity[0]}</Text>
                             <Text>{information[0].preparation[0]}</Text>
-                                
+                            </View> 
+                             */}
+                             <View>
+                                 <Text>{information}</Text>
+                                 <Text>{informationtwo}</Text>
+                             </View>
+                           
                             <TouchableOpacity style = {{...styles.modalToggle}} onPress = {() => setmodaltwo(false)}>
                                 <Text style = {styles.testerText}> Back to Home </Text>
                                 </TouchableOpacity>
@@ -235,13 +258,6 @@ export default function SearchBar(){
                         <IngredientItem item = {item} pressDelete ={pressDelete}/>
                     )}
                 />
-                {/* <FlatList
-                    
-                    data = {recipes}
-                    renderItem ={({item}) => (
-                        <Text>{item}</Text>
-                    )}
-                /> */}
                 
 
              
