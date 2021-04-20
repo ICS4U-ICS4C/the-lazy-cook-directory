@@ -30,22 +30,6 @@ import { Image } from 'native-base';
 LogBox.ignoreLogs(['Setting a timer']);
 //for ignoring warning message in console
 
-// const Stack = createStackNavigator();
-
-// function App(){
-//   return(
-//     <NavigationContainer>
-//       <Stack.Navigator>
-//         <Stack.Screen
-//         name = "homescreen"
-//         component= {Home}/>
-//         <Stack.Screen
-//         name = "resultsscreen"
-//         component= {sResults}/>
-//       </Stack.Navigator>
-//     </NavigationContainer>
-//   )
-// }
 export default function SearchBar(){
     //has array of items, ingredients is the array and setingredients is equal to usestate in which we can change the array
     const [ingredients,setingredients] = useState([
@@ -53,7 +37,7 @@ export default function SearchBar(){
     //database recipes
     const [recipes,setrecipes] = useState([]);
 
-    //containing imgredients from db
+    //containing ingredients from db
     const[firestoredb, setfirestoredb] = useState([]);
     
     const[updated,setupdated] = useState([]);
