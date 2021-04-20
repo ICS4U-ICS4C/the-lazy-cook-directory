@@ -11,7 +11,8 @@ import { StyleSheet, View, Dimensions, Image } from 'react-native';
  * FreshCo, No Frills, Oceans, and Adonis around them
 */
 
-/**writing important coordinates to be used to locate grocery stores.
+/** Writing coordinates of differnt groccers located within Missisauga
+ * 
 Stores Mississauga's, Walmart, Food Basics, FreshCo, No Frills, Oceans, and Adonis coordinates
 to be accessed like:   
 >> {this.places.walcoordinates}
@@ -70,9 +71,12 @@ export default class App extends React.Component {
 
 //First Marker starts with Walmart. On click, you see the store name,
 //coordinates are of all Walmarts across Mississauga.
+//Repeats for adonis, oceans, no frills, and food basics
 
 //Custome image for the pin, creating personally with Walmart's blue colour.
 //This Marker format goes on for all the stores.
+
+//mapview is the map, the map is google maps
   render() {
     return (
       <View style={styles.container}>
